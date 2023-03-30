@@ -87,6 +87,9 @@ It's also available a small "Context-Oriented" approach for math calculation wit
 matrices; I think that this functionality is echoed with KMath and their kernels
 to make multidimensional vectorized spaces.
 
+As today (30/03/23), no broadcasting turnaround were found, as always, need
+to check if it's a vital feature.
+
 ### Notes
 Testing broadcasting Implementation, need to understand which are all the
 cases, and mainly the **NEEDS**. A simple Implementation of the sum can be
