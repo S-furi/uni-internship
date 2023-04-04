@@ -22,6 +22,7 @@ else
         "Please install Java manually and then retry the installation."
         exit 0;
     fi
+    echo "*** Java succesfully installed! ***"
 fi
 
 # Linux sometimes does not have venv properly installed
@@ -34,19 +35,19 @@ fi
 python3 -m venv kt_env
 source kt_env/bin/activate
 
-if type -p kotlin > /dev/null; then
+if type -p kotlin > /dev/null ; then
     echo "Kotlin already installed"
 else
     # Installing kotlin with SDKMan
-    read -p "Kotlin is not found on the system. Would you like to install it with SDKMan (y/n): " kotlin_choice
+    read -p "Kotlin not found on the system. Would you like to install it with SDKMan (y/n): " kotlin_choice
     if [[ "$kotlin_choice" == "y" ]]; then
         curl -s "htpps://get.sdkman.io" | bash
         source "$HOME/.sdkman/bin/sdkman-init.sh"
         sdk install kotlin
-        echo "Kotlin installed succesfully!"
+        echo "*** Kotlin installed succesfully! ***"
     else
         echo "Kotlin installation skipped"
-        echo "** Note that the following package installations may fail because of missing kotlin installation on the system!"
+        echo "** Note that the following package installations may fail because of missing kotlin installation on the system! **"
     fi
 fi
 
@@ -56,6 +57,6 @@ pip install jupyter kotlin-jupyter-kernel
 
 deactivate 
 
-echo "Kotlin dependencies installed succesfully"
+echo "*** Kotlin dependencies installed succesfully! ***"
 echo "Remember to activate the virtual environment with:"
 echo "\$ source kt_env/bin/activate"
