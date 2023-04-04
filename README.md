@@ -2,7 +2,29 @@
 
 ## Requirements
 - Python > 3.10 and pip installed on your system
+- The command `python3 -m venv` should not raise errors. If it does:
+```bash
+sudo apt install python3-venv
+```
+For Debian/Ubuntu Distros
+
 - Kotlin >= 1.8.0
+- JVM >= 11
+
+## Using the Scripts
+You can install kotlin only by typing:
+```bash
+bash <(curl -s https://raw.githubusercontent.com/S-furi/unibo-internship/main/install_kotlin_notebook.sh)
+```
+
+To download python or kotlin you can use this single script
+```bash
+bash <(curl -s https://raw.githubusercontent.com/S-furi/unibo-internship/main/interactive_install.sh)
+```
+And then you can select:
+1. Python Jupyter dependencies
+2. Kotlin Jupyter dependencies
+3. Exit the script
 
 ## Python Virtual Environment
 It's recommended the use of **Python Virtualenv** for handling
