@@ -10,7 +10,7 @@ krangl, and integrating them with a lot of similarities with pandas. On the
 other hand, it has all the benefits that a strong typing language has, adding
 also kotlin null values handling.
 
-# Bried sparse notes
+# Brief sparse notes
 ## (29/03)
 I've discovered how it's easy to work with ND arrays in Multik, the interface
 `ND`
@@ -90,6 +90,14 @@ to make multidimensional vectorized spaces.
 As today (30/03/23), no broadcasting turnaround were found, as always, need
 to check if it's a vital feature.
 
+(03/04) updates: a way of broadcasting can be archieved with KMath library,
+using the double tensor algebra, using the context `withBroadcasting`.
+It's possibile to dynamically convert multik datastructures into N dimensional
+tensors using the public interface `MutableMultiArray`, which is being used
+by multik `NDArray`. By now, the op-assingement operation are not working,
+suggesting maybe that the view is not that mutable, but the results are
+conformed by what expected.
+
 ### Notes
 Testing broadcasting Implementation, need to understand which are all the
 cases, and mainly the **NEEDS**. A simple Implementation of the sum can be
@@ -135,6 +143,36 @@ to get at first, but benefits are a lot!
 A decent knowledge about extension functions is required, and also how
 lambdas and function literals works (lambdas section of kotlin's guide).
 
+# Xarray
+Provides an **N-Dimensional** **labeled** array.
+
+- Apply operations over dimensions by name: `x.sum('time')`.
+- Select values by label (or logical location) instead of integer location:
+  `x.loc['2014-01-01']` or `x.sel(time='2014-01-01')`.
+- Mathematical operations (e.g., `x - y`) vectorize across multiple dimensions
+  (array broadcasting) based on dimension names, not shape. 
+- Easily use the split-apply-combine paradigm with groupby:
+  `x.groupby('time.dayofyear').mean()`.
+- Database-like alignment based on coordinate labels that smoothly handles
+  missing values: `x, y = xr.align(x, y, join='outer')`.
+- Keep track of arbitrary metadata in the form of a Python dictionary:
+  `x.attrs`.
+
+## Other Features
+- Automatic array alignement without the need to insert a dummy dimension (i.e.
+  `np.newaxis`).
+
+- The arrays in a dataset can have not only different data types (like pandas
+  DataFrame), but also different number of dimensions (maybe thanks to
+  pydata/sparse library).
+
+- Largely inspired by pandas, numpy and the netCDF file format.
+
+Vector broadcasting!
+`np.random.randn(3)[:, np.newaxis] + np.random.randn(2)[np.newaxis, :]`
+
+
+- Il plotting fa paura, integrates matplotlib with the beauty of seaborn.
 --- 
 ## Chapters
 

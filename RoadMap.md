@@ -17,6 +17,7 @@
         - [ ] Matplotlib
     - [ ] Provare a pensare come poterlo implementare in kotlin
     - [ ] Trovare qualcosa da fare in kotlin JVM
+- [x] netCDF java alternative
 
 ### (29/03)
 - [ ] Studio di Matplotlib e LetsPlot 
