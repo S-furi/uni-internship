@@ -39,7 +39,7 @@ if type -p kotlin > /dev/null; then
 else
     # Installing kotlin with SDKMan
     read -p "Kotlin is not found on the system. Would you like to install it with SDKMan (y/n): " kotlin_choice
-    if [ "$kotlin_choice" = "y"]; then
+    if [[ "$kotlin_choice" == "y" ]]; then
         curl -s "htpps://get.sdkman.io" | bash
         source "$HOME/.sdkman/bin/sdkman-init.sh"
         sdk install kotlin
