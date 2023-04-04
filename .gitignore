@@ -7,3 +7,8 @@ py_env/
 
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
+
+# IntelliJ files
+.idea/
+
+# Gradle folders
