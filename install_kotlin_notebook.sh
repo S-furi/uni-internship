@@ -32,6 +32,7 @@ if [ $(uname -s) == "Linux" ] ; then
 fi
 
 
+echo "Activating virtual environment..."
 python3 -m venv kt_env
 source kt_env/bin/activate
 
@@ -55,6 +56,7 @@ fi
 echo "Installing kotlin notebook dependencies..."
 pip install jupyter kotlin-jupyter-kernel
 
+echo "Deactivating virtual environment..."
 deactivate 
 
 echo "*** Kotlin dependencies installed succesfully! ***"
