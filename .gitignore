@@ -4,3 +4,6 @@ py_env/
 
 # MacOS finder files
 .DS_Store
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
