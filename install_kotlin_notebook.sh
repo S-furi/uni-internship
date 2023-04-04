@@ -46,8 +46,7 @@ else
         echo "Kotlin installed succesfully!"
     else
         echo "Kotlin installation skipped"
-        echo "** Note that the following package installations may fail\
-            because of missing kotlin installation on the system!"
+        echo "** Note that the following package installations may fail because of missing kotlin installation on the system!"
     fi
 fi
 
