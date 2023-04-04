@@ -7,7 +7,7 @@ echo "3. Exit"
 
 read -p "Enter your choice (1, 2 or 3): " choice
 
-case $choice
+case $choice in
     1)
         python3 -m venv py_env
         source py_env/bin/activate
