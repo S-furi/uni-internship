@@ -76,3 +76,20 @@ Now it's possiible to type `jupyter notebook` and a
 window on the default browser will open on the current
 folder, and a new notebook can be opened with the 
 kotlin kernel.
+
+## Post installation
+### Koltin
+After activating the virtual environment, you can edit and create notebooks
+inside Jupyer.
+Please note that the first time you run the cells with the `%use
+<package_name>` this may take a while due to package resolution with Maven. It
+should be faster the next times you re-run them.
+
+You can see from the terminal output of Jupyter which operations the notebook
+is doing.
+
+#### Known kernel problems
+Sometimes the kernel freezes, and when executing a cell no output is displayed.
+Other times it remains in an idle state when executing a cell for too much
+time. In these cases, I found out that clicking on "Kernel->Reconnect" on
+Jupyter toolbar fixes the problem.
