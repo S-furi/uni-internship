@@ -8,6 +8,7 @@ else
     if [ "$java_choice" = "y"]; then
         os_type=$(uname -s)
         if [$os_type == "Linux"]; then
+            # hoping for apt as package manager...
             sudo apt-get update
             sudo apt-get install default-jdk -y
         elif [ $os_type == "Darwin"] ; then
@@ -22,6 +23,13 @@ else
         exit 0;
     fi
 fi
+
+# Linux sometimes does not have venv properly installed
+if [ $(uname -s) == "Linux" ] ; then
+    # Debian/Ubuntu
+    sudo apt-get install python3-venv
+fi
+
 
 python3 -m venv kt_env
 source kt_env/bin/activate
