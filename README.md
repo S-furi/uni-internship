@@ -2,14 +2,19 @@
 
 ## Requirements
 - Python > 3.10 and pip installed on your system
+- Kotlin >= 1.8.0
+- JVM >= 11
+
+Kotlin and the JVM can be installed with  the provided scripts below:
+- Kotlin is installed with [https://sdkman.io](SDKMan)
+- The JDK installed will be the `default-jdk`
+
+Note:
 - The command `python3 -m venv` should not raise errors. If it does:
 ```bash
 sudo apt install python3-venv
 ```
-For Debian/Ubuntu Distros
-
-- Kotlin >= 1.8.0
-- JVM >= 11
+For Debian/Ubuntu Distros.
 
 ## Using the Scripts
 You can install kotlin only by typing:
