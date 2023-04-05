@@ -1,3 +1,6 @@
+# Ignoring notes folder
+notes/
+
 # ignoring virtual environments
 kt_env/
 py_env/
