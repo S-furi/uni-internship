@@ -1,7 +1,16 @@
-fun main(args: Array<String>) {
-    println("Hello World!")
+import kotlinx.datetime.LocalDate
+import utils.toList
+import org.jetbrains.kotlinx.dataframe.*
+import org.jetbrains.kotlinx.dataframe.api.columnOf
+import org.jetbrains.kotlinx.dataframe.api.explode
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
+
+fun main(args: Array<String>) {
+
+    val start = LocalDate(2023, 4, 4)
+    val end = LocalDate(2023, 5, 4)
+
+    val dates = (start..end).toList()
+
+    println(columnOf(dates).explode())
 }
