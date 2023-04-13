@@ -1,6 +1,10 @@
 format: jb-book
-root: ./Introduction.ipynb
+root: Introduction.ipynb
 defaults:  # The defaults key will be applied to all chapters and sub-sections
   titlesonly: True
 chapters:
-- file: ./Arrays&Matrices.ipynb
+- file: Arrays&Matrices.ipynb
+  sections:
+  - file: ch1/Multik_Arrays.ipynb
+  - file: ch1/NumPy_Arrays.ipynb
+
