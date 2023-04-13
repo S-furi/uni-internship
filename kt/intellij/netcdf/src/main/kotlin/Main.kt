@@ -12,18 +12,6 @@ fun printFile(writer: NetcdfFormatWriter) {
     println(writer.outputFile)
 }
 
-fun testReadingFile(path: String) {
-    try {
-        val ncfile = NetcdfFiles.open(path)
-        val elements: DoubleArray = ncfile.readSection("temperature").copyTo1DJavaArray() as DoubleArray
-
-
-    } catch (e: IOException) {
-        println("Error opening test file: \n ${e.message}")
-        e.printStackTrace()
-    }
-}
-
 fun main() {
     val builder = NetcdfFormatWriter.createNewNetcdf3("./test")
 
@@ -54,6 +42,7 @@ fun main() {
     // scalar variable, an empty array list denotes the scalar type (no dimension)
     builder.addVariable("scalar", DataType.DOUBLE, ArrayList<Dimension>())
 
+    // writing data to file
     val file = builder.build()
     printFile(file)
 
@@ -62,20 +51,21 @@ fun main() {
 
     if (variable == null) {
         println("Variable \'temperature\' not found!")
+        return
     }
 
     val shape: Pair<Int, Int> = Pair(variable!!.shape[0], variable!!.shape[1])
     val elem = DoubleArray(shape.first * shape.second) { it * 100000.0 }
 
+    // creating array "a" with new values
     val a = Array.factory(DataType.DOUBLE, shape.toList().toIntArray(), elem)
 
-    // writing new data to the opened file
+    // writing new data to the opened file at position 0,0
     file.write(variable, intArrayOf(0, 0), a)
 
     // if print is called on the output file,
-    // no changes should appear because a read method would be called.
+    // no changes should appear because a read
+    // method would be called.
     // by now, it raises exceptions....
     file.close()
-
-    testReadingFile("./test")
 }
