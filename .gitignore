@@ -15,6 +15,7 @@ py_env/
 # (need to understand wich dependencies are needed for
 # GH static website hosting)
 report/_build/
+.virtual_documents/
 
 # IntelliJ files
 .idea/
