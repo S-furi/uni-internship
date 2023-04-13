@@ -465,7 +465,7 @@ b -&gt; [0, 2, 4, 6, 8]
 </div>
 </div>
 </div>
-<p>We can then map the array to a matrix using the <code class="docutils literal notranslate"><span class="pre">reshape</span></code> method, wich takes in input an arbitrary number of dimensions size along wich the array will be mapped.</p>
+<p>We can then map the array to a matrix using the <code class="docutils literal notranslate"><span class="pre">reshape</span></code> method, which takes in input an arbitrary number of dimensions size along which the array will be mapped.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">mk</span><span class="p">.</span><span class="na">zeros</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">(</span><span class="m">50</span><span class="p">).</span><span class="na">reshape</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">)</span><span class="w"> </span><span class="c1">// three dimensional matrix with (z, x, y) = (2, 5, 5)</span>
@@ -488,7 +488,7 @@ b -&gt; [0, 2, 4, 6, 8]
 </div>
 </div>
 </div>
-<p>It’s also possiible to create an <code class="docutils literal notranslate"><span class="pre">NDArray</span></code> providing a <strong>lambda</strong> for constructing it, considering that the matrix will be built upon a <code class="docutils literal notranslate"><span class="pre">arange</span></code> vector.</p>
+<p>It’s also possible to create an <code class="docutils literal notranslate"><span class="pre">NDArray</span></code> providing a <strong>lambda</strong> for constructing it, considering that the matrix will be built upon a <code class="docutils literal notranslate"><span class="pre">arange</span></code> vector.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">mk</span><span class="p">.</span><span class="na">d3array</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="p">}</span>
