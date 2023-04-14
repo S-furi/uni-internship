@@ -11,6 +11,12 @@ py_env/
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 
+# Jupyter-book temporary build file
+# (need to understand wich dependencies are needed for
+# GH static website hosting)
+report/_build/
+.virtual_documents/
+
 # IntelliJ files
 .idea/
 
@@ -36,3 +42,4 @@ gradle-app.setting
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
+
