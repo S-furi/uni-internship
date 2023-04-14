@@ -11,4 +11,8 @@ chapters:
   sections:
   - file: ch2/Intro_dataframe.ipynb 
   - file: ch2/Intro_pandas.ipynb
+- file: DA_examples/DA_Introduction.ipynb
+  sections:
+  - file: DA_examples/tips_kotlin.ipynb
+  - file: DA_examples/tips_python.ipynb
 
