@@ -336,7 +336,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -352,6 +354,20 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-structure">DataFrame structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datacolumn"><code class="docutils literal notranslate"><span class="pre">DataColumn</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe"><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operations-overview">Operations Overview</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -363,7 +379,9 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="data-handling-with-dataframe">
 <h1>Data handling with Dataframe<a class="headerlink" href="#data-handling-with-dataframe" title="Permalink to this heading">#</a></h1>
-<p>Kotlin <a class="reference external" href="https://github.com/Kotlin/dataframe">DataFrame</a> was largely inspired by pandas structures, but despite this, it has his own characteristics that make Data Analysis very understandable and concise. Most of it’s readability comes from functional languages chains of transformations (the data pipeline), and the use of DSL, that makes it’s syntax closer to natural language.</p>
+<p>Kotlin <a class="reference external" href="https://github.com/Kotlin/dataframe">DataFrame</a> was largely inspired by pandas structures, but despite this, it has his own characteristics that make Data Analysis very understandable and concise. Most of it’s readability comes from functional languages chains of transformations (the data pipeline), and the use of DSL that makes it’s syntax closer to natural language.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
 <p>Dataframe is built-in kotlin jupyter kernel, so the magic command <code class="docutils literal notranslate"><span class="pre">%use</span></code> will the whole library for us</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -564,7 +582,7 @@ table.dataframe tr:hover .formatted .structural, .null {
 
                 </style></div></div>
 </div>
-<p>For creating a dataframe from scratch, we can follow several approaches:</p>
+<p>For creating a dataframe from scratch, we can follow several approaches, and the most used are:</p>
 <ol class="arabic simple">
 <li><p>Creating <code class="docutils literal notranslate"><span class="pre">Column</span></code> objects for storing data, and assign columns to a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></p></li>
 </ol>
@@ -739,7 +757,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_184549376"></table>
+<table class="dataframe" id="df_318767104"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 3, columnsCount = 2</p>
         </body>
@@ -748,10 +766,10 @@ table.dataframe tr:hover .formatted .structural, .null {
 /*<!--*/
 call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"names: String\">names</span>", children: [], rightAlign: false, values: ["foo","bar","baz"] }, 
 { name: "<span title=\"numbers: Int\">numbers</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>"] }, 
-], id: 184549376, rootId: 184549376, totalRows: 3 } ) });
+], id: 318767104, rootId: 318767104, totalRows: 3 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(184549376) });
+call_DataFrame(function() { DataFrame.renderTable(318767104) });
 
 
         </script>
@@ -932,7 +950,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_184549377"></table>
+<table class="dataframe" id="df_318767105"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 3, columnsCount = 2</p>
         </body>
@@ -941,15 +959,1034 @@ table.dataframe tr:hover .formatted .structural, .null {
 /*<!--*/
 call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"names: String\">names</span>", children: [], rightAlign: false, values: ["foo","bar","baz"] }, 
 { name: "<span title=\"numbers: Int\">numbers</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>"] }, 
-], id: 184549377, rootId: 184549377, totalRows: 3 } ) });
+], id: 318767105, rootId: 318767105, totalRows: 3 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(184549377) });
+call_DataFrame(function() { DataFrame.renderTable(318767105) });
 
 
         </script>
         </html></div></div>
 </div>
+<ol class="arabic simple" start="3">
+<li><p>Providing an <code class="docutils literal notranslate"><span class="pre">Iterable&lt;Column&gt;</span></code></p></li>
+</ol>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more, please refer to DataFrame <a class="reference external" href="https://kotlin.github.io/dataframe/createdataframe.html">constructions methods</a></p>
+</div>
+</aside>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="m">1.</span><span class="p">.</span><span class="m">5</span><span class="p">).</span><span class="na">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">List</span><span class="p">(</span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">it</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="p">}.</span><span class="na">toColumn</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$</span><span class="n">it</span><span class="s">&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+
+<span class="n">dataFrameOf</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <html>
+        <head>
+            <style type="text/css">
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+
+
+            </style>
+        </head>
+        <body>
+            
+<table class="dataframe" id="df_318767106"></table>
+
+<p class="dataframe_description">DataFrame: rowsCount = 10, columnsCount = 5</p>
+        </body>
+        <script>
+            
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"1: Int\">1</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">-10</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">10</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">20</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">30</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">40</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">50</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">60</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">70</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">80</span></span>"] }, 
+{ name: "<span title=\"2: Int\">2</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">-20</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-10</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">10</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">20</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">30</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">40</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">50</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">60</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">70</span></span>"] }, 
+{ name: "<span title=\"3: Int\">3</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">-30</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-20</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-10</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">10</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">20</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">30</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">40</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">50</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">60</span></span>"] }, 
+{ name: "<span title=\"4: Int\">4</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">-40</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-30</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-20</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-10</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">10</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">20</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">30</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">40</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">50</span></span>"] }, 
+{ name: "<span title=\"5: Int\">5</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">-50</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-40</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-30</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-20</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-10</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">10</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">20</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">30</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">40</span></span>"] }, 
+], id: 318767106, rootId: 318767106, totalRows: 10 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(318767106) });
+
+
+        </script>
+        </html></div></div>
+</div>
+<p>We can load a dataset, and compute some statics</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DataFrame</span><span class="p">.</span><span class="na">readCSV</span><span class="p">(</span>
+<span class="w">            </span><span class="s">&quot;../resources/example-datasets/datasets/stock_px.csv&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="n">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="s">&quot;date&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;AAPL&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MSFT&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;XOM&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SPX&quot;</span><span class="p">),</span>
+<span class="w">            </span><span class="n">skipLines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<span class="w">        </span><span class="p">)</span>
+<span class="n">df</span><span class="p">.</span><span class="na">head</span><span class="p">(</span><span class="m">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <html>
+        <head>
+            <style type="text/css">
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+
+
+            </style>
+        </head>
+        <body>
+            
+<table class="dataframe" id="df_318767107"></table>
+
+<p class="dataframe_description">DataFrame: rowsCount = 5, columnsCount = 5</p>
+        </body>
+        <script>
+            
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"date: kotlinx.datetime.LocalDateTime\">date</span>", children: [], rightAlign: false, values: ["2003-01-02T00:00","2003-01-03T00:00","2003-01-06T00:00","2003-01-07T00:00","2003-01-08T00:00"] }, 
+{ name: "<span title=\"AAPL: Double\">AAPL</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">7.40</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">7.45</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">7.45</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">7.43</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">7.28</span></span>"] }, 
+{ name: "<span title=\"MSFT: Double\">MSFT</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">21.11</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">21.14</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">21.52</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">21.93</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">21.31</span></span>"] }, 
+{ name: "<span title=\"XOM: Double\">XOM</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">29.22</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">29.24</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">29.96</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">28.95</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">28.83</span></span>"] }, 
+{ name: "<span title=\"SPX: Double\">SPX</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">909.03</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">908.59</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">929.01</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">922.93</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">909.93</span></span>"] }, 
+], id: 318767107, rootId: 318767107, totalRows: 5 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(318767107) });
+
+
+        </script>
+        </html></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">.</span><span class="na">groupBy</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">date</span><span class="p">.</span><span class="na">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">month</span><span class="w"> </span><span class="p">}}.</span><span class="na">mean</span><span class="p">()</span><span class="w"> </span><span class="c1">// mean for each month, for each stock</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <html>
+        <head>
+            <style type="text/css">
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+
+
+            </style>
+        </head>
+        <body>
+            
+<table class="dataframe" id="df_318767108"></table>
+
+<p class="dataframe_description">DataFrame: rowsCount = 12, columnsCount = 5</p>
+        </body>
+        <script>
+            
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"date: java.time.Month\">date</span>", children: [], rightAlign: false, values: ["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"] }, 
+{ name: "<span title=\"AAPL: Double\">AAPL</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">111.954696</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">109.541628</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">114.255829</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">120.849140</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">126.349468</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">129.076753</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">133.117884</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">137.710754</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">142.788387</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">130.348441</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">122.318712</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">125.574444</span></span>"] }, 
+{ name: "<span title=\"MSFT: Double\">MSFT</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">24.842265</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">23.511686</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">23.015176</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">23.710699</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">23.413245</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">23.191959</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">23.631640</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">23.700302</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">24.046344</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">24.271774</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">25.068650</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">25.307193</span></span>"] }, 
+{ name: "<span title=\"XOM: Double\">XOM</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">57.842873</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">58.943140</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">58.378945</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">60.144301</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">59.813404</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">59.641598</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">59.988095</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">59.219497</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">59.703387</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">59.754677</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">60.125583</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">61.365731</span></span>"] }, 
+{ name: "<span title=\"SPX: Double\">SPX</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1173.562486</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1164.714244</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1156.397487</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1186.491237</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1203.199202</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1191.002268</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1185.564656</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1182.175678</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1188.879570</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1182.235806</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1190.728466</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1202.463216</span></span>"] }, 
+], id: 318767108, rootId: 318767108, totalRows: 12 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(318767108) });
+
+
+        </script>
+        </html></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">yearMeans</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="p">.</span><span class="na">groupBy</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">date</span><span class="p">.</span><span class="na">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">year</span><span class="p">}</span><span class="w"> </span><span class="p">}.</span><span class="na">mean</span><span class="p">()</span><span class="w"> </span><span class="c1">// compute the means for each year</span>
+<span class="w">    </span><span class="c1">// mappig each stock and it&#39;s value to two separate columns</span>
+<span class="w">    </span><span class="p">.</span><span class="na">gather</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">AAPL</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">MSFT</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">XOM</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">SPX</span><span class="p">}.</span><span class="na">into</span><span class="p">(</span><span class="s">&quot;stock&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="p">)</span><span class="w"> </span>
+<span class="w">    </span><span class="p">.</span><span class="na">rename</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">date</span><span class="w"> </span><span class="p">}.</span><span class="na">into</span><span class="p">(</span><span class="s">&quot;year&quot;</span><span class="p">)</span>
+<span class="n">yearMeans</span><span class="p">.</span><span class="na">head</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <html>
+        <head>
+            <style type="text/css">
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+
+
+            </style>
+        </head>
+        <body>
+            
+<table class="dataframe" id="df_318767109"></table>
+
+<p class="dataframe_description">DataFrame: rowsCount = 10, columnsCount = 3</p>
+        </body>
+        <script>
+            
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"year: Int\">year</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">2003</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2003</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2003</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2003</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2004</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2004</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2004</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2004</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2005</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2005</span></span>"] }, 
+{ name: "<span title=\"stock: String\">stock</span>", children: [], rightAlign: false, values: ["AAPL","MSFT","XOM","SPX","AAPL","MSFT","XOM","SPX","AAPL","MSFT"] }, 
+{ name: "<span title=\"value: Double\">value</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">9.272619</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">20.595119</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">30.211111</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">965.227540</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">17.763889</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">21.850437</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">38.875437</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1130.649444</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">46.675952</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">23.072421</span></span>"] }, 
+], id: 318767109, rootId: 318767109, totalRows: 10 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(318767109) });
+
+
+        </script>
+        </html></div></div>
+</div>
+<p>We can then <strong>plot</strong> those statistics with <code class="docutils literal notranslate"><span class="pre">lets-plot</span></code> library:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">use</span><span class="w"> </span><span class="n">lets</span><span class="o">-</span><span class="n">plot</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="la6TQy"></div>
+   <script type="text/javascript" data-lets-plot-script="library">
+       if(!window.letsPlotCallQueue) {
+           window.letsPlotCallQueue = [];
+       }; 
+       window.letsPlotCall = function(f) {
+           window.letsPlotCallQueue.push(f);
+       };
+       (function() {
+           var script = document.createElement("script");
+           script.type = "text/javascript";
+           script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v3.1.0/js-package/distr/lets-plot.min.js";
+           script.onload = function() {
+               window.letsPlotCall = function(f) {f();};
+               window.letsPlotCallQueue.forEach(function(f) {f();});
+               window.letsPlotCallQueue = [];
+               
+               
+           };
+           script.onerror = function(event) {
+               window.letsPlotCall = function(f) {};
+               window.letsPlotCallQueue = [];
+               var div = document.createElement("div");
+               div.style.color = 'darkred';
+               div.textContent = 'Error loading Lets-Plot JS';
+               document.getElementById("la6TQy").appendChild(div);
+           };
+           var e = document.getElementById("la6TQy");
+           e.appendChild(script);
+       })();
+   </script></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">yearMeans</span><span class="p">.</span><span class="na">toMap</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">x</span><span class="o">=</span><span class="s">&quot;year&quot;</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="s">&quot;value&quot;</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="s">&quot;stock&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">+</span>
+<span class="w">    </span><span class="n">geomLine</span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stat</span><span class="p">.</span><span class="na">identity</span><span class="p">,</span><span class="w"> </span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">positionDodge</span><span class="p">(</span><span class="m">0.5</span><span class="p">),</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.7</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">    </span><span class="n">geomPoint</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">3.0</span><span class="p">,</span><span class="w"> </span><span class="n">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">    </span><span class="n">scaleYLog10</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<span class="w">    </span><span class="n">ggtitle</span><span class="p">(</span><span class="s">&quot;Stock Market Values 2003-2011&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="hhbgh2"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+       (function() {
+           var plotSpec={
+"ggtitle":{
+"text":"Stock Market Values 2003-2011"
+},
+"mapping":{
+"x":"year",
+"y":"value",
+"color":"stock"
+},
+"data":{
+"year":[2003.0,2003.0,2003.0,2003.0,2004.0,2004.0,2004.0,2004.0,2005.0,2005.0,2005.0,2005.0,2006.0,2006.0,2006.0,2006.0,2007.0,2007.0,2007.0,2007.0,2008.0,2008.0,2008.0,2008.0,2009.0,2009.0,2009.0,2009.0,2010.0,2010.0,2010.0,2010.0,2011.0,2011.0,2011.0,2011.0],
+"stock":["AAPL","MSFT","XOM","SPX","AAPL","MSFT","XOM","SPX","AAPL","MSFT","XOM","SPX","AAPL","MSFT","XOM","SPX","AAPL","MSFT","XOM","SPX","AAPL","MSFT","XOM","SPX","AAPL","MSFT","XOM","SPX","AAPL","MSFT","XOM","SPX","AAPL","MSFT","XOM","SPX"],
+"value":[9.272619047619044,20.595119047619043,30.211111111111087,965.2275396825399,17.763888888888886,21.85043650793651,38.8754365079365,1130.6494444444445,46.675952380952396,23.07242063492063,51.0454761904762,1207.2294444444442,70.8106374501992,23.759362549800784,58.458406374502,1310.4616334661362,128.27390438247016,27.904422310756953,75.7671314741036,1477.1843426294838,141.97901185770752,24.76059288537549,76.52596837944664,1220.042055335969,146.81412698412703,21.88539682539682,67.12496031746029,948.046388888889,259.8424603174604,26.262619047619054,63.06797619047615,1139.9655158730166,356.5268341708545,25.825929648241214,79.04266331658292,1276.0930150753777]
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"y",
+"trans":"log10"
+}],
+"layers":[{
+"mapping":{
+},
+"stat":"identity",
+"alpha":0.7,
+"position":{
+"name":"dodge",
+"width":0.5
+},
+"geom":"line",
+"data":{
+}
+},{
+"mapping":{
+},
+"stat":"identity",
+"shape":5.0,
+"size":3.0,
+"position":"identity",
+"geom":"point",
+"data":{
+}
+}]
+};
+           var plotContainer = document.getElementById("hhbgh2");
+           window.letsPlotCall(function() {{
+               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
+           }});
+       })();    
+   </script></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span>ggplot(yearMeans.filter { stock == &quot;AAPL&quot;}.toMap() )+
+    geomLine(stat = Stat.identity) { x=&quot;year&quot; ; y=&quot;value&quot; } +
+    geomPoint(color=&quot;red&quot;, size=3.5, shape = 2) { x=&quot;year&quot; ; y=&quot;value&quot; } +
+    ylab(&quot;Value ($)&quot;) + 
+    xlab(&quot;Year&quot;) +
+    ggtitle(&quot;Apple Inc. Stock Price (2003-2011)&quot;)
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="3amDGX"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+       (function() {
+           var plotSpec={
+"ggtitle":{
+"text":"Apple Inc. Stock Price (2003-2011)"
+},
+"mapping":{
+},
+"data":{
+"year":[2003.0,2004.0,2005.0,2006.0,2007.0,2008.0,2009.0,2010.0,2011.0],
+"value":[9.272619047619044,17.763888888888886,46.675952380952396,70.8106374501992,128.27390438247016,141.97901185770752,146.81412698412703,259.8424603174604,356.5268341708545]
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"y",
+"name":"Value ($)"
+},{
+"aesthetic":"x",
+"name":"Year"
+}],
+"layers":[{
+"mapping":{
+"x":"year",
+"y":"value"
+},
+"stat":"identity",
+"position":"identity",
+"geom":"line",
+"data":{
+}
+},{
+"mapping":{
+"x":"year",
+"y":"value"
+},
+"stat":"identity",
+"color":"red",
+"shape":2.0,
+"size":3.5,
+"position":"identity",
+"geom":"point",
+"data":{
+}
+}]
+};
+           var plotContainer = document.getElementById("3amDGX");
+           window.letsPlotCall(function() {{
+               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
+           }});
+       })();    
+   </script></div></div>
+</div>
+</section>
+<section id="dataframe-structure">
+<h2>DataFrame structure<a class="headerlink" href="#dataframe-structure" title="Permalink to this heading">#</a></h2>
+<p>The DataFrame library, defines the following data abstractions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DataColumn</span></code>: is a named, typed and ordered collection of elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>: consists of one or several <code class="docutils literal notranslate"><span class="pre">DataColumns</span></code> with unque names and equal size.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DataRow</span></code> is a single row of a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> and provides a single value for every <code class="docutils literal notranslate"><span class="pre">DataColumn</span></code>.</p></li>
+</ul>
+<p>Because we are dealing with structured data, Dataframe provides <strong>hierarchical</strong> data structures using two special types of columns:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ColumnGroup</span></code> is a group of columns</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FrameColumn</span></code> is a column of dataframes</p></li>
+</ul>
+<p>This makes easy the creation of tree structures among data (very handy when reading <code class="docutils literal notranslate"><span class="pre">JSON</span></code>s files).</p>
+<p>By nature, data frames are dynamic objects, column labels depend on the input source and also new columns could be added or deleted while wrangling.
+Kotlin in contrast, is a statically typed language and all types are defined and verified ahead of execution.</p>
+<p>For this reason, the Kotlin DataFrame library provide four different ways to access columns:</p>
+<ul class="simple">
+<li><p>String API</p></li>
+<li><p>Columns Accessors API</p></li>
+<li><p>KProperties API</p></li>
+<li><p>Extension Properties API</p></li>
+</ul>
+<p>For detailed usage, refer to the official documentation of <a class="reference external" href="https://kotlin.github.io/dataframe/apilevels.html#list-of-access-apis">column accessors</a>.</p>
+<p>The string API is the simplest and <strong>unsafest</strong> of them all. The main advantage is that it can be used at any time, including when accessing new columns in chain calls, so that this call can be made:</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">.</span><span class="na">sum</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you’re not working in an Jupyter Notebook, <em>Column Accessor API</em> provide type-safe access to columns, but does not ensure that the columns really exist in a particular dataframe. Similarly, when working in an IDE, <em>KProperties API</em> is useful when you’ve already declared classes in you application business logic with fields that correspond columns of a DataFrame.</p>
+<p>Otherwise, if you’re working inside a notebook, you can use Extension Properties API, which are the safest and convenient to use, with the trade-off of execution speed in the moment of generation.</p>
+<section id="datacolumn">
+<h3><code class="docutils literal notranslate"><span class="pre">DataColumn</span></code><a class="headerlink" href="#datacolumn" title="Permalink to this heading">#</a></h3>
+<p>As pointed out above, we can create a column object with the <code class="docutils literal notranslate"><span class="pre">by</span></code> keyword</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">col</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">columnOf</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Following this approach, the name of the column is the name we gave to the variable.</p>
+</section>
+<section id="dataframe">
+<h3><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code><a class="headerlink" href="#dataframe" title="Permalink to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Unlike <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, kotlin <code class="docutils literal notranslate"><span class="pre">Dataframe</span></code> does not provide explicit indices.</p>
+</div>
+</section>
+</section>
+<section id="operations-overview">
+<h2>Operations Overview<a class="headerlink" href="#operations-overview" title="Permalink to this heading">#</a></h2>
+<p>As said before, data transformations pipelines are designed in functional style so that the whole processing can be represented as a sequential chain of operations.
+<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>s are immutable, and every operations return a copy of the object instance <em>reusing</em> underlying data structures as much as possible.</p>
+<p><strong>Operations</strong> can be divided in three categories:</p>
+<ul>
+<li><p><strong>General Operations</strong>: all basic operations that can be called on a dataframe (e.g. <code class="docutils literal notranslate"><span class="pre">schema()</span></code>, <code class="docutils literal notranslate"><span class="pre">sum()</span></code>, <code class="docutils literal notranslate"><span class="pre">move()</span></code>, <code class="docutils literal notranslate"><span class="pre">map()</span></code>, <code class="docutils literal notranslate"><span class="pre">filter()</span></code>, …)</p></li>
+<li><p><strong>Multiplex Operations</strong>: more complex operations that does not return a new <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> immediately, instead they provide an intermediate object that is used for further configurations. Every multiplex operation follows the schema:</p>
+<ol class="arabic simple">
+<li><p>Use a column selector to select target columns</p></li>
+<li><p>Additional configuration functions</p></li>
+<li><p>Terminal function that returns the modified <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></p></li>
+</ol>
+<ul class="simple">
+<li><p>Most of these operations end with <code class="docutils literal notranslate"><span class="pre">into</span></code> or <code class="docutils literal notranslate"><span class="pre">with</span></code>, and the following convention is used:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">into</span></code> defines column names for storing the result.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">where</span></code> defines row-wise data transformation.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Shortcut Operations</strong>: shortcut for more general operations (e.g. <code class="docutils literal notranslate"><span class="pre">rename</span></code> is a special case for <code class="docutils literal notranslate"><span class="pre">move</span></code>, <code class="docutils literal notranslate"><span class="pre">fillNA</span></code> is a special case for <code class="docutils literal notranslate"><span class="pre">update</span></code>, …)</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1010,6 +2047,26 @@ call_DataFrame(function() { DataFrame.renderTable(184549377) });
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-structure">DataFrame structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datacolumn"><code class="docutils literal notranslate"><span class="pre">DataColumn</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe"><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operations-overview">Operations Overview</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
