@@ -564,7 +564,7 @@ table.dataframe tr:hover .formatted .structural, .null {
 }
 
 
-                </style></div><div class="output text_html">   <div id="h6lEOj"></div>
+                </style></div><div class="output text_html">   <div id="fNGOrO"></div>
    <script type="text/javascript" data-lets-plot-script="library">
        if(!window.letsPlotCallQueue) {
            window.letsPlotCallQueue = [];
@@ -589,9 +589,9 @@ table.dataframe tr:hover .formatted .structural, .null {
                var div = document.createElement("div");
                div.style.color = 'darkred';
                div.textContent = 'Error loading Lets-Plot JS';
-               document.getElementById("h6lEOj").appendChild(div);
+               document.getElementById("fNGOrO").appendChild(div);
            };
-           var e = document.getElementById("h6lEOj");
+           var e = document.getElementById("fNGOrO");
            e.appendChild(script);
        })();
    </script></div></div>
@@ -765,7 +765,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_-1409286144"></table>
+<table class="dataframe" id="df_536870912"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 5, columnsCount = 6</p>
         </body>
@@ -778,10 +778,10 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"t
 { name: "<span title=\"day: String\">day</span>", children: [], rightAlign: false, values: ["Sun","Sun","Sun","Sun","Sun"] }, 
 { name: "<span title=\"time: String\">time</span>", children: [], rightAlign: false, values: ["Dinner","Dinner","Dinner","Dinner","Dinner"] }, 
 { name: "<span title=\"size: Int\">size</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">2</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4</span></span>"] }, 
-], id: -1409286144, rootId: -1409286144, totalRows: 5 } ) });
+], id: 536870912, rootId: 536870912, totalRows: 5 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(-1409286144) });
+call_DataFrame(function() { DataFrame.renderTable(536870912) });
 
 
         </script>
@@ -974,7 +974,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_-1409286143"></table>
+<table class="dataframe" id="df_536870913"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 6, columnsCount = 12</p>
         </body>
@@ -993,10 +993,10 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"n
 { name: "<span title=\"min: Comparable\">min</span>", children: [], rightAlign: false, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.1</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.0</span></span>","false","Fri","Dinner","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>"] }, 
 { name: "<span title=\"median: Comparable\">median</span>", children: [], rightAlign: false, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">17.8</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.9</span></span>","false","Sun","Dinner","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2</span></span>"] }, 
 { name: "<span title=\"max: Comparable\">max</span>", children: [], rightAlign: false, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">50.8</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">10.0</span></span>","true","Thur","Lunch","<span class=\"formatted\" title=\"\"><span class=\"numbers\">6</span></span>"] }, 
-], id: -1409286143, rootId: -1409286143, totalRows: 6 } ) });
+], id: 536870913, rootId: 536870913, totalRows: 6 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(-1409286143) });
+call_DataFrame(function() { DataFrame.renderTable(536870913) });
 
 
         </script>
@@ -1009,11 +1009,8 @@ call_DataFrame(function() { DataFrame.renderTable(-1409286143) });
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">totRows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tips</span><span class="p">.</span><span class="na">size</span><span class="p">().</span><span class="na">nrow</span>
-
-<span class="n">tips</span><span class="p">.</span><span class="na">groupBy</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">smoker</span><span class="w"> </span><span class="p">}.</span><span class="na">aggregate</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">count</span><span class="p">()</span><span class="w"> </span><span class="n">into</span><span class="w"> </span><span class="s">&quot;Percentage&quot;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="p">.</span><span class="na">convert</span><span class="p">(</span><span class="s">&quot;Percentage&quot;</span><span class="p">).</span><span class="na">toDouble</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="na">update</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;Percentage&quot;</span><span class="o">&lt;</span><span class="kt">Double</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">}.</span><span class="na">with</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">totRows</span><span class="w"> </span><span class="p">}</span>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="o">[</span><span class="s">&quot;smoker&quot;</span><span class="o">]</span><span class="p">.</span><span class="na">valueCounts</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">convert</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="p">}.</span><span class="na">with</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">toDouble</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">tips</span><span class="p">.</span><span class="na">rowsCount</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -1178,7 +1175,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_-1409286142"></table>
+<table class="dataframe" id="df_536870914"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 2, columnsCount = 2</p>
         </body>
@@ -1186,11 +1183,11 @@ table.dataframe tr:hover .formatted .structural, .null {
             
 /*<!--*/
 call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"smoker: Boolean\">smoker</span>", children: [], rightAlign: false, values: ["false","true"] }, 
-{ name: "<span title=\"Percentage: Double\">Percentage</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.618852</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.381148</span></span>"] }, 
-], id: -1409286142, rootId: -1409286142, totalRows: 2 } ) });
+{ name: "<span title=\"count: Double\">count</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.618852</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.381148</span></span>"] }, 
+], id: 536870914, rootId: 536870914, totalRows: 2 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(-1409286142) });
+call_DataFrame(function() { DataFrame.renderTable(536870914) });
 
 
         </script>
@@ -1366,7 +1363,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_-1409286141"></table>
+<table class="dataframe" id="df_536870915"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 1, columnsCount = 6</p>
         </body>
@@ -1379,10 +1376,10 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"t
 { name: "<span title=\"day: String\">day</span>", children: [], rightAlign: false, values: ["Sat"] }, 
 { name: "<span title=\"time: String\">time</span>", children: [], rightAlign: false, values: ["Dinner"] }, 
 { name: "<span title=\"size: Int\">size</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>"] }, 
-], id: -1409286141, rootId: -1409286141, totalRows: 1 } ) });
+], id: 536870915, rootId: 536870915, totalRows: 1 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(-1409286141) });
+call_DataFrame(function() { DataFrame.renderTable(536870915) });
 
 
         </script>
@@ -1393,7 +1390,7 @@ call_DataFrame(function() { DataFrame.renderTable(-1409286141) });
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;bill/person&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">total_bill</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="p">}.</span><span class="na">max</span><span class="p">(</span><span class="s">&quot;bill/person&quot;</span><span class="p">)</span>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="p">.</span><span class="na">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">total_bill</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="p">}.</span><span class="na">max</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1404,7 +1401,7 @@ call_DataFrame(function() { DataFrame.renderTable(-1409286141) });
 </div>
 </div>
 <ol class="arabic simple" start="4">
-<li><p>Group <code class="docutils literal notranslate"><span class="pre">total_bill</span></code> in 10 range subsets, counting the number of bills in that range (same result as the pandas function <code class="docutils literal notranslate"><span class="pre">cut</span></code>)</p></li>
+<li><p>Group <code class="docutils literal notranslate"><span class="pre">total_bill</span></code> in 10 equally spaced ranges, counting the number of bills in that range (like <code class="docutils literal notranslate"><span class="pre">pandas.cut()</span></code>)</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1580,7 +1577,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_-1409286140"></table>
+<table class="dataframe" id="df_536870916"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 11, columnsCount = 2</p>
         </body>
@@ -1589,10 +1586,10 @@ table.dataframe tr:hover .formatted .structural, .null {
 /*<!--*/
 call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"total_bill: String\">total_bill</span>", children: [], rightAlign: false, values: ["(0.0, 5.0]","(5.0, 10.0]","(10.0, 15.0]","(15.0, 20.0]","(20.0, 25.0]","(25.0, 30.0]","(30.0, 35.0]","(35.0, 40.0]","(40.0, 45.0]","(45.0, 50.0]","(50.0, 55.0]"] }, 
 { name: "<span title=\"count: Int\">count</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">16</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">63</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">67</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">41</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">24</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">16</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">6</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">5</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>"] }, 
-], id: -1409286140, rootId: -1409286140, totalRows: 11 } ) });
+], id: 536870916, rootId: 536870916, totalRows: 11 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(-1409286140) });
+call_DataFrame(function() { DataFrame.renderTable(536870916) });
 
 
         </script>
@@ -1612,7 +1609,7 @@ call_DataFrame(function() { DataFrame.renderTable(-1409286140) });
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="bgvOTS"></div>
+<div class="output text_html">   <div id="xAYHDo"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -1649,7 +1646,7 @@ call_DataFrame(function() { DataFrame.renderTable(-1409286140) });
 }
 }]
 };
-           var plotContainer = document.getElementById("bgvOTS");
+           var plotContainer = document.getElementById("xAYHDo");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
