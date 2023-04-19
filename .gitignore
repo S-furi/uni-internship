@@ -43,3 +43,7 @@ gradle-app.setting
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 
+# VScode folders (and files created when writing kotlin code)
+.vscode/
+bin/
+
