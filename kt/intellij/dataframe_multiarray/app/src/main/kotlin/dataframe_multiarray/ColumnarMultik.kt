@@ -7,6 +7,7 @@ import org.jetbrains.kotlinx.dataframe.api.toColumn
 import org.jetbrains.kotlinx.dataframe.api.toColumnOf
 import org.jetbrains.kotlinx.multik.ndarray.data.D1
 import org.jetbrains.kotlinx.multik.ndarray.data.D2
+import org.jetbrains.kotlinx.multik.ndarray.data.DN
 import org.jetbrains.kotlinx.multik.ndarray.data.NDArray
 import org.jetbrains.kotlinx.multik.ndarray.operations.toCollection
 import org.jetbrains.kotlinx.multik.ndarray.operations.toList
@@ -18,13 +19,3 @@ inline fun <reified T> NDArray<T, D2>.toDataFrame() : DataFrame<*> {
 }
 
 inline fun <reified T> NDArray<T, D1>.toColumn() : AnyCol = this.toList().toColumn()
-
-/**
- * This method converts any given NDArray to a MultiIndexed DataFrame.
- */
-inline fun <reified T> NDArray<T, D2>.toMultiIndexedDataFrame() : DataFrame<*> {
-    val numDim = this.shape.size
-    for (index in this.multiIndices) {
-        // TODO
-    }
-}
