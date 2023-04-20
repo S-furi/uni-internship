@@ -359,7 +359,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creation">Creation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creation">Creation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-with-ndarrays">Arithmetic with NDArrays</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-and-slicing">Indexing and Slicing</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inplace-context"><code class="docutils literal notranslate"><span class="pre">inplace</span></code> context</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-and-statistical-methods">Mathematical and Statistical Methods</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-random-walks">Example: Random Walks</a></li>
 </ul>
             </nav>
         </div>
@@ -377,7 +386,12 @@ document.write(`
 <p>You can import Multik using Jupyter’s magic command <code class="docutils literal notranslate"><span class="pre">%use</span></code>, for importing Multik library and dependencies.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">use</span><span class="w"> </span><span class="n">multik</span>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">q</span><span class="o">%</span><span class="n">use</span><span class="w"> </span><span class="n">multik</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Line_0.jupyter.kts (1:13 - 13) Expecting an element
 </pre></div>
 </div>
 </div>
@@ -463,9 +477,7 @@ b -&gt; [0, 2, 4, 6, 8]
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Zeros -&gt;[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ones -&gt; [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+Ones -&gt; [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
 </pre></div>
 </div>
 </div>
@@ -539,12 +551,499 @@ b -&gt; [0, 2, 4, 6, 8]
 </div>
 </div>
 </div>
-<p>TODO:</p>
-<ul class="simple">
-<li><p>real world scenarios</p></li>
-<li><p>linear algebra</p></li>
-<li><p>statics</p></li>
-</ul>
+<section id="arithmetic-with-ndarrays">
+<h3>Arithmetic with NDArrays<a class="headerlink" href="#arithmetic-with-ndarrays" title="Permalink to this heading">#</a></h3>
+<p>In the current version of Multik, an <code class="docutils literal notranslate"><span class="pre">NDArray</span></code> object support all arithmetic operations, enabling what are called as <strong>vectorized</strong> operations.
+Vectorization is very convenient because enable the user to express batch operations on data without writing any for loops (and also could possibly enhance performances).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">arr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk</span><span class="p">.</span><span class="na">ndarray</span><span class="p">(</span><span class="n">mk</span><span class="o">[</span><span class="n">mk</span><span class="o">[</span><span class="m">1.0</span><span class="p">,</span><span class="w"> </span><span class="m">2.0</span><span class="p">,</span><span class="w"> </span><span class="m">3.0</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">mk</span><span class="o">[</span><span class="m">4.0</span><span class="p">,</span><span class="w"> </span><span class="m">5.0</span><span class="p">,</span><span class="w"> </span><span class="m">6.0</span><span class="o">]]</span><span class="p">)</span>
+<span class="n">arr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.0, 2.0, 3.0],
+[4.0, 5.0, 6.0]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">arr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.0, 4.0, 9.0],
+[16.0, 25.0, 36.0]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="m">1.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">arr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.0, 0.5, 0.3333333333333333],
+[0.25, 0.2, 0.16666666666666666]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="w"> </span><span class="n">dot</span><span class="w"> </span><span class="n">arr</span><span class="p">.</span><span class="na">transpose</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[14.0, 32.0],
+[32.0, 77.0]]
+</pre></div>
+</div>
+</div>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Operations among equal shaped arrays and matrices are always allowed. As the current version of Multik (v0.2.0), there is no native support for array <strong>broadcasting</strong>.
+In section K (some ref to where i could explain how to) I explain how to archieve array broadcasting using tensor algebra provided by <a class="reference external" href="https://github.com/SciProgCentre/kmath">Kmath</a></p>
+</div>
+</aside>
+<p>Multik supports two separate packages for linear algebra basic operations (package <code class="docutils literal notranslate"><span class="pre">api.linalg</span></code>) and vectorized math operations (package <code class="docutils literal notranslate"><span class="pre">api.math</span></code>)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">mk</span><span class="p">.</span><span class="na">math</span><span class="p">.</span><span class="na">cumSum</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span><span class="w"> </span><span class="n">axis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.0, 3.0, 6.0],
+[4.0, 9.0, 15.0]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">sqrMat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk</span><span class="p">.</span><span class="na">ones</span><span class="o">&lt;</span><span class="kt">Double</span><span class="o">&gt;</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)</span>
+<span class="c1">// Frobenius norm of the matrix (default when calling `norm()`)</span>
+<span class="n">mk</span><span class="p">.</span><span class="na">linalg</span><span class="p">.</span><span class="na">norm</span><span class="p">(</span><span class="n">sqrMat</span><span class="p">,</span><span class="w"> </span><span class="n">norm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Norm</span><span class="p">.</span><span class="na">Fro</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">mk</span><span class="p">.</span><span class="na">math</span><span class="p">.</span><span class="na">sin</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.8414709848078965, 0.9092974268256817, 0.1411200080598672],
+[-0.7568024953079283, -0.9589242746631385, -0.27941549819892586]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">linalg</span></code> package contains also methods for solving linear matrix equations and matrix decomposition methods.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="c1">// solve the linear system</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk</span><span class="p">.</span><span class="na">d2array</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">it</span><span class="w"> </span><span class="p">}.</span><span class="na">asType</span><span class="o">&lt;</span><span class="kt">Double</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk</span><span class="p">.</span><span class="na">ndarray</span><span class="p">(</span><span class="n">mk</span><span class="o">[</span><span class="m">54.0</span><span class="p">,</span><span class="w"> </span><span class="m">396.0</span><span class="p">,</span><span class="w"> </span><span class="m">1062.0</span><span class="o">]</span><span class="p">)</span>
+
+<span class="kd">val</span><span class="w"> </span><span class="nv">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk</span><span class="p">.</span><span class="na">linalg</span><span class="p">.</span><span class="na">solve</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">).</span><span class="na">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">roundToInt</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot; x = </span><span class="si">$</span><span class="n">res</span><span class="s">&quot;</span><span class="p">)</span>
+
+<span class="c1">// check</span>
+<span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="n">dot</span><span class="w"> </span><span class="n">res</span><span class="p">.</span><span class="na">asType</span><span class="o">&lt;</span><span class="kt">Double</span><span class="o">&gt;</span><span class="p">())</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> x = [0, 6, 12]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>true
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">linalg</span></code> also offers matrix inversion and <code class="docutils literal notranslate"><span class="pre">qr</span></code> decomposition</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">X</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk</span><span class="p">.</span><span class="na">rand</span><span class="o">&lt;</span><span class="kt">Double</span><span class="o">&gt;</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">)</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">mat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">X</span><span class="p">.</span><span class="na">transpose</span><span class="p">().</span><span class="na">dot</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">mk</span><span class="p">.</span><span class="na">linalg</span><span class="p">.</span><span class="na">inv</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
+
+<span class="kd">val</span><span class="w"> </span><span class="p">(</span><span class="nv">q</span><span class="p">,</span><span class="w"> </span><span class="nv">r</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk</span><span class="p">.</span><span class="na">linalg</span><span class="p">.</span><span class="na">qr</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$</span><span class="n">q</span><span class="s">\n\n</span><span class="si">$</span><span class="n">r</span><span class="s">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-0.4592506940158023, 0.4193757391047626, 0.6180807780863712, 0.4041173522540049, -0.2605342719561026],
+[-0.3465273903613808, -0.7104842222279275, -0.10150072792271378, 0.587949425321209, 0.13836189211675026],
+[-0.36776146301360857, 0.12699824982126606, -0.6321544738150963, -0.01476768731365415, -0.6699146121046999],
+[-0.46898305394548995, -0.4160914240127135, 0.33509866119544934, -0.6925734925031394, -0.12236693475794537],
+[-0.5601910113607562, 0.3606598547397792, -0.3094565599432036, -0.10549176159815664, 0.6702377382039381]]
+
+[[-2.4368500646325013, -3.7730212640561427, -2.691534483463572, -4.073992818626098, -3.6247125536341214],
+[0.0, -2.1182134721274166, -0.2026953721785263, -1.8130383602250393, -0.08196219047755512],
+[0.0, 0.0, -0.4124121346287027, 0.09581048961756, -0.40704960572505594],
+[0.0, 0.0, 0.0, -0.06685425292212906, -0.016408502220197303],
+[0.0, 0.0, 0.0, 0.0, 0.026702060588351277]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>For more, visit Multik’s documentation for <a class="reference external" href="https://kotlin.github.io/multik/multik-core/org.jetbrains.kotlinx.multik.api.linalg/index.html"><code class="docutils literal notranslate"><span class="pre">linalg</span></code></a> and <a class="reference external" href="https://kotlin.github.io/multik/multik-core/org.jetbrains.kotlinx.multik.api.math/index.html"><code class="docutils literal notranslate"><span class="pre">math</span></code></a></p>
+</section>
+<section id="indexing-and-slicing">
+<h3>Indexing and Slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this heading">#</a></h3>
+<p>There are many ways to select subset of data of and <code class="docutils literal notranslate"><span class="pre">NDArray</span></code>.</p>
+<p>For one dimensional arrays is straightforward:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">arr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk</span><span class="p">.</span><span class="na">arange</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
+<span class="n">arr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="c1">// basic indexing</span>
+<span class="n">arr</span><span class="o">[</span><span class="m">2</span><span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="c1">// range indexing</span>
+<span class="n">println</span><span class="p">(</span><span class="n">arr</span><span class="o">[</span><span class="m">1.</span><span class="p">.</span><span class="m">3</span><span class="o">]</span><span class="p">)</span>
+<span class="c1">// the behavior is different using kotlin keyword `until`</span>
+<span class="n">println</span><span class="p">(</span><span class="n">arr</span><span class="o">[</span><span class="m">1</span><span class="w"> </span><span class="n">until</span><span class="w"> </span><span class="m">3</span><span class="o">]</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3]
+[1, 2]
+</pre></div>
+</div>
+</div>
+</div>
+<p>For Multi-Index arrays the <em>range</em> operator can be used like:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk</span><span class="p">.</span><span class="na">linspace</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">).</span><span class="na">reshape</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+
+<span class="c1">// single elemt selection</span>
+<span class="n">a</span><span class="o">[</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="o">]</span>
+<span class="c1">// row selection</span>
+<span class="n">a</span><span class="o">[</span><span class="m">0</span><span class="o">]</span>
+<span class="c1">// range selection left inclusive</span>
+<span class="n">a</span><span class="o">[</span><span class="m">0.</span><span class="p">.</span><span class="m">2</span><span class="o">]</span><span class="w"> </span><span class="c1">// != a[0 until 2] -&gt; left exlusive</span>
+<span class="c1">// selecting first column of first 3 rows</span>
+<span class="n">a</span><span class="o">[</span><span class="m">0.</span><span class="p">.</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 4, 8]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Slices are <strong>copies</strong> of the source array, unlike NumPy that generates a <em>view</em> on the original array.</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nv">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="o">[</span><span class="m">0.</span><span class="p">.</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="o">]</span>
+<span class="n">a</span><span class="o">[</span><span class="m">0.</span><span class="p">.</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="o">]</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="c1">// false!</span>
+</pre></div>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">NDArrays</span></code> does not support boolean indexing, but filters can be applied with the <code class="docutils literal notranslate"><span class="pre">filter()</span></code> method, like every <code class="docutils literal notranslate"><span class="pre">Collection</span></code> in Kotlin’s standard library.</p>
+<p>For each “indexed functional method” that can be applied to kotlin collections, like <code class="docutils literal notranslate"><span class="pre">mapIndexed</span></code>, <code class="docutils literal notranslate"><span class="pre">forEachIndexed</span></code>, <code class="docutils literal notranslate"><span class="pre">filterIndexed</span></code>, Multik offers the counterpart for multidimensional arrays (of the form <code class="docutils literal notranslate"><span class="pre">*MultiIndexed()</span></code>), where the index is an <code class="docutils literal notranslate"><span class="pre">intArray()</span></code> of the combination of the indices of the current element.</p>
+<p>A full list of those methods, and more, can be found int the <a class="reference external" href="https://kotlin.github.io/multik/multik-core/org.jetbrains.kotlinx.multik.ndarray.operations/index.html"><code class="docutils literal notranslate"><span class="pre">ndarray.operations</span></code></a> package.</p>
+<section id="inplace-context">
+<h4><code class="docutils literal notranslate"><span class="pre">inplace</span></code> context<a class="headerlink" href="#inplace-context" title="Permalink to this heading">#</a></h4>
+<p>Multik provides <code class="docutils literal notranslate"><span class="pre">inplace</span></code> context for operating directly inside an array, modifying it’s structure.
+We can then call the default <code class="docutils literal notranslate"><span class="pre">math</span></code> context for applying <em>inplace</em> mathematical transformation on the elements of the array.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk</span><span class="p">.</span><span class="na">d1array</span><span class="p">(</span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="p">}.</span><span class="na">asType</span><span class="o">&lt;</span><span class="kt">Double</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk</span><span class="p">.</span><span class="na">arange</span><span class="o">&lt;</span><span class="kt">Double</span><span class="o">&gt;</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
+
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;Before -&gt; </span><span class="si">$</span><span class="n">a</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="n">a</span><span class="p">.</span><span class="na">inplace</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">    </span><span class="n">math</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="p">(</span><span class="k">this</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span>
+<span class="w">        </span><span class="n">abs</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;After -&gt; </span><span class="si">$</span><span class="n">a</span><span class="s">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Before -&gt; [0.0, 10.0, 20.0, 30.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0]
+After -&gt; [0.0, 9.0, 36.0, 81.0, 144.0, 225.0, 324.0, 441.0, 576.0, 729.0]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="mathematical-and-statistical-methods">
+<h3>Mathematical and Statistical Methods<a class="headerlink" href="#mathematical-and-statistical-methods" title="Permalink to this heading">#</a></h3>
+<p>Both <code class="docutils literal notranslate"><span class="pre">api.stat</span></code> and <code class="docutils literal notranslate"><span class="pre">api.math</span></code> provides several methods for computing basic statistics like <code class="docutils literal notranslate"><span class="pre">mean</span></code>, <code class="docutils literal notranslate"><span class="pre">median</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code>, <code class="docutils literal notranslate"><span class="pre">argMax</span></code>, <code class="docutils literal notranslate"><span class="pre">sum</span> </code>and <code class="docutils literal notranslate"><span class="pre">cumSum</span></code>, some of them are callable by the instance method or using the top-level Multik function.</p>
+<p>If we want to compute the mean of a matrix, we must specify whether we want to compute the mean for the <em>whole</em> matrix, or row/column-wise with <code class="docutils literal notranslate"><span class="pre">mean()</span></code> and <code class="docutils literal notranslate"><span class="pre">meanD2()</span></code> respectively (for higher dimensional matrices, the <code class="docutils literal notranslate"><span class="pre">meanD*</span></code> variant covers dimension up to 4, then the <code class="docutils literal notranslate"><span class="pre">meanDN</span></code> has to be used).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">arr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk</span><span class="p">.</span><span class="na">rand</span><span class="o">&lt;</span><span class="kt">Double</span><span class="o">&gt;</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">)</span>
+
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;mean of the whole matrix -&gt; </span><span class="si">${</span><span class="n">mk</span><span class="p">.</span><span class="na">stat</span><span class="p">.</span><span class="na">mean</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span><span class="si">}</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;mean across columns -&gt; </span><span class="si">${</span><span class="n">mk</span><span class="p">.</span><span class="na">stat</span><span class="p">.</span><span class="na">meanD2</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="si">}</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;mean across rows -&gt; </span><span class="si">${</span><span class="n">mk</span><span class="p">.</span><span class="na">stat</span><span class="p">.</span><span class="na">meanD2</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="si">}</span><span class="s">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean of the whole matrix -&gt; 0.5064110114510965
+mean across columns -&gt; [0.5591969093422688, 0.4087213505523917, 0.4680359477472771, 0.5896898381624479]
+mean across rows -&gt; [0.5355166984718212, 0.5518128691426759, 0.5444876337453212, 0.385060488594144, 0.5151773673015199]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="example-random-walks">
+<h2>Example: Random Walks<a class="headerlink" href="#example-random-walks" title="Permalink to this heading">#</a></h2>
+<p>This <a class="reference external" href="https://wesmckinney.com/book/numpy-basics.html#example_random_walks">example</a> has been taken from the book <a class="reference external" href="https://wesmckinney.com/book/"><em>Python for Data Analysis</em></a></p>
+<p>A <strong>simple</strong> pure kotlin implementation can be summarized as follows</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="nn">java.util.Random</span>
+<span class="kd">var</span><span class="w"> </span><span class="nv">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">walk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mutableListOf</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">rand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Random</span><span class="p">(</span><span class="m">123456</span><span class="p">)</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">steps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1000</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="n">until</span><span class="w"> </span><span class="n">steps</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rand</span><span class="p">.</span><span class="na">nextBoolean</span><span class="p">())</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="o">-</span><span class="m">1</span>
+<span class="w">    </span><span class="n">position</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">step</span>
+<span class="w">    </span><span class="n">walk</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can plot that walk</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">use</span><span class="w"> </span><span class="n">lets</span><span class="o">-</span><span class="n">plot</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="7GzYPi"></div>
+   <script type="text/javascript" data-lets-plot-script="library">
+       if(!window.letsPlotCallQueue) {
+           window.letsPlotCallQueue = [];
+       }; 
+       window.letsPlotCall = function(f) {
+           window.letsPlotCallQueue.push(f);
+       };
+       (function() {
+           var script = document.createElement("script");
+           script.type = "text/javascript";
+           script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v3.1.0/js-package/distr/lets-plot.min.js";
+           script.onload = function() {
+               window.letsPlotCall = function(f) {f();};
+               window.letsPlotCallQueue.forEach(function(f) {f();});
+               window.letsPlotCallQueue = [];
+               
+               
+           };
+           script.onerror = function(event) {
+               window.letsPlotCall = function(f) {};
+               window.letsPlotCallQueue = [];
+               var div = document.createElement("div");
+               div.style.color = 'darkred';
+               div.textContent = 'Error loading Lets-Plot JS';
+               document.getElementById("7GzYPi").appendChild(div);
+           };
+           var e = document.getElementById("7GzYPi");
+           e.appendChild(script);
+       })();
+   </script></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">x</span><span class="o">=</span><span class="p">(</span><span class="m">0.</span><span class="p">.</span><span class="m">100</span><span class="p">).</span><span class="na">toList</span><span class="p">()</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="w"> </span><span class="n">walk</span><span class="p">.</span><span class="na">slice</span><span class="p">(</span><span class="m">0.</span><span class="p">.</span><span class="m">100</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">+</span>
+<span class="w">    </span><span class="n">geomLine</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="AEpr0Q"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+       (function() {
+           var plotSpec={
+"mapping":{
+"x":"x",
+"y":"y"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"mapping":{
+},
+"stat":"identity",
+"position":"identity",
+"geom":"line",
+"data":{
+}
+}],
+"data":{
+"x":[0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,19.0,20.0,21.0,22.0,23.0,24.0,25.0,26.0,27.0,28.0,29.0,30.0,31.0,32.0,33.0,34.0,35.0,36.0,37.0,38.0,39.0,40.0,41.0,42.0,43.0,44.0,45.0,46.0,47.0,48.0,49.0,50.0,51.0,52.0,53.0,54.0,55.0,56.0,57.0,58.0,59.0,60.0,61.0,62.0,63.0,64.0,65.0,66.0,67.0,68.0,69.0,70.0,71.0,72.0,73.0,74.0,75.0,76.0,77.0,78.0,79.0,80.0,81.0,82.0,83.0,84.0,85.0,86.0,87.0,88.0,89.0,90.0,91.0,92.0,93.0,94.0,95.0,96.0,97.0,98.0,99.0,100.0],
+"y":[0.0,-1.0,0.0,1.0,0.0,-1.0,-2.0,-1.0,-2.0,-3.0,-2.0,-1.0,-2.0,-3.0,-4.0,-3.0,-4.0,-3.0,-4.0,-3.0,-2.0,-3.0,-2.0,-3.0,-4.0,-5.0,-4.0,-3.0,-2.0,-3.0,-4.0,-5.0,-6.0,-7.0,-8.0,-7.0,-6.0,-5.0,-4.0,-3.0,-4.0,-3.0,-4.0,-3.0,-4.0,-3.0,-4.0,-5.0,-4.0,-5.0,-6.0,-7.0,-8.0,-9.0,-10.0,-9.0,-8.0,-9.0,-10.0,-11.0,-12.0,-13.0,-12.0,-13.0,-12.0,-13.0,-12.0,-13.0,-14.0,-15.0,-16.0,-15.0,-16.0,-15.0,-16.0,-15.0,-14.0,-13.0,-12.0,-13.0,-12.0,-13.0,-12.0,-11.0,-12.0,-13.0,-14.0,-15.0,-14.0,-13.0,-14.0,-13.0,-14.0,-13.0,-14.0,-13.0,-12.0,-13.0,-14.0,-15.0,-14.0]
+}
+};
+           var plotContainer = document.getElementById("AEpr0Q");
+           window.letsPlotCall(function() {{
+               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
+           }});
+       })();    
+   </script></div></div>
+</div>
+<p>We can get the same result computing the cumulative sum of the random steps. (note that kotlin <code class="docutils literal notranslate"><span class="pre">List</span></code> can be used for creating one dimensional vector)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">nsteps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1000</span>
+
+<span class="kd">val</span><span class="w"> </span><span class="nv">draws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk</span><span class="p">.</span><span class="na">d1array</span><span class="p">(</span><span class="n">nsteps</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">rand</span><span class="p">.</span><span class="na">nextInt</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">)}</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">steps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk</span><span class="p">.</span><span class="na">d1array</span><span class="p">(</span><span class="n">draws</span><span class="p">.</span><span class="na">size</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">draws</span><span class="o">[</span><span class="nb">it</span><span class="o">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="o">-</span><span class="m">1</span><span class="w"> </span><span class="p">}</span>
+
+<span class="kd">val</span><span class="w"> </span><span class="nv">walk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">steps</span><span class="p">.</span><span class="na">cumSum</span><span class="p">()</span>
+<span class="n">walk</span><span class="p">.</span><span class="na">min</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-20
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">walk</span><span class="p">.</span><span class="na">max</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can get the index of the walk when we cross the 10 steps above or below the origin, even if we have to pass trough a list, because Multik does not support <code class="docutils literal notranslate"><span class="pre">Boolean</span></code> arrays.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">first10</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">walk</span><span class="p">).</span><span class="na">toList</span><span class="p">().</span><span class="na">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="p">}.</span><span class="na">indexOfFirst</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="w"> </span><span class="p">}</span>
+<span class="n">first10</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>55
+</pre></div>
+</div>
+</div>
+</div>
+<p>And we can plot the first 100 steps similarly as we did before, illustrating where is the point we computed before</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk</span><span class="p">.</span><span class="na">arange</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">(</span><span class="m">100</span><span class="p">).</span><span class="na">toList</span><span class="p">()</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">walk</span><span class="o">[</span><span class="m">0.</span><span class="p">.</span><span class="m">99</span><span class="o">]</span><span class="p">.</span><span class="na">toList</span><span class="p">()</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">+</span>
+<span class="w">    </span><span class="n">geomLine</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<span class="w">    </span><span class="n">geomPoint</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">first10</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">walk</span><span class="o">[</span><span class="n">first10</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="m">5.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="iw1dVZ"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+       (function() {
+           var plotSpec={
+"mapping":{
+"x":"x",
+"y":"y"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"mapping":{
+},
+"stat":"identity",
+"position":"identity",
+"geom":"line",
+"data":{
+}
+},{
+"mapping":{
+},
+"stat":"identity",
+"color":"red",
+"size":5.0,
+"x":55.0,
+"y":-10.0,
+"position":"identity",
+"geom":"point",
+"data":{
+}
+}],
+"data":{
+"x":[0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,19.0,20.0,21.0,22.0,23.0,24.0,25.0,26.0,27.0,28.0,29.0,30.0,31.0,32.0,33.0,34.0,35.0,36.0,37.0,38.0,39.0,40.0,41.0,42.0,43.0,44.0,45.0,46.0,47.0,48.0,49.0,50.0,51.0,52.0,53.0,54.0,55.0,56.0,57.0,58.0,59.0,60.0,61.0,62.0,63.0,64.0,65.0,66.0,67.0,68.0,69.0,70.0,71.0,72.0,73.0,74.0,75.0,76.0,77.0,78.0,79.0,80.0,81.0,82.0,83.0,84.0,85.0,86.0,87.0,88.0,89.0,90.0,91.0,92.0,93.0,94.0,95.0,96.0,97.0,98.0,99.0],
+"y":[1.0,0.0,1.0,0.0,1.0,2.0,1.0,0.0,-1.0,-2.0,-1.0,-2.0,-1.0,-2.0,-1.0,-2.0,-3.0,-4.0,-5.0,-4.0,-3.0,-2.0,-1.0,0.0,1.0,2.0,3.0,2.0,1.0,0.0,-1.0,-2.0,-3.0,-4.0,-5.0,-4.0,-3.0,-4.0,-5.0,-6.0,-5.0,-6.0,-7.0,-8.0,-7.0,-8.0,-7.0,-6.0,-7.0,-8.0,-7.0,-6.0,-7.0,-8.0,-9.0,-10.0,-9.0,-8.0,-9.0,-8.0,-7.0,-6.0,-5.0,-4.0,-5.0,-4.0,-3.0,-2.0,-3.0,-4.0,-3.0,-4.0,-3.0,-2.0,-3.0,-4.0,-3.0,-4.0,-5.0,-4.0,-3.0,-4.0,-3.0,-2.0,-3.0,-2.0,-3.0,-2.0,-1.0,-2.0,-3.0,-2.0,-3.0,-4.0,-5.0,-6.0,-5.0,-6.0,-5.0,-6.0]
+}
+};
+           var plotContainer = document.getElementById("iw1dVZ");
+           window.letsPlotCall(function() {{
+               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
+           }});
+       })();    
+   </script></div></div>
+</div>
 </section>
 </section>
 
@@ -615,7 +1114,16 @@ b -&gt; [0, 2, 4, 6, 8]
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creation">Creation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creation">Creation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-with-ndarrays">Arithmetic with NDArrays</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-and-slicing">Indexing and Slicing</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inplace-context"><code class="docutils literal notranslate"><span class="pre">inplace</span></code> context</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-and-statistical-methods">Mathematical and Statistical Methods</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-random-walks">Example: Random Walks</a></li>
 </ul>
   </nav></div>
 
