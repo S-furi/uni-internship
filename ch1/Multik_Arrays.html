@@ -365,10 +365,12 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inplace-context"><code class="docutils literal notranslate"><span class="pre">inplace</span></code> context</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-and-statistical-methods">Mathematical and Statistical Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-and-statistical-methods">Mathematical and Statistical Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-random-walks">Example: Random Walks</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-random-walks">Example: Random Walks</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -386,12 +388,7 @@ document.write(`
 <p>You can import Multik using Jupyter’s magic command <code class="docutils literal notranslate"><span class="pre">%use</span></code>, for importing Multik library and dependencies.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">q</span><span class="o">%</span><span class="n">use</span><span class="w"> </span><span class="n">multik</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Line_0.jupyter.kts (1:13 - 13) Expecting an element
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">use</span><span class="w"> </span><span class="n">multik</span>
 </pre></div>
 </div>
 </div>
@@ -477,7 +474,9 @@ b -&gt; [0, 2, 4, 6, 8]
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Zeros -&gt;[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-Ones -&gt; [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ones -&gt; [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
 </pre></div>
 </div>
 </div>
@@ -694,17 +693,37 @@ In section K (some ref to where i could explain how to) I explain how to archiev
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-0.4592506940158023, 0.4193757391047626, 0.6180807780863712, 0.4041173522540049, -0.2605342719561026],
-[-0.3465273903613808, -0.7104842222279275, -0.10150072792271378, 0.587949425321209, 0.13836189211675026],
-[-0.36776146301360857, 0.12699824982126606, -0.6321544738150963, -0.01476768731365415, -0.6699146121046999],
-[-0.46898305394548995, -0.4160914240127135, 0.33509866119544934, -0.6925734925031394, -0.12236693475794537],
-[-0.5601910113607562, 0.3606598547397792, -0.3094565599432036, -0.10549176159815664, 0.6702377382039381]]
-
-[[-2.4368500646325013, -3.7730212640561427, -2.691534483463572, -4.073992818626098, -3.6247125536341214],
-[0.0, -2.1182134721274166, -0.2026953721785263, -1.8130383602250393, -0.08196219047755512],
-[0.0, 0.0, -0.4124121346287027, 0.09581048961756, -0.40704960572505594],
-[0.0, 0.0, 0.0, -0.06685425292212906, -0.016408502220197303],
-[0.0, 0.0, 0.0, 0.0, 0.026702060588351277]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-0.5425368092761167, 0.6496407937202383, 0.19061676218146872, 0.3471036795764706, -0.35609680610047306],
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.4530962025326693, -0.39542538451150283, 0.7177433267237676, -0.00221945397663098, 0.35097320054663633],
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.37995500595073034, -0.6083586814991385, -0.42259239324243625, 0.4599870132471425, -0.3088066141053549],
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.5715873645655568, 0.03405710520238444, -0.3555674460491402, -0.7383587667815287, 0.022937329425787925],
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.171113178782193, 0.22437787914215782, -0.37881027890313956, 0.35036036991839437, 0.8087800882728827]]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-2.8337932105120194, -3.071230852806649, -3.258458081060415, -4.017535021879988, -1.0521911730915954],
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.0, -0.5884403329986255, -0.9328802812537069, -0.6107861550228352, -0.07423118337157923],
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.0, 0.0, -0.4463534421733905, -0.45545788329379505, -0.17317757742619339],
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.0, 0.0, 0.0, -0.21979233851027427, 0.020725483650545967],
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.0, 0.0, 0.0, 0.0, 0.03345386701538812]]
 </pre></div>
 </div>
 </div>
@@ -816,7 +835,9 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Before -&gt; [0.0, 10.0, 20.0, 30.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0]
-After -&gt; [0.0, 9.0, 36.0, 81.0, 144.0, 225.0, 324.0, 441.0, 576.0, 729.0]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After -&gt; [0.0, 9.0, 36.0, 81.0, 144.0, 225.0, 324.0, 441.0, 576.0, 729.0]
 </pre></div>
 </div>
 </div>
@@ -838,17 +859,19 @@ After -&gt; [0.0, 9.0, 36.0, 81.0, 144.0, 225.0, 324.0, 441.0, 576.0, 729.0]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean of the whole matrix -&gt; 0.5064110114510965
-mean across columns -&gt; [0.5591969093422688, 0.4087213505523917, 0.4680359477472771, 0.5896898381624479]
-mean across rows -&gt; [0.5355166984718212, 0.5518128691426759, 0.5444876337453212, 0.385060488594144, 0.5151773673015199]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean of the whole matrix -&gt; 0.4867093628832347
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean across columns -&gt; [0.5375008917430872, 0.36549517388924385, 0.4214978759605317, 0.622343509940076]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean across rows -&gt; [0.5864953993953539, 0.4229824050313824, 0.2701528928781328, 0.5172098508902975, 0.6367062662210066]
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-</section>
 <section id="example-random-walks">
-<h2>Example: Random Walks<a class="headerlink" href="#example-random-walks" title="Permalink to this heading">#</a></h2>
+<h4>Example: Random Walks<a class="headerlink" href="#example-random-walks" title="Permalink to this heading">#</a></h4>
 <p>This <a class="reference external" href="https://wesmckinney.com/book/numpy-basics.html#example_random_walks">example</a> has been taken from the book <a class="reference external" href="https://wesmckinney.com/book/"><em>Python for Data Analysis</em></a></p>
 <p>A <strong>simple</strong> pure kotlin implementation can be summarized as follows</p>
 <div class="cell docutils container">
@@ -875,7 +898,7 @@ mean across rows -&gt; [0.5355166984718212, 0.5518128691426759, 0.54448763374532
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="7GzYPi"></div>
+<div class="output text_html">   <div id="n8T1Za"></div>
    <script type="text/javascript" data-lets-plot-script="library">
        if(!window.letsPlotCallQueue) {
            window.letsPlotCallQueue = [];
@@ -900,9 +923,9 @@ mean across rows -&gt; [0.5355166984718212, 0.5518128691426759, 0.54448763374532
                var div = document.createElement("div");
                div.style.color = 'darkred';
                div.textContent = 'Error loading Lets-Plot JS';
-               document.getElementById("7GzYPi").appendChild(div);
+               document.getElementById("n8T1Za").appendChild(div);
            };
-           var e = document.getElementById("7GzYPi");
+           var e = document.getElementById("n8T1Za");
            e.appendChild(script);
        })();
    </script></div></div>
@@ -915,7 +938,7 @@ mean across rows -&gt; [0.5355166984718212, 0.5518128691426759, 0.54448763374532
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="AEpr0Q"></div>
+<div class="output text_html">   <div id="T38N9a"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -939,7 +962,7 @@ mean across rows -&gt; [0.5355166984718212, 0.5518128691426759, 0.54448763374532
 "y":[0.0,-1.0,0.0,1.0,0.0,-1.0,-2.0,-1.0,-2.0,-3.0,-2.0,-1.0,-2.0,-3.0,-4.0,-3.0,-4.0,-3.0,-4.0,-3.0,-2.0,-3.0,-2.0,-3.0,-4.0,-5.0,-4.0,-3.0,-2.0,-3.0,-4.0,-5.0,-6.0,-7.0,-8.0,-7.0,-6.0,-5.0,-4.0,-3.0,-4.0,-3.0,-4.0,-3.0,-4.0,-3.0,-4.0,-5.0,-4.0,-5.0,-6.0,-7.0,-8.0,-9.0,-10.0,-9.0,-8.0,-9.0,-10.0,-11.0,-12.0,-13.0,-12.0,-13.0,-12.0,-13.0,-12.0,-13.0,-14.0,-15.0,-16.0,-15.0,-16.0,-15.0,-16.0,-15.0,-14.0,-13.0,-12.0,-13.0,-12.0,-13.0,-12.0,-11.0,-12.0,-13.0,-14.0,-15.0,-14.0,-13.0,-14.0,-13.0,-14.0,-13.0,-14.0,-13.0,-12.0,-13.0,-14.0,-15.0,-14.0]
 }
 };
-           var plotContainer = document.getElementById("AEpr0Q");
+           var plotContainer = document.getElementById("T38N9a");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -1001,7 +1024,7 @@ mean across rows -&gt; [0.5355166984718212, 0.5518128691426759, 0.54448763374532
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="iw1dVZ"></div>
+<div class="output text_html">   <div id="xnNGLa"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -1037,13 +1060,72 @@ mean across rows -&gt; [0.5355166984718212, 0.5518128691426759, 0.54448763374532
 "y":[1.0,0.0,1.0,0.0,1.0,2.0,1.0,0.0,-1.0,-2.0,-1.0,-2.0,-1.0,-2.0,-1.0,-2.0,-3.0,-4.0,-5.0,-4.0,-3.0,-2.0,-1.0,0.0,1.0,2.0,3.0,2.0,1.0,0.0,-1.0,-2.0,-3.0,-4.0,-5.0,-4.0,-3.0,-4.0,-5.0,-6.0,-5.0,-6.0,-7.0,-8.0,-7.0,-8.0,-7.0,-6.0,-7.0,-8.0,-7.0,-6.0,-7.0,-8.0,-9.0,-10.0,-9.0,-8.0,-9.0,-8.0,-7.0,-6.0,-5.0,-4.0,-5.0,-4.0,-3.0,-2.0,-3.0,-4.0,-3.0,-4.0,-3.0,-2.0,-3.0,-4.0,-3.0,-4.0,-5.0,-4.0,-3.0,-4.0,-3.0,-2.0,-3.0,-2.0,-3.0,-2.0,-1.0,-2.0,-3.0,-2.0,-3.0,-4.0,-5.0,-6.0,-5.0,-6.0,-5.0,-6.0]
 }
 };
-           var plotContainer = document.getElementById("iw1dVZ");
+           var plotContainer = document.getElementById("xnNGLa");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
        })();    
    </script></div></div>
 </div>
+<p>We can also simulate many random walks at once</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">nwalks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5000</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">nsteps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1000</span>
+
+<span class="kd">val</span><span class="w"> </span><span class="nv">draws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk</span><span class="p">.</span><span class="na">d2array</span><span class="p">(</span><span class="n">nwalks</span><span class="p">,</span><span class="w"> </span><span class="n">nsteps</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">rand</span><span class="p">.</span><span class="na">nextInt</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">)}</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">steps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">draws</span><span class="p">.</span><span class="na">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">it</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="o">-</span><span class="m">1</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">walks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk</span><span class="p">.</span><span class="na">math</span><span class="p">.</span><span class="na">cumSum</span><span class="p">(</span><span class="n">steps</span><span class="p">,</span><span class="w"> </span><span class="n">axis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">walks</span><span class="p">.</span><span class="na">min</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-105
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">walks</span><span class="p">.</span><span class="na">max</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>107
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can get all the runs that reach 50 or -50 using <code class="docutils literal notranslate"><span class="pre">mapMultiIndexed()</span></code> that will preserve the matrix structure.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">mk</span><span class="p">.</span><span class="na">math</span><span class="p">.</span><span class="na">maxD2</span><span class="p">(</span>
+<span class="w">    </span><span class="n">walks</span><span class="p">.</span><span class="na">mapMultiIndexed</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">elem</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">elem</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">50</span><span class="p">)</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="m">1</span><span class="p">).</span><span class="na">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>604
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
 </section>
 </section>
 
@@ -1120,10 +1202,12 @@ mean across rows -&gt; [0.5355166984718212, 0.5518128691426759, 0.54448763374532
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inplace-context"><code class="docutils literal notranslate"><span class="pre">inplace</span></code> context</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-and-statistical-methods">Mathematical and Statistical Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-and-statistical-methods">Mathematical and Statistical Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-random-walks">Example: Random Walks</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-random-walks">Example: Random Walks</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

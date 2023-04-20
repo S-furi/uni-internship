@@ -17,7 +17,7 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-q%use multik
+obj + obj
 ------------------
 
 org.jetbrains.kotlinx.jupyter.repl.impl.JupyterCompilerImpl.compileSync(JupyterCompilerImpl.kt:174)
@@ -36,5 +36,7 @@ org.jetbrains.kotlinx.jupyter.messaging.ProtocolKt$shellMessagesHandler$2$res$1.
 org.jetbrains.kotlinx.jupyter.JupyterExecutorImpl$runExecution$execThread$1.invoke(execution.kt:37)
 org.jetbrains.kotlinx.jupyter.JupyterExecutorImpl$runExecution$execThread$1.invoke(execution.kt:32)
 kotlin.concurrent.ThreadsKt$thread$thread$1.run(Thread.kt:30)
-org.jetbrains.kotlinx.jupyter.exceptions.ReplCompilerException: Line_0.jupyter.kts (1:13 - 13) Expecting an element
+org.jetbrains.kotlinx.jupyter.exceptions.ReplCompilerException: Line_46.jupyter.kts (1:5 - 6) None of the following functions can be called with the arguments supplied: 
+public open operator fun plus(cols: Iterable<AnyBaseCol /* = BaseColumn<*> */>): DataFrame<Line_38_jupyter._DataFrameType4> defined in org.jetbrains.kotlinx.dataframe.DataFrame
+public open operator fun plus(col: AnyBaseCol /* = BaseColumn<*> */): DataFrame<Line_38_jupyter._DataFrameType4> defined in org.jetbrains.kotlinx.dataframe.DataFrame
 
