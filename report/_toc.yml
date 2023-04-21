@@ -3,17 +3,21 @@ root: Introduction.ipynb
 defaults:  # The defaults key will be applied to all chapters and sub-sections
   titlesonly: True
 chapters:
+
 - file: ch1/Arrays&Matrices.ipynb
   sections:
   - file: ch1/Multik_Arrays.ipynb
   - file: ch1/NumPy_Arrays.ipynb
+
 - file: ch2/Data_Manipulation.ipynb
   sections:
   - file: ch2/Intro_dataframe.ipynb 
   - file: ch2/Intro_pandas.ipynb
+
 - file: ch3/io.ipynb
-- file: DA_examples/DA_Introduction.ipynb
-  sections: ch4/Intro_DataCleaning.ipynb
+  
+- file: ch4/Intro_DataCleaning.ipynb
+
 - file: DA_examples/DA_Introduction.ipynb
   sections:
   - file: DA_examples/tips_kotlin.ipynb
