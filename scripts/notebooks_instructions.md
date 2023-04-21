@@ -18,12 +18,12 @@ For Debian/Ubuntu Distros.
 ## Using the Scripts
 You can install kotlin only by typing:
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/S-furi/unibo-internship/main/install_kotlin_notebook.sh)
+bash <(curl -s https://raw.githubusercontent.com/S-furi/unibo-internship/main/scripts/install_kotlin_notebook.sh)
 ```
 
 To download python or kotlin you can use this single script
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/S-furi/unibo-internship/main/interactive_install.sh)
+bash <(curl -s https://raw.githubusercontent.com/S-furi/unibo-internship/main/scripts/interactive_install.sh)
 ```
 And then you can select:
 1. Python Jupyter dependencies
