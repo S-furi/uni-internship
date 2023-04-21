@@ -17,7 +17,8 @@ analyzed:
 - [`Lets-Plot`](https://github.com/JetBrains/lets-plot-kotlin)
 - No libraries were found that accomplish what Xarray does.
 
-## Tools For this project, as well as the above libraries, [Kotlin Jupyter Kernel](https://github.com/Kotlin/kotlin-jupyter)
+## Tools
+For this project, as well as the above libraries, [Kotlin Jupyter Kernel](https://github.com/Kotlin/kotlin-jupyter)
 were used for writing Kotlin code inside Jupyter notebooks, taking advantage of
 Dataframe and Lets-Plot rich outputs. 
 
