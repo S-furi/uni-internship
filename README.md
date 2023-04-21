@@ -10,7 +10,7 @@ The main focus was on three major python libraries:
 - [`Matplotlib`](https://matplotlib.org/stable/users/index)
 - [`Xarray`](https://docs.xarray.dev/en/stable/)
 
-As suggested in kotlin language [website](), the following libraries has been
+As suggested in kotlin language [website](https://kotlinlang.org/docs/data-science-overview.html), the following libraries has been
 analyzed:
 - [`Dataframe`](https://github.com/Kotlin/dataframe)
 - [`Multik`](https://github.com/Kotlin/multik)
