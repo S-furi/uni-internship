@@ -13,6 +13,8 @@ chapters:
   - file: ch2/Intro_pandas.ipynb
 - file: ch3/io.ipynb
 - file: DA_examples/DA_Introduction.ipynb
+  sections: ch4/Intro_DataCleaning.ipynb
+- file: DA_examples/DA_Introduction.ipynb
   sections:
   - file: DA_examples/tips_kotlin.ipynb
   - file: DA_examples/tips_python.ipynb
