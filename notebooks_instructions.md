@@ -1,5 +1,4 @@
 # Working with Jupyter Notebooks
-[![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](https://s-furi.github.io/uni-internship/)
 ## Requirements
 - Python > 3.10 and pip installed on your system
 - Kotlin >= 1.8.0
