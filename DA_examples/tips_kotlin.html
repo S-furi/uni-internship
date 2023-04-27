@@ -162,8 +162,11 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ch3/io.html">Data Loading and Storage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch4/Intro_DataCleaning.html">Data Cleaning and Preparation</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="DA_Introduction.html">Data Analysis Examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch4/Intro_DataCleaning.html">Data Cleaning and Preparation</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch4/kt_data_manipulation.html">Data Manipulation with Kotlin</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="DA_Introduction.html">Data Analysis Examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Kotlin: Tips Dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tips_python.html">Python: Tips Dataset</a></li>
 </ul>
@@ -566,7 +569,7 @@ table.dataframe tr:hover .formatted .structural, .null {
 }
 
 
-                </style></div><div class="output text_html">   <div id="xsLT9C"></div>
+                </style></div><div class="output text_html">   <div id="vs5xAL"></div>
    <script type="text/javascript" data-lets-plot-script="library">
        if(!window.letsPlotCallQueue) {
            window.letsPlotCallQueue = [];
@@ -591,9 +594,9 @@ table.dataframe tr:hover .formatted .structural, .null {
                var div = document.createElement("div");
                div.style.color = 'darkred';
                div.textContent = 'Error loading Lets-Plot JS';
-               document.getElementById("xsLT9C").appendChild(div);
+               document.getElementById("vs5xAL").appendChild(div);
            };
-           var e = document.getElementById("xsLT9C");
+           var e = document.getElementById("vs5xAL");
            e.appendChild(script);
        })();
    </script></div></div>
@@ -767,7 +770,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_-1476395008"></table>
+<table class="dataframe" id="df_-2046820352"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 5, columnsCount = 6</p>
         </body>
@@ -780,10 +783,10 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"t
 { name: "<span title=\"day: String\">day</span>", children: [], rightAlign: false, values: ["Sun","Sun","Sun","Sun","Sun"] }, 
 { name: "<span title=\"time: String\">time</span>", children: [], rightAlign: false, values: ["Dinner","Dinner","Dinner","Dinner","Dinner"] }, 
 { name: "<span title=\"size: Int\">size</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">2</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4</span></span>"] }, 
-], id: -1476395008, rootId: -1476395008, totalRows: 5 } ) });
+], id: -2046820352, rootId: -2046820352, totalRows: 5 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(-1476395008) });
+call_DataFrame(function() { DataFrame.renderTable(-2046820352) });
 
 
         </script>
@@ -976,7 +979,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_-1476395007"></table>
+<table class="dataframe" id="df_-2046820351"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 6, columnsCount = 12</p>
         </body>
@@ -995,10 +998,10 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"n
 { name: "<span title=\"min: Comparable\">min</span>", children: [], rightAlign: false, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.1</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.0</span></span>","false","Fri","Dinner","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>"] }, 
 { name: "<span title=\"median: Comparable\">median</span>", children: [], rightAlign: false, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">17.8</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.9</span></span>","false","Sun","Dinner","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2</span></span>"] }, 
 { name: "<span title=\"max: Comparable\">max</span>", children: [], rightAlign: false, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">50.8</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">10.0</span></span>","true","Thur","Lunch","<span class=\"formatted\" title=\"\"><span class=\"numbers\">6</span></span>"] }, 
-], id: -1476395007, rootId: -1476395007, totalRows: 6 } ) });
+], id: -2046820351, rootId: -2046820351, totalRows: 6 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(-1476395007) });
+call_DataFrame(function() { DataFrame.renderTable(-2046820351) });
 
 
         </script>
@@ -1177,7 +1180,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_-1476395006"></table>
+<table class="dataframe" id="df_-2046820350"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 2, columnsCount = 2</p>
         </body>
@@ -1186,10 +1189,10 @@ table.dataframe tr:hover .formatted .structural, .null {
 /*<!--*/
 call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"smoker: Boolean\">smoker</span>", children: [], rightAlign: false, values: ["false","true"] }, 
 { name: "<span title=\"count: Double\">count</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.618852</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.381148</span></span>"] }, 
-], id: -1476395006, rootId: -1476395006, totalRows: 2 } ) });
+], id: -2046820350, rootId: -2046820350, totalRows: 2 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(-1476395006) });
+call_DataFrame(function() { DataFrame.renderTable(-2046820350) });
 
 
         </script>
@@ -1365,7 +1368,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_-1476395005"></table>
+<table class="dataframe" id="df_-2046820349"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 1, columnsCount = 6</p>
         </body>
@@ -1378,10 +1381,10 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"t
 { name: "<span title=\"day: String\">day</span>", children: [], rightAlign: false, values: ["Sat"] }, 
 { name: "<span title=\"time: String\">time</span>", children: [], rightAlign: false, values: ["Dinner"] }, 
 { name: "<span title=\"size: Int\">size</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>"] }, 
-], id: -1476395005, rootId: -1476395005, totalRows: 1 } ) });
+], id: -2046820349, rootId: -2046820349, totalRows: 1 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(-1476395005) });
+call_DataFrame(function() { DataFrame.renderTable(-2046820349) });
 
 
         </script>
@@ -1579,7 +1582,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_-1476395004"></table>
+<table class="dataframe" id="df_-2046820348"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 11, columnsCount = 2</p>
         </body>
@@ -1588,10 +1591,10 @@ table.dataframe tr:hover .formatted .structural, .null {
 /*<!--*/
 call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"total_bill: String\">total_bill</span>", children: [], rightAlign: false, values: ["(0.0, 5.0]","(5.0, 10.0]","(10.0, 15.0]","(15.0, 20.0]","(20.0, 25.0]","(25.0, 30.0]","(30.0, 35.0]","(35.0, 40.0]","(40.0, 45.0]","(45.0, 50.0]","(50.0, 55.0]"] }, 
 { name: "<span title=\"count: Int\">count</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">16</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">63</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">67</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">41</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">24</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">16</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">6</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">5</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>"] }, 
-], id: -1476395004, rootId: -1476395004, totalRows: 11 } ) });
+], id: -2046820348, rootId: -2046820348, totalRows: 11 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(-1476395004) });
+call_DataFrame(function() { DataFrame.renderTable(-2046820348) });
 
 
         </script>
@@ -1611,7 +1614,7 @@ call_DataFrame(function() { DataFrame.renderTable(-1476395004) });
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="0Kk0fB"></div>
+<div class="output text_html">   <div id="q80kiS"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -1648,7 +1651,7 @@ call_DataFrame(function() { DataFrame.renderTable(-1476395004) });
 }
 }]
 };
-           var plotContainer = document.getElementById("0Kk0fB");
+           var plotContainer = document.getElementById("q80kiS");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});

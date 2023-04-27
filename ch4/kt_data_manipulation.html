@@ -1,0 +1,4555 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Data Manipulation with Kotlin &#8212; Data Science with Kotlin</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch4/kt_data_manipulation';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data Analysis Examples" href="../DA_examples/DA_Introduction.html" />
+    <link rel="prev" title="Data Cleaning and Preparation" href="Intro_DataCleaning.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../Introduction.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Data Science with Kotlin</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../Introduction.html">
+                    Data Science with Kotlin
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch1/Arrays%26Matrices.html">Working with Arrays and Matrices</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch1/Multik_Arrays.html">Kotlin NDArrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch1/NumPy_Arrays.html">Python NDArrays</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch2/Data_Manipulation.html">Data Analysis and Manipulation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch2/Intro_dataframe.html">Data handling with Dataframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch2/Intro_pandas.html">Data handling with Pandas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ch3/io.html">Data Loading and Storage</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Intro_DataCleaning.html">Data Cleaning and Preparation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Data Manipulation with Kotlin</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../DA_examples/DA_Introduction.html">Data Analysis Examples</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../DA_examples/tips_kotlin.html">Kotlin: Tips Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DA_examples/tips_python.html">Python: Tips Dataset</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/S-furi/uni-internship/tree/report/report" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/S-furi/uni-internship/tree/report/report/issues/new?title=Issue%20on%20page%20%2Fch4/kt_data_manipulation.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/ch4/kt_data_manipulation.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Data Manipulation with Kotlin</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-null-values">Handling <code class="docutils literal notranslate"><span class="pre">null</span></code> values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-transformation">Data Transformation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replacing-values">Replacing Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detecting-and-filtering-outliers">Detecting and Filtering Outliers</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="data-manipulation-with-kotlin">
+<h1>Data Manipulation with Kotlin<a class="headerlink" href="#data-manipulation-with-kotlin" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">use</span><span class="w"> </span><span class="n">dataframe</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">            <div id="kotlin_out_0"/>
+            <script type="text/javascript">
+                            if(!window.kotlinQueues) {
+                window.kotlinQueues = {};
+            }
+            if(!window.kotlinQueues["DataFrame"]) {
+                var resQueue = [];
+                window.kotlinQueues["DataFrame"] = resQueue;
+                window["call_DataFrame"] = function(f) {
+                    resQueue.push(f);
+                }
+            }
+            (function (){
+                var modifiers = [(function(script) {
+    script.src = "https://cdn.jsdelivr.net/gh/Kotlin/dataframe@3db46ccccaa1291c0627307d64133317f545e6ae/core/src/main/resources/init.js"
+    script.type = "text/javascript";
+})];
+                var e = document.getElementById("kotlin_out_0");
+                modifiers.forEach(function (gen) {
+                    var script = document.createElement("script");
+                    gen(script)
+                    script.addEventListener("load", function() {
+                        window["call_DataFrame"] = function(f) {f();};
+                        window.kotlinQueues["DataFrame"].forEach(function(f) {f();});
+                        window.kotlinQueues["DataFrame"] = [];
+                    }, false);
+                    script.addEventListener("error", function() {
+                        window["call_DataFrame"] = function(f) {};
+                        window.kotlinQueues["DataFrame"] = [];
+                        var div = document.createElement("div");
+                        div.style.color = 'darkred';
+                        div.textContent = 'Error loading resource DataFrame';
+                        document.getElementById("kotlin_out_0").appendChild(div);
+                    }, false);
+                    
+                    e.appendChild(script);
+                });
+            })();
+            </script></div><div class="output text_html">                <style>
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+                </style></div></div>
+</div>
+<section id="handling-null-values">
+<h2>Handling <code class="docutils literal notranslate"><span class="pre">null</span></code> values<a class="headerlink" href="#handling-null-values" title="Permalink to this heading">#</a></h2>
+<p>In many dataset and data analysis application, <strong>missing data</strong> occurs commonly.</p>
+<p>Thanks to Kotlin’s nullable values, we can have a column of a nullable type like:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">col</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">columnOf</span><span class="o">&lt;</span><span class="kt">String?</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
+<span class="n">col</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <html>
+        <head>
+            <style type="text/css">
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+
+
+            </style>
+        </head>
+        <body>
+            
+<table class="dataframe" id="df_1392508928"></table>
+
+<p class="dataframe_description">DataColumn: name = "col", type = String?, size = 3</p>
+        </body>
+        <script>
+            
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"col: String?\">col</span>", children: [], rightAlign: false, values: ["a","b","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>"] }, 
+], id: 1392508928, rootId: 1392508928, totalRows: 3 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(1392508928) });
+
+
+        </script>
+        </html></div></div>
+</div>
+<p>We can then print for each row if it is null or not, similar to pandas <code class="docutils literal notranslate"><span class="pre">dataframe.isnull()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">col</span><span class="p">.</span><span class="na">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">isNullOrEmpty</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <html>
+        <head>
+            <style type="text/css">
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+
+
+            </style>
+        </head>
+        <body>
+            
+<table class="dataframe" id="df_1392508929"></table>
+
+<p class="dataframe_description">DataColumn: name = "col", type = Boolean, size = 3</p>
+        </body>
+        <script>
+            
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"col: Boolean\">col</span>", children: [], rightAlign: false, values: ["false","false","true"] }, 
+], id: 1392508929, rootId: 1392508929, totalRows: 3 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(1392508929) });
+
+
+        </script>
+        </html></div></div>
+</div>
+<p>The great advantage in using Kotlin in this kind of situation is the fact that we have a complete control on how we can handle missing data. Unlike python, kotlin’s provides out of the box methods for handling null values, possibly without raising a <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code> if the developer keeps the context safe with the use of <em>safe call operators</em> (<code class="docutils literal notranslate"><span class="pre">?.</span></code>) or explicit null checking.</p>
+<p>Moreover, Dataframe offers a series of method for filtering or filling <code class="docutils literal notranslate"><span class="pre">null</span></code> values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dataFrameOf</span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="m">1.0</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="m">2.0</span><span class="p">),</span>
+<span class="w">    </span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="m">3.5</span><span class="p">,</span><span class="w"> </span><span class="m">6.0</span><span class="p">,</span><span class="w"> </span><span class="m">4.0</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">),</span>
+<span class="w">    </span><span class="s">&quot;2&quot;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="m">1.0</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="m">9.6</span><span class="p">,</span><span class="w"> </span><span class="m">10.0</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <html>
+        <head>
+            <style type="text/css">
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+
+
+            </style>
+        </head>
+        <body>
+            
+<table class="dataframe" id="df_1392508930"></table>
+
+<p class="dataframe_description">DataFrame: rowsCount = 4, columnsCount = 3</p>
+        </body>
+        <script>
+            
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"0: Double?\">0</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.0</span></span>"] }, 
+{ name: "<span title=\"1: Double?\">1</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.5</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">6.0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>"] }, 
+{ name: "<span title=\"2: Double?\">2</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">9.6</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">10.0</span></span>"] }, 
+], id: 1392508930, rootId: 1392508930, totalRows: 4 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(1392508930) });
+
+
+        </script>
+        </html></div></div>
+</div>
+<p>By default, the method <code class="docutils literal notranslate"><span class="pre">dropNulls()</span></code> drops all the <em>rows</em> that contain a null value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">.</span><span class="na">dropNulls</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <html>
+        <head>
+            <style type="text/css">
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+
+
+            </style>
+        </head>
+        <body>
+            
+<table class="dataframe" id="df_1392508931"></table>
+
+<p class="dataframe_description">DataFrame: rowsCount = 1, columnsCount = 3</p>
+        </body>
+        <script>
+            
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"0: Double\">0</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.0</span></span>"] }, 
+{ name: "<span title=\"1: Double\">1</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.5</span></span>"] }, 
+{ name: "<span title=\"2: Double\">2</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.0</span></span>"] }, 
+], id: 1392508931, rootId: 1392508931, totalRows: 1 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(1392508931) });
+
+
+        </script>
+        </html></div></div>
+</div>
+<p>It is important to notice that Dataframe provides three methods for dropping possible null values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dropNull()</span></code>: drops every row with a <code class="docutils literal notranslate"><span class="pre">null</span></code> value</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dropNaNs()</span></code>: drop rows with <code class="docutils literal notranslate"><span class="pre">Double.NaN</span></code> or <code class="docutils literal notranslate"><span class="pre">Float.NaN</span></code> values</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dropNA()</span></code>: removes rows with <code class="docutils literal notranslate"><span class="pre">null</span></code>, <code class="docutils literal notranslate"><span class="pre">Double.NaN</span></code> or <code class="docutils literal notranslate"><span class="pre">Float.NaN</span></code> values</p></li>
+</ul>
+<p>For each method, we can choose which columns we want to check for nulls, for example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">.</span><span class="na">dropNA</span><span class="p">(</span><span class="n">whereAllNA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="c1">// remoevs the rows where ALL values are null</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <html>
+        <head>
+            <style type="text/css">
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+
+
+            </style>
+        </head>
+        <body>
+            
+<table class="dataframe" id="df_1392508932"></table>
+
+<p class="dataframe_description">DataFrame: rowsCount = 4, columnsCount = 3</p>
+        </body>
+        <script>
+            
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"0: Double?\">0</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.0</span></span>"] }, 
+{ name: "<span title=\"1: Double?\">1</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.5</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">6.0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>"] }, 
+{ name: "<span title=\"2: Double?\">2</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">9.6</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">10.0</span></span>"] }, 
+], id: 1392508932, rootId: 1392508932, totalRows: 4 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(1392508932) });
+
+
+        </script>
+        </html></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">.</span><span class="na">dropNA</span><span class="p">(</span><span class="s">&quot;0&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// dropping all rows that has null in &quot;0&quot; column</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <html>
+        <head>
+            <style type="text/css">
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+
+
+            </style>
+        </head>
+        <body>
+            
+<table class="dataframe" id="df_1392508933"></table>
+
+<p class="dataframe_description">DataFrame: rowsCount = 2, columnsCount = 3</p>
+        </body>
+        <script>
+            
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"0: Double\">0</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.0</span></span>"] }, 
+{ name: "<span title=\"1: Double?\">1</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.5</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>"] }, 
+{ name: "<span title=\"2: Double\">2</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">10.0</span></span>"] }, 
+], id: 1392508933, rootId: 1392508933, totalRows: 2 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(1392508933) });
+
+
+        </script>
+        </html></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="c1">// remove rows where col &quot;0&quot; and &quot;2&quot; have null or NaN</span>
+<span class="n">df</span><span class="p">.</span><span class="na">dropNA</span><span class="p">(</span><span class="n">whereAllNA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="s">&quot;2&quot;</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <html>
+        <head>
+            <style type="text/css">
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+
+
+            </style>
+        </head>
+        <body>
+            
+<table class="dataframe" id="df_1392508934"></table>
+
+<p class="dataframe_description">DataFrame: rowsCount = 3, columnsCount = 3</p>
+        </body>
+        <script>
+            
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"0: Double?\">0</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.0</span></span>"] }, 
+{ name: "<span title=\"1: Double?\">1</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.5</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>"] }, 
+{ name: "<span title=\"2: Double\">2</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">9.6</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">10.0</span></span>"] }, 
+], id: 1392508934, rootId: 1392508934, totalRows: 3 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(1392508934) });
+
+
+        </script>
+        </html></div></div>
+</div>
+<p>Instead of dropping null values, there could be the need to fill in missing values. Just like pandas, Dataframe offers similar API.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nv">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dataFrameOf</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p">).</span><span class="na">randomDouble</span><span class="p">(</span><span class="m">7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="p">.</span><span class="na">update</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">}.</span><span class="na">at</span><span class="p">(</span><span class="m">1.</span><span class="p">.</span><span class="m">4</span><span class="p">).</span><span class="na">with</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">Double</span><span class="p">.</span><span class="na">NaN</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">.</span><span class="na">update</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="p">}.</span><span class="na">at</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">).</span><span class="na">with</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">Double</span><span class="p">.</span><span class="na">NaN</span><span class="w"> </span><span class="p">}</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <html>
+        <head>
+            <style type="text/css">
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+
+
+            </style>
+        </head>
+        <body>
+            
+<table class="dataframe" id="df_1392508935"></table>
+
+<p class="dataframe_description">DataFrame: rowsCount = 7, columnsCount = 3</p>
+        </body>
+        <script>
+            
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"a: Double\">a</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.118076</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">NaN</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">NaN</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">NaN</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">NaN</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.106228</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.049471</span></span>"] }, 
+{ name: "<span title=\"b: Double\">b</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.685055</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">NaN</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">NaN</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.873383</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.314564</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.996639</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.564010</span></span>"] }, 
+{ name: "<span title=\"c: Double\">c</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.019991</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.930557</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.718224</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.432345</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.573943</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.766179</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.601441</span></span>"] }, 
+], id: 1392508935, rootId: 1392508935, totalRows: 7 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(1392508935) });
+
+
+        </script>
+        </html></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">.</span><span class="na">fillNA</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">all</span><span class="p">()</span><span class="w"> </span><span class="p">}.</span><span class="na">withZero</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <html>
+        <head>
+            <style type="text/css">
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+
+
+            </style>
+        </head>
+        <body>
+            
+<table class="dataframe" id="df_1392508936"></table>
+
+<p class="dataframe_description">DataFrame: rowsCount = 7, columnsCount = 3</p>
+        </body>
+        <script>
+            
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"a: Double\">a</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.118076</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.000000</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.000000</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.000000</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.000000</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.106228</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.049471</span></span>"] }, 
+{ name: "<span title=\"b: Double\">b</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.685055</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.000000</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.000000</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.873383</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.314564</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.996639</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.564010</span></span>"] }, 
+{ name: "<span title=\"c: Double\">c</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.019991</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.930557</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.718224</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.432345</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.573943</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.766179</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.601441</span></span>"] }, 
+], id: 1392508936, rootId: 1392508936, totalRows: 7 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(1392508936) });
+
+
+        </script>
+        </html></div></div>
+</div>
+<p>pandas offers the filling method <code class="docutils literal notranslate"><span class="pre">ffill</span></code> or <code class="docutils literal notranslate"><span class="pre">bfill</span></code>, that fills missing values with the next or preceding row’s value.</p>
+<p>We can simulate that behavior with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">.</span><span class="na">fillNA</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">all</span><span class="p">()</span><span class="w"> </span><span class="p">}.</span><span class="na">perRowCol</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">row</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">row</span><span class="p">.</span><span class="na">prev</span><span class="p">()</span><span class="o">?.</span><span class="na">get</span><span class="p">(</span><span class="n">col</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <html>
+        <head>
+            <style type="text/css">
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+
+
+            </style>
+        </head>
+        <body>
+            
+<table class="dataframe" id="df_1392508937"></table>
+
+<p class="dataframe_description">DataFrame: rowsCount = 7, columnsCount = 3</p>
+        </body>
+        <script>
+            
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"a: Double\">a</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.118076</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.118076</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">NaN</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">NaN</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">NaN</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.106228</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.049471</span></span>"] }, 
+{ name: "<span title=\"b: Double\">b</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.685055</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.685055</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">NaN</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.873383</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.314564</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.996639</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.564010</span></span>"] }, 
+{ name: "<span title=\"c: Double\">c</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.019991</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.930557</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.718224</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.432345</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.573943</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.766179</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.601441</span></span>"] }, 
+], id: 1392508937, rootId: 1392508937, totalRows: 7 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(1392508937) });
+
+
+        </script>
+        </html></div></div>
+</div>
+<p>The example below does not consider the new values that are computed during the before computations. In case we want to fill ALL missing values in that column with the first non null preceding row, we must specify the column we want to modify, and use the method <code class="docutils literal notranslate"><span class="pre">newValue()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">.</span><span class="na">fillNA</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">}.</span><span class="na">with</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">prev</span><span class="p">()</span><span class="o">?.</span><span class="na">newValue</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <html>
+        <head>
+            <style type="text/css">
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+
+
+            </style>
+        </head>
+        <body>
+            
+<table class="dataframe" id="df_1392508938"></table>
+
+<p class="dataframe_description">DataFrame: rowsCount = 7, columnsCount = 3</p>
+        </body>
+        <script>
+            
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"a: Double\">a</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.118076</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.118076</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.118076</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.118076</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.118076</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.106228</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.049471</span></span>"] }, 
+{ name: "<span title=\"b: Double\">b</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.685055</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">NaN</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">NaN</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.873383</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.314564</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.996639</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.564010</span></span>"] }, 
+{ name: "<span title=\"c: Double\">c</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.019991</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.930557</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.718224</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.432345</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.573943</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.766179</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.601441</span></span>"] }, 
+], id: 1392508938, rootId: 1392508938, totalRows: 7 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(1392508938) });
+
+
+        </script>
+        </html></div></div>
+</div>
+<p>With <code class="docutils literal notranslate"><span class="pre">fillNA</span></code> (or <code class="docutils literal notranslate"><span class="pre">fillNulls</span></code> or <code class="docutils literal notranslate"><span class="pre">fillNaNs</span></code>) you can pass any kind of function inside the <code class="docutils literal notranslate"><span class="pre">with</span></code> construct, for example the row mean (remember to pass <code class="docutils literal notranslate"><span class="pre">skipNA</span> <span class="pre">=</span> <span class="pre">true</span></code> when computing the mean):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">.</span><span class="na">fillNaNs</span><span class="p">{</span><span class="w"> </span><span class="n">colsOf</span><span class="o">&lt;</span><span class="kt">Double</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">.</span><span class="na">perCol</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">mean</span><span class="p">(</span><span class="n">skipNA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <html>
+        <head>
+            <style type="text/css">
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+
+
+            </style>
+        </head>
+        <body>
+            
+<table class="dataframe" id="df_1392508939"></table>
+
+<p class="dataframe_description">DataFrame: rowsCount = 7, columnsCount = 3</p>
+        </body>
+        <script>
+            
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"a: Double\">a</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.118076</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.091259</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.091259</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.091259</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.091259</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.106228</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.049471</span></span>"] }, 
+{ name: "<span title=\"b: Double\">b</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.685055</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.686730</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.686730</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.873383</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.314564</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.996639</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.564010</span></span>"] }, 
+{ name: "<span title=\"c: Double\">c</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.019991</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.930557</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.718224</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.432345</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.573943</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.766179</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.601441</span></span>"] }, 
+], id: 1392508939, rootId: 1392508939, totalRows: 7 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(1392508939) });
+
+
+        </script>
+        </html></div></div>
+</div>
+</section>
+<section id="data-transformation">
+<h2>Data Transformation<a class="headerlink" href="#data-transformation" title="Permalink to this heading">#</a></h2>
+<p>Data transformation includes filtering, cleaning, converting and updating values.</p>
+<p>Thanks to the underlying usage of Koltin’s collections for storing data, most collections’ manipulations methods can be called on columns or rows.</p>
+<p>Suppose we have a dataframe containing data about meat and their quantities</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dataFrameOf</span><span class="p">(</span><span class="s">&quot;food&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ounces&quot;</span><span class="p">)(</span>
+<span class="w">    </span><span class="s">&quot;bacon&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;pulled pork&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;bacon&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">12</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;pastrami&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;corned beef&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">7.5</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;bacon&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">8</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;pastrami&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;honey ham&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;nova lox&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <html>
+        <head>
+            <style type="text/css">
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+
+
+            </style>
+        </head>
+        <body>
+            
+<table class="dataframe" id="df_1392508940"></table>
+
+<p class="dataframe_description">DataFrame: rowsCount = 9, columnsCount = 2</p>
+        </body>
+        <script>
+            
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"food: String\">food</span>", children: [], rightAlign: false, values: ["bacon","pulled pork","bacon","pastrami","corned beef","bacon","pastrami","honey ham","nova lox"] }, 
+{ name: "<span title=\"ounces: Number\">ounces</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">4</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">12</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">6</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">7.5</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">8</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">5</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">6</span></span>"] }, 
+], id: 1392508940, rootId: 1392508940, totalRows: 9 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(1392508940) });
+
+
+        </script>
+        </html></div></div>
+</div>
+<p>We could map each meat with it’s corresponding animal</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">meatToAnimal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mapOf</span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;bacon&quot;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="s">&quot;pig&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;pulled pork&quot;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="s">&quot;pig&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;pastrami&quot;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="s">&quot;cow&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;corned beef&quot;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="s">&quot;cow&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;honey ham&quot;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="s">&quot;pig&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;nova lox&quot;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="s">&quot;salmon&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using <code class="docutils literal notranslate"><span class="pre">mapToFrame</span></code> let us perform column wise operations, creating a new dataframe with the provided set of instructions.</p>
+<p>Mapping the whole column <code class="docutils literal notranslate"><span class="pre">food</span></code> with the corresponding animal, is the same as applying a <code class="docutils literal notranslate"><span class="pre">map</span></code> function to a Kotlin collection.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">.</span><span class="na">mapToFrame</span><span class="p">{</span><span class="w"> </span>
+<span class="w">    </span><span class="n">food</span><span class="p">.</span><span class="na">map</span><span class="p">{</span><span class="w"> </span><span class="n">meatToAnimal</span><span class="o">[</span><span class="nb">it</span><span class="o">]</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n">into</span><span class="w"> </span><span class="s">&quot;animal&quot;</span>
+<span class="w">    </span><span class="o">+</span><span class="n">food</span>
+<span class="w">    </span><span class="o">+</span><span class="n">ounces</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <html>
+        <head>
+            <style type="text/css">
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+
+
+            </style>
+        </head>
+        <body>
+            
+<table class="dataframe" id="df_1392508941"></table>
+
+<p class="dataframe_description">DataFrame: rowsCount = 9, columnsCount = 3</p>
+        </body>
+        <script>
+            
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"animal: String\">animal</span>", children: [], rightAlign: false, values: ["pig","pig","pig","cow","cow","pig","cow","pig","salmon"] }, 
+{ name: "<span title=\"food: String\">food</span>", children: [], rightAlign: false, values: ["bacon","pulled pork","bacon","pastrami","corned beef","bacon","pastrami","honey ham","nova lox"] }, 
+{ name: "<span title=\"ounces: Number\">ounces</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">4</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">12</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">6</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">7.5</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">8</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">5</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">6</span></span>"] }, 
+], id: 1392508941, rootId: 1392508941, totalRows: 9 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(1392508941) });
+
+
+        </script>
+        </html></div></div>
+</div>
+<p>Notice that the three <code class="docutils literal notranslate"><span class="pre">map</span></code> methods, offers three ways to yield the result of the mapping of the row expression provided.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">map</span></code> returns a <code class="docutils literal notranslate"><span class="pre">List</span></code> from the provided <strong>row expression</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mapToColumn</span></code> returns a new <code class="docutils literal notranslate"><span class="pre">Column</span></code> from the provided <strong>row expression</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mapToFrame</span></code> returns a new <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> from the provided <strong>column mappings</strong>. Here we can specify to keep the old columns in the new frame with the <code class="docutils literal notranslate"><span class="pre">+&lt;col_name&gt;</span></code> operator.</p></li>
+</ul>
+<p>It is advised to learn more about <a class="reference external" href="https://kotlin.github.io/dataframe/datarow.html"><code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Rows</span></code></a> for understanding which useful methods <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Rows</span></code> offers for creating <em>row expressions</em> or <em>row conditions</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">.</span><span class="na">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">meatToAnimal</span><span class="o">[</span><span class="nb">it</span><span class="p">.</span><span class="na">food</span><span class="o">]</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[pig, pig, pig, cow, cow, pig, cow, pig, salmon]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">.</span><span class="na">mapToColumn</span><span class="p">(</span><span class="s">&quot;animal&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">meatToAnimal</span><span class="o">[</span><span class="nb">it</span><span class="p">.</span><span class="na">food</span><span class="o">]</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <html>
+        <head>
+            <style type="text/css">
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+
+
+            </style>
+        </head>
+        <body>
+            
+<table class="dataframe" id="df_1392508942"></table>
+
+<p class="dataframe_description">DataColumn: name = "animal", type = String, size = 9</p>
+        </body>
+        <script>
+            
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"animal: String\">animal</span>", children: [], rightAlign: false, values: ["pig","pig","pig","cow","cow","pig","cow","pig","salmon"] }, 
+], id: 1392508942, rootId: 1392508942, totalRows: 9 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(1392508942) });
+
+
+        </script>
+        </html></div></div>
+</div>
+<section id="replacing-values">
+<h3>Replacing Values<a class="headerlink" href="#replacing-values" title="Permalink to this heading">#</a></h3>
+<p>Value replacing can be accomplished with the use of <code class="docutils literal notranslate"><span class="pre">update</span></code> or <code class="docutils literal notranslate"><span class="pre">convert</span></code> methods. They differs only for the return type: <code class="docutils literal notranslate"><span class="pre">update</span></code> modify data in each row, but keeping it’s type; <code class="docutils literal notranslate"><span class="pre">convert</span></code> modify data in each row, possibly changing it’s type.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">values</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">columnOf</span><span class="p">(</span><span class="m">1.0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="m">999.0</span><span class="p">,</span><span class="w"> </span><span class="m">2.0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="m">999.0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="m">1000.0</span><span class="p">,</span><span class="w"> </span><span class="m">3.0</span><span class="p">)</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dataFrameOf</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+<span class="n">df</span><span class="p">.</span><span class="na">update</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="p">}.</span><span class="na">where</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">-</span><span class="m">999.0</span><span class="w"> </span><span class="p">}.</span><span class="na">withZero</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <html>
+        <head>
+            <style type="text/css">
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+
+
+            </style>
+        </head>
+        <body>
+            
+<table class="dataframe" id="df_1392508943"></table>
+
+<p class="dataframe_description">DataFrame: rowsCount = 6, columnsCount = 1</p>
+        </body>
+        <script>
+            
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"values: Double\">values</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-1000.0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.0</span></span>"] }, 
+], id: 1392508943, rootId: 1392508943, totalRows: 6 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(1392508943) });
+
+
+        </script>
+        </html></div></div>
+</div>
+</section>
+<section id="detecting-and-filtering-outliers">
+<h3>Detecting and Filtering Outliers<a class="headerlink" href="#detecting-and-filtering-outliers" title="Permalink to this heading">#</a></h3>
+<p>Sometimes it’s very useful to sport and filter out outliers before doing some computation.</p>
+<p>Consider a Dataframe with some randomly distributed data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dataFrameOf</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;d&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">randomDouble</span><span class="p">(</span><span class="m">1000</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">update</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">colsOf</span><span class="o">&lt;</span><span class="kt">Double</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">}.</span><span class="na">with</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">5</span><span class="p">}</span>
+<span class="n">df</span><span class="p">.</span><span class="na">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <html>
+        <head>
+            <style type="text/css">
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+
+
+            </style>
+        </head>
+        <body>
+            
+<table class="dataframe" id="df_1392508944"></table>
+
+<p class="dataframe_description">DataFrame: rowsCount = 5, columnsCount = 4</p>
+        </body>
+        <script>
+            
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"a: Double\">a</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.418815</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.969488</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.992621</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.555364</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.270648</span></span>"] }, 
+{ name: "<span title=\"b: Double\">b</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.975950</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.852150</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.947375</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.722713</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.539187</span></span>"] }, 
+{ name: "<span title=\"c: Double\">c</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.348721</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.780291</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.265228</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.054716</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.608652</span></span>"] }, 
+{ name: "<span title=\"d: Double\">d</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.615274</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.702781</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.379258</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.018431</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.649578</span></span>"] }, 
+], id: 1392508944, rootId: 1392508944, totalRows: 5 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(1392508944) });
+
+
+        </script>
+        </html></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">.</span><span class="na">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <html>
+        <head>
+            <style type="text/css">
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+
+
+            </style>
+        </head>
+        <body>
+            
+<table class="dataframe" id="df_1392508945"></table>
+
+<p class="dataframe_description">DataFrame: rowsCount = 4, columnsCount = 12</p>
+        </body>
+        <script>
+            
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"name: String\">name</span>", children: [], rightAlign: false, values: ["a","b","c","d"] }, 
+{ name: "<span title=\"type: Any\">type</span>", children: [], rightAlign: false, values: ["Double","Double","Double","Double"] }, 
+{ name: "<span title=\"count: Int\">count</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1000</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1000</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1000</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1000</span></span>"] }, 
+{ name: "<span title=\"unique: Int\">unique</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1000</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1000</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1000</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1000</span></span>"] }, 
+{ name: "<span title=\"nulls: Int\">nulls</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0</span></span>"] }, 
+{ name: "<span title=\"top: Double\">top</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.418815</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.975950</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.348721</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.615274</span></span>"] }, 
+{ name: "<span title=\"freq: Int\">freq</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>"] }, 
+{ name: "<span title=\"mean: Double\">mean</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.467417</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.386594</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.515469</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.494687</span></span>"] }, 
+{ name: "<span title=\"std: Double\">std</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.453914</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.451915</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.438537</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.439934</span></span>"] }, 
+{ name: "<span title=\"min: Double\">min</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.012398</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.001669</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.015147</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.006567</span></span>"] }, 
+{ name: "<span title=\"median: Double\">median</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.478410</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.299030</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.489825</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.438504</span></span>"] }, 
+{ name: "<span title=\"max: Double\">max</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.999090</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.983087</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.985406</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.994780</span></span>"] }, 
+], id: 1392508945, rootId: 1392508945, totalRows: 4 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(1392508945) });
+
+
+        </script>
+        </html></div></div>
+</div>
+<p>Suppose we want to find all values exceeding 4.5. Unlike pandas <em>boolean indexing</em>, with Dataframe we will apply a row-wise filter.</p>
+<p>Note:
+With pandas we simply would have made:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[(</span><span class="n">df</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">.</span><span class="na">filter</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">values</span><span class="p">().</span><span class="na">any</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">Double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">4.5</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <html>
+        <head>
+            <style type="text/css">
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+
+
+            </style>
+        </head>
+        <body>
+            
+<table class="dataframe" id="df_1392508946"></table>
+
+<p class="dataframe_description">... showing only top 20 of 331 rows</p><p class="dataframe_description">DataFrame: rowsCount = 331, columnsCount = 4</p>
+        </body>
+        <script>
+            
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"a: Double\">a</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.555364</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.270648</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.441428</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.782328</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.794916</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.248443</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.279797</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.907074</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.660098</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.663377</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.665712</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.365234</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.572155</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.016989</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.563698</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.419998</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.692589</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.576140</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.100002</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.737560</span></span>"] }, 
+{ name: "<span title=\"b: Double\">b</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.722713</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.539187</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.521761</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.596571</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.464680</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.569682</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.564025</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.260358</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.303462</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.681062</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.749073</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.590125</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.563014</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.775113</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.844983</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.449190</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.260637</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.917096</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.082323</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.561345</span></span>"] }, 
+{ name: "<span title=\"c: Double\">c</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.054716</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.608652</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.643007</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.869699</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.710894</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.190336</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.923605</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.173317</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.923711</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.899107</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.720004</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.535211</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.780477</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.920705</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.058789</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.972111</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.371212</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.541051</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.723117</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.995184</span></span>"] }, 
+{ name: "<span title=\"d: Double\">d</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.018431</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.649578</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.075698</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.952502</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.283649</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.595771</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.272002</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.165550</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.655385</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.865618</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.673514</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.214466</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.679375</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.221534</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.387417</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.133441</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.600210</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.919733</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.212180</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.983673</span></span>"] }, 
+], id: 1392508946, rootId: 1392508946, totalRows: 331 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(1392508946) });
+
+
+        </script>
+        </html></div></div>
+</div>
+<p>Now let’s remap all values &gt; 4.5, to be inside that range.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">.</span><span class="na">update</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">colsOf</span><span class="o">&lt;</span><span class="kt">Double</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">.</span><span class="na">where</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">4.5</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">.</span><span class="na">with</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="m">4.5</span><span class="w"> </span><span class="p">}.</span><span class="na">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <html>
+        <head>
+            <style type="text/css">
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+
+
+            </style>
+        </head>
+        <body>
+            
+<table class="dataframe" id="df_1392508947"></table>
+
+<p class="dataframe_description">DataFrame: rowsCount = 5, columnsCount = 4</p>
+        </body>
+        <script>
+            
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"a: Double\">a</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.418815</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.969488</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.992621</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.500000</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.270648</span></span>"] }, 
+{ name: "<span title=\"b: Double\">b</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.975950</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.852150</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.947375</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.722713</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.539187</span></span>"] }, 
+{ name: "<span title=\"c: Double\">c</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.348721</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.780291</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.265228</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.054716</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.500000</span></span>"] }, 
+{ name: "<span title=\"d: Double\">d</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.615274</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.702781</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.379258</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.018431</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.500000</span></span>"] }, 
+], id: 1392508947, rootId: 1392508947, totalRows: 5 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(1392508947) });
+
+
+        </script>
+        </html></div></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "kotlin"
+        },
+        kernelOptions: {
+            name: "kotlin",
+            path: "./ch4"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'kotlin'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Intro_DataCleaning.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data Cleaning and Preparation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../DA_examples/DA_Introduction.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data Analysis Examples</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-null-values">Handling <code class="docutils literal notranslate"><span class="pre">null</span></code> values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-transformation">Data Transformation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replacing-values">Replacing Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detecting-and-filtering-outliers">Detecting and Filtering Outliers</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Stefano Furi
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

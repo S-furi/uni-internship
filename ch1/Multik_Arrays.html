@@ -162,8 +162,11 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ch3/io.html">Data Loading and Storage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch4/Intro_DataCleaning.html">Data Cleaning and Preparation</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../DA_examples/DA_Introduction.html">Data Analysis Examples</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch4/Intro_DataCleaning.html">Data Cleaning and Preparation</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch4/kt_data_manipulation.html">Data Manipulation with Kotlin</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../DA_examples/DA_Introduction.html">Data Analysis Examples</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../DA_examples/tips_kotlin.html">Kotlin: Tips Dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../DA_examples/tips_python.html">Python: Tips Dataset</a></li>
 </ul>
@@ -690,42 +693,32 @@ In section K (some ref to where i could explain how to) I explain how to archiev
 <span class="n">mk</span><span class="p">.</span><span class="na">linalg</span><span class="p">.</span><span class="na">inv</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
 
 <span class="kd">val</span><span class="w"> </span><span class="p">(</span><span class="nv">q</span><span class="p">,</span><span class="w"> </span><span class="nv">r</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk</span><span class="p">.</span><span class="na">linalg</span><span class="p">.</span><span class="na">qr</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
-<span class="n">println</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$</span><span class="n">q</span><span class="s">\n\n</span><span class="si">$</span><span class="n">r</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="n">q</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-0.47722160901862143, 0.5824456077674391, 0.017069150804954584, -0.6449960157995163, 0.12924950124330908],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-0.5476448922864972, 0.4480888719243124, 0.02149122541986563, 0.4139794642215577, 0.5722417017684859],
+[-0.36959072622348493, -0.5214611360090895, 0.10042971291880215, 0.6410267811738843, -0.41289165322467203],
+[-0.29887015846783915, -0.2199068675586699, -0.9102326360209415, -0.17728760563505377, 0.048613282017372084],
+[-0.5203147308126457, 0.46746135415691403, 0.08999821648909963, -0.3359587681252915, -0.6243272302388116],
+[-0.4510398832906915, -0.5103092184744703, 0.390933331073406, -0.5228828549767219, 0.3315300527076511]]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.4852113568675176, 0.16645705323861526, 0.31974614313851873, 0.37716521016398485, -0.7016913828627926],
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">r</span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.23215210704597875, -0.0062008564824247055, -0.9428480859899602, 0.09749529705232567, -0.21817218514454237],
-</pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.43895265824606206, -0.7954774257943202, 0.08613141552455418, -0.40391154905055704, -0.06303228278964229],
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.5387535968003268, -0.015045858236100823, 0.03301384624131257, 0.5187260080629905, 0.6628360269327849]]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-2.6995086027947264, -2.9125552579139247, -2.021828006774396, -3.727737407489475, -3.5785911258293686],
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.0, -0.1375271328885125, -0.561292286226658, -1.2231028602294565, -0.4466968545735478],
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.0, 0.0, -0.6585668945242971, -0.44898682499603954, -0.25935794774876497],
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.0, 0.0, 0.0, -0.19543430204186393, -0.016928982983517908],
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.0, 0.0, 0.0, 0.0, 0.0021158190552078354]]
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-4.582975118570057, -3.5173776095324314, -2.7963562903930272, -4.499522790770053, -4.553879922908397],
+[0.0, -0.5187559752792056, -0.3393061210407654, -0.03177638279899177, -0.6793142527774573],
+[0.0, 0.0, -0.4493202366517609, 0.1373943952528967, 0.34236611777293136],
+[0.0, 0.0, 0.0, -0.16490030363706204, -0.33426820471119967],
+[0.0, 0.0, 0.0, 0.0, 0.015047740839543057]]
 </pre></div>
 </div>
 </div>
@@ -861,13 +854,13 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean of the whole matrix -&gt; 0.5143200388965397
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean of the whole matrix -&gt; 0.5005516893667676
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean across columns -&gt; [0.6271732457942534, 0.4593473452833939, 0.39644576233547096, 0.5743138021730404]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean across columns -&gt; [0.5806622835300538, 0.4368479915091815, 0.5906185514997596, 0.39407793092807586]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean across rows -&gt; [0.2905864078628164, 0.43253328931513024, 0.7340667461249318, 0.5259957645562188, 0.588417986623601]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean across rows -&gt; [0.499014601797073, 0.472168698093518, 0.4310122956159261, 0.5765571689680371, 0.5240056823592844]
 </pre></div>
 </div>
 </div>
@@ -900,7 +893,7 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="tUVlDX"></div>
+<div class="output text_html">   <div id="pwAoW3"></div>
    <script type="text/javascript" data-lets-plot-script="library">
        if(!window.letsPlotCallQueue) {
            window.letsPlotCallQueue = [];
@@ -925,9 +918,9 @@ We can then call the default <code class="docutils literal notranslate"><span cl
                var div = document.createElement("div");
                div.style.color = 'darkred';
                div.textContent = 'Error loading Lets-Plot JS';
-               document.getElementById("tUVlDX").appendChild(div);
+               document.getElementById("pwAoW3").appendChild(div);
            };
-           var e = document.getElementById("tUVlDX");
+           var e = document.getElementById("pwAoW3");
            e.appendChild(script);
        })();
    </script></div></div>
@@ -940,7 +933,7 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="ZEHsnh"></div>
+<div class="output text_html">   <div id="8NqIpb"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -964,7 +957,7 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 "y":[0.0,-1.0,0.0,1.0,0.0,-1.0,-2.0,-1.0,-2.0,-3.0,-2.0,-1.0,-2.0,-3.0,-4.0,-3.0,-4.0,-3.0,-4.0,-3.0,-2.0,-3.0,-2.0,-3.0,-4.0,-5.0,-4.0,-3.0,-2.0,-3.0,-4.0,-5.0,-6.0,-7.0,-8.0,-7.0,-6.0,-5.0,-4.0,-3.0,-4.0,-3.0,-4.0,-3.0,-4.0,-3.0,-4.0,-5.0,-4.0,-5.0,-6.0,-7.0,-8.0,-9.0,-10.0,-9.0,-8.0,-9.0,-10.0,-11.0,-12.0,-13.0,-12.0,-13.0,-12.0,-13.0,-12.0,-13.0,-14.0,-15.0,-16.0,-15.0,-16.0,-15.0,-16.0,-15.0,-14.0,-13.0,-12.0,-13.0,-12.0,-13.0,-12.0,-11.0,-12.0,-13.0,-14.0,-15.0,-14.0,-13.0,-14.0,-13.0,-14.0,-13.0,-14.0,-13.0,-12.0,-13.0,-14.0,-15.0,-14.0]
 }
 };
-           var plotContainer = document.getElementById("ZEHsnh");
+           var plotContainer = document.getElementById("8NqIpb");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -1026,7 +1019,7 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="qhgQMN"></div>
+<div class="output text_html">   <div id="kzl7gP"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -1062,7 +1055,7 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 "y":[1.0,0.0,1.0,0.0,1.0,2.0,1.0,0.0,-1.0,-2.0,-1.0,-2.0,-1.0,-2.0,-1.0,-2.0,-3.0,-4.0,-5.0,-4.0,-3.0,-2.0,-1.0,0.0,1.0,2.0,3.0,2.0,1.0,0.0,-1.0,-2.0,-3.0,-4.0,-5.0,-4.0,-3.0,-4.0,-5.0,-6.0,-5.0,-6.0,-7.0,-8.0,-7.0,-8.0,-7.0,-6.0,-7.0,-8.0,-7.0,-6.0,-7.0,-8.0,-9.0,-10.0,-9.0,-8.0,-9.0,-8.0,-7.0,-6.0,-5.0,-4.0,-5.0,-4.0,-3.0,-2.0,-3.0,-4.0,-3.0,-4.0,-3.0,-2.0,-3.0,-4.0,-3.0,-4.0,-5.0,-4.0,-3.0,-4.0,-3.0,-2.0,-3.0,-2.0,-3.0,-2.0,-1.0,-2.0,-3.0,-2.0,-3.0,-4.0,-5.0,-6.0,-5.0,-6.0,-5.0,-6.0]
 }
 };
-           var plotContainer = document.getElementById("qhgQMN");
+           var plotContainer = document.getElementById("kzl7gP");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
