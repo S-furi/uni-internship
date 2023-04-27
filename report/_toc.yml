@@ -17,6 +17,8 @@ chapters:
 - file: ch3/io.ipynb
   
 - file: ch4/Intro_DataCleaning.ipynb
+  sections:
+  - file: ch4/kt_data_manipulation.ipynb
 
 - file: DA_examples/DA_Introduction.ipynb
   sections:
