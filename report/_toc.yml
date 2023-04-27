@@ -20,6 +20,10 @@ chapters:
   sections:
   - file: ch4/kt_data_manipulation.ipynb
 
+- file: ch5/intro_wrangling.ipynb
+  sections:
+  - file: ch5/kt_wrangling.ipynb
+
 - file: DA_examples/DA_Introduction.ipynb
   sections:
   - file: DA_examples/tips_kotlin.ipynb
