@@ -1,0 +1,1972 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Data Wrangling with Kotlin &#8212; Data Science with Kotlin</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch5/kt_wrangling';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data Analysis Examples" href="../DA_examples/DA_Introduction.html" />
+    <link rel="prev" title="Data Wrangling" href="intro_wrangling.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../Introduction.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Data Science with Kotlin</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../Introduction.html">
+                    Data Science with Kotlin
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch1/Arrays%26Matrices.html">Working with Arrays and Matrices</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch1/Multik_Arrays.html">Kotlin NDArrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch1/NumPy_Arrays.html">Python NDArrays</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch2/Data_Manipulation.html">Data Analysis and Manipulation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch2/Intro_dataframe.html">Data handling with Dataframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch2/Intro_pandas.html">Data handling with Pandas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ch3/io.html">Data Loading and Storage</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch4/Intro_DataCleaning.html">Data Cleaning and Preparation</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch4/kt_data_manipulation.html">Data Manipulation with Kotlin</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro_wrangling.html">Data Wrangling</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Data Wrangling with Kotlin</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../DA_examples/DA_Introduction.html">Data Analysis Examples</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../DA_examples/tips_kotlin.html">Kotlin: Tips Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DA_examples/tips_python.html">Python: Tips Dataset</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/S-furi/uni-internship/tree/report/report" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/S-furi/uni-internship/tree/report/report/issues/new?title=Issue%20on%20page%20%2Fch5/kt_wrangling.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/ch5/kt_wrangling.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Data Wrangling with Kotlin</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#columngroup-and-framecolumn"><code class="docutils literal notranslate"><span class="pre">ColumnGroup</span></code> and <code class="docutils literal notranslate"><span class="pre">FrameColumn</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-multiple-dataframes">Working with Multiple DataFrames</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="data-wrangling-with-kotlin">
+<h1>Data Wrangling with Kotlin<a class="headerlink" href="#data-wrangling-with-kotlin" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">use</span><span class="w"> </span><span class="n">dataframe</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">            <div id="kotlin_out_0"/>
+            <script type="text/javascript">
+                            if(!window.kotlinQueues) {
+                window.kotlinQueues = {};
+            }
+            if(!window.kotlinQueues["DataFrame"]) {
+                var resQueue = [];
+                window.kotlinQueues["DataFrame"] = resQueue;
+                window["call_DataFrame"] = function(f) {
+                    resQueue.push(f);
+                }
+            }
+            (function (){
+                var modifiers = [(function(script) {
+    script.src = "https://cdn.jsdelivr.net/gh/Kotlin/dataframe@3db46ccccaa1291c0627307d64133317f545e6ae/core/src/main/resources/init.js"
+    script.type = "text/javascript";
+})];
+                var e = document.getElementById("kotlin_out_0");
+                modifiers.forEach(function (gen) {
+                    var script = document.createElement("script");
+                    gen(script)
+                    script.addEventListener("load", function() {
+                        window["call_DataFrame"] = function(f) {f();};
+                        window.kotlinQueues["DataFrame"].forEach(function(f) {f();});
+                        window.kotlinQueues["DataFrame"] = [];
+                    }, false);
+                    script.addEventListener("error", function() {
+                        window["call_DataFrame"] = function(f) {};
+                        window.kotlinQueues["DataFrame"] = [];
+                        var div = document.createElement("div");
+                        div.style.color = 'darkred';
+                        div.textContent = 'Error loading resource DataFrame';
+                        document.getElementById("kotlin_out_0").appendChild(div);
+                    }, false);
+                    
+                    e.appendChild(script);
+                });
+            })();
+            </script></div><div class="output text_html">                <style>
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+                </style></div></div>
+</div>
+<p>Before digging into data wrangling techniques that DataFrame offers, there is one Column type that has not been covered yet: <code class="docutils literal notranslate"><span class="pre">ColumnGroup</span></code>.</p>
+<section id="columngroup-and-framecolumn">
+<h2><code class="docutils literal notranslate"><span class="pre">ColumnGroup</span></code> and <code class="docutils literal notranslate"><span class="pre">FrameColumn</span></code><a class="headerlink" href="#columngroup-and-framecolumn" title="Permalink to this heading">#</a></h2>
+<p>They are a special kind of columns that contains a series of column (in <code class="docutils literal notranslate"><span class="pre">ColumnGroup</span></code>s) or a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
+<p>The power of those structures is the ability to store and organize data in a <strong>hierarchical</strong> way. This is essential when dealing with JSON serialization and deserialization.</p>
+<p>Dealing with <em>“nested”</em> objects can also occur very often when using grouping and pivoting operations (discussed in next chapter), and a minimum comprehension is required before dealing with those operations.</p>
+<p>Let’s consider a Dataframe of people with the following informations:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">name</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">columnOf</span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;Woody Allen&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;Bob Dylan&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;Charlie Chaplin&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;John Coltrane&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;Bob Marley&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;Linus Torvalds&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;Charlie Parker&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">age</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">columnOf</span><span class="p">(</span><span class="m">15</span><span class="p">,</span><span class="w"> </span><span class="m">45</span><span class="p">,</span><span class="w"> </span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="m">30</span><span class="p">,</span><span class="w"> </span><span class="m">15</span><span class="p">,</span><span class="w"> </span><span class="m">22</span><span class="p">,</span><span class="w"> </span><span class="m">57</span><span class="p">)</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">city</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">columnOf</span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;Rome&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;Moscow&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;Tirana&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;Sarajevo&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;Cesena&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;Kyoto&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="kd">val</span><span class="w"> </span><span class="nv">weight</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">columnOf</span><span class="p">(</span><span class="m">55</span><span class="p">,</span><span class="w"> </span><span class="m">70</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="m">80</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="m">90</span><span class="p">)</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">isDied</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">columnOf</span><span class="p">(</span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+
+<span class="kd">val</span><span class="w"> </span><span class="nv">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dataFrameOf</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">city</span><span class="p">,</span><span class="w"> </span><span class="n">weight</span><span class="p">,</span><span class="w"> </span><span class="n">isDied</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <html>
+        <head>
+            <style type="text/css">
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+
+
+            </style>
+        </head>
+        <body>
+            
+<table class="dataframe" id="df_1325400064"></table>
+
+<p class="dataframe_description">DataFrame: rowsCount = 7, columnsCount = 5</p>
+        </body>
+        <script>
+            
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"name: String\">name</span>", children: [], rightAlign: false, values: ["Woody Allen","Bob Dylan","Charlie Chaplin","John Coltrane","Bob Marley","Linus Torvalds","Charlie Parker"] }, 
+{ name: "<span title=\"age: Int\">age</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">15</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">45</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">20</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">30</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">15</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">22</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">57</span></span>"] }, 
+{ name: "<span title=\"city: String?\">city</span>", children: [], rightAlign: false, values: ["Rome","Moscow","Tirana","Sarajevo","Cesena","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","Kyoto"] }, 
+{ name: "<span title=\"weight: Int?\">weight</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">55</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">70</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">80</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">90</span></span>"] }, 
+{ name: "<span title=\"isDied: Boolean\">isDied</span>", children: [], rightAlign: false, values: ["false","false","true","true","true","false","true"] }, 
+], id: 1325400064, rootId: 1325400064, totalRows: 7 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(1325400064) });
+
+
+        </script>
+        </html></div></div>
+</div>
+<p>Creating a group of columns is pretty straightforward:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">.</span><span class="na">group</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">city</span><span class="w"> </span><span class="p">}.</span><span class="na">into</span><span class="p">(</span><span class="s">&quot;group&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <html>
+        <head>
+            <style type="text/css">
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+
+
+            </style>
+        </head>
+        <body>
+            
+<table class="dataframe" id="df_1325400065"></table>
+
+<p class="dataframe_description">DataFrame: rowsCount = 7, columnsCount = 4</p>
+        </body>
+        <script>
+            
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"name: String\">name</span>", children: [], rightAlign: false, values: ["Woody Allen","Bob Dylan","Charlie Chaplin","John Coltrane","Bob Marley","Linus Torvalds","Charlie Parker"] }, 
+{ name: "<span title=\"age: Int\">age</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">15</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">45</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">20</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">30</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">15</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">22</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">57</span></span>"] }, 
+{ name: "<span title=\"city: String?\">city</span>", children: [], rightAlign: false, values: ["Rome","Moscow","Tirana","Sarajevo","Cesena","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","Kyoto"] }, 
+{ name: "<span title=\"group: DataRow\">group</span>", children: [1, 2], rightAlign: false, values: ["<span class=\"formatted\" title=\"age: 15\ncity: Rome\"><span class=\"structural\">{ </span><span class=\"structural\">age: </span><span class=\"numbers\">15</span><span class=\"structural\">, </span><span class=\"structural\">city: </span>Rome<span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"age: 45\ncity: Moscow\"><span class=\"structural\">{ </span><span class=\"structural\">age: </span><span class=\"numbers\">45</span><span class=\"structural\">, </span><span class=\"structural\">city: </span>Moscow<span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"age: 20\ncity: Tirana\"><span class=\"structural\">{ </span><span class=\"structural\">age: </span><span class=\"numbers\">20</span><span class=\"structural\">, </span><span class=\"structural\">city: </span>Tirana<span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"age: 30\ncity: Sarajevo\"><span class=\"structural\">{ </span><span class=\"structural\">age: </span><span class=\"numbers\">30</span><span class=\"structural\">, </span><span class=\"structural\">city: </span>Sarajevo<span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"age: 15\ncity: Cesena\"><span class=\"structural\">{ </span><span class=\"structural\">age: </span><span class=\"numbers\">15</span><span class=\"structural\">, </span><span class=\"structural\">city: </span>Cesena<span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"age: 22\"><span class=\"structural\">{ </span><span class=\"structural\">age: </span><span class=\"numbers\">22</span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"age: 57\ncity: Kyoto\"><span class=\"structural\">{ </span><span class=\"structural\">age: </span><span class=\"numbers\">57</span><span class=\"structural\">, </span><span class=\"structural\">city: </span>Kyoto<span class=\"structural\"> }</span></span>"] }, 
+{ name: "<span title=\"weight: Int?\">weight</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">55</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">70</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">80</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">90</span></span>"] }, 
+{ name: "<span title=\"isDied: Boolean\">isDied</span>", children: [], rightAlign: false, values: ["false","false","true","true","true","false","true"] }, 
+], id: 1325400065, rootId: 1325400065, totalRows: 7 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(1325400065) });
+
+
+        </script>
+        </html></div></div>
+</div>
+<p>We can also create a nested column, for example, splitting the name in a <code class="docutils literal notranslate"><span class="pre">firstName</span></code> and a <code class="docutils literal notranslate"><span class="pre">lastName</span></code> column:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">groupedDf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="p">.</span><span class="na">split</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="p">}.</span><span class="na">by</span><span class="p">(</span><span class="sc">&#39; &#39;</span><span class="p">).</span><span class="na">inward</span><span class="p">(</span><span class="s">&quot;firstName&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;lastName&quot;</span><span class="p">)</span>
+<span class="n">groupedDf</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <html>
+        <head>
+            <style type="text/css">
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+
+
+            </style>
+        </head>
+        <body>
+            
+<table class="dataframe" id="df_1325400066"></table>
+
+<p class="dataframe_description">DataFrame: rowsCount = 7, columnsCount = 5</p>
+        </body>
+        <script>
+            
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"firstName: String\">firstName</span>", children: [], rightAlign: false, values: ["Woody","Bob","Charlie","John","Bob","Linus","Charlie"] }, 
+{ name: "<span title=\"lastName: String\">lastName</span>", children: [], rightAlign: false, values: ["Allen","Dylan","Chaplin","Coltrane","Marley","Torvalds","Parker"] }, 
+{ name: "<span title=\"name: DataRow\">name</span>", children: [0, 1], rightAlign: false, values: ["<span class=\"formatted\" title=\"firstName: Woody\nlastName: Allen\"><span class=\"structural\">{ </span><span class=\"structural\">firstName: </span>Woody<span class=\"structural\">, </span><span class=\"structural\">lastName: </span>Allen<span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"firstName: Bob\nlastName: Dylan\"><span class=\"structural\">{ </span><span class=\"structural\">firstName: </span>Bob<span class=\"structural\">, </span><span class=\"structural\">lastName: </span>Dylan<span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"firstName: Charlie\nlastName: Chaplin\"><span class=\"structural\">{ </span><span class=\"structural\">firstName: </span>Charlie<span class=\"structural\">, </span><span class=\"structural\">lastName: </span>Cha<span class=\"structural\">...</span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"firstName: John\nlastName: Coltrane\"><span class=\"structural\">{ </span><span class=\"structural\">firstName: </span>John<span class=\"structural\">, </span><span class=\"structural\">lastName: </span>Coltrane<span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"firstName: Bob\nlastName: Marley\"><span class=\"structural\">{ </span><span class=\"structural\">firstName: </span>Bob<span class=\"structural\">, </span><span class=\"structural\">lastName: </span>Marley<span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"firstName: Linus\nlastName: Torvalds\"><span class=\"structural\">{ </span><span class=\"structural\">firstName: </span>Linus<span class=\"structural\">, </span><span class=\"structural\">lastName: </span>Torvalds<span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"firstName: Charlie\nlastName: Parker\"><span class=\"structural\">{ </span><span class=\"structural\">firstName: </span>Charlie<span class=\"structural\">, </span><span class=\"structural\">lastName: </span>Parker<span class=\"structural\"> }</span></span>"] }, 
+{ name: "<span title=\"age: Int\">age</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">15</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">45</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">20</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">30</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">15</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">22</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">57</span></span>"] }, 
+{ name: "<span title=\"city: String?\">city</span>", children: [], rightAlign: false, values: ["Rome","Moscow","Tirana","Sarajevo","Cesena","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","Kyoto"] }, 
+{ name: "<span title=\"weight: Int?\">weight</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">55</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">70</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">80</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">90</span></span>"] }, 
+{ name: "<span title=\"isDied: Boolean\">isDied</span>", children: [], rightAlign: false, values: ["false","false","true","true","true","false","true"] }, 
+], id: 1325400066, rootId: 1325400066, totalRows: 7 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(1325400066) });
+
+
+        </script>
+        </html></div></div>
+</div>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">inward()</span></code> method splits the columns into the provided column names, nesting the inside the original column, creating a <code class="docutils literal notranslate"><span class="pre">ColumnGroup</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">groupedDf</span><span class="p">.</span><span class="na">name</span><span class="p">.</span><span class="na">javaClass</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>class org.jetbrains.kotlinx.dataframe.impl.columns.ColumnGroupImpl
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can always access the fields of the <code class="docutils literal notranslate"><span class="pre">ColumnGroup</span></code> with the <code class="docutils literal notranslate"><span class="pre">.</span></code> notation</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">groupedDf</span><span class="p">.</span><span class="na">name</span><span class="p">.</span><span class="na">firstName</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <html>
+        <head>
+            <style type="text/css">
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+
+
+            </style>
+        </head>
+        <body>
+            
+<table class="dataframe" id="df_1325400067"></table>
+
+<p class="dataframe_description">DataColumn: name = "firstName", type = String, size = 7</p>
+        </body>
+        <script>
+            
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"firstName: String\">firstName</span>", children: [], rightAlign: false, values: ["Woody","Bob","Charlie","John","Bob","Linus","Charlie"] }, 
+], id: 1325400067, rootId: 1325400067, totalRows: 7 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(1325400067) });
+
+
+        </script>
+        </html></div></div>
+</div>
+<p>As said above, most of the time we will have to deal with these nested structures when using <code class="docutils literal notranslate"><span class="pre">pivot</span></code> or <code class="docutils literal notranslate"><span class="pre">groupBy</span></code> methods.
+We can, for example, pivot the table to create columns that contains a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>: <code class="docutils literal notranslate"><span class="pre">FrameColumns</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">groupedDf</span><span class="p">.</span><span class="na">pivot</span><span class="p">{</span><span class="w"> </span><span class="n">name</span><span class="p">.</span><span class="na">firstName</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <html>
+        <head>
+            <style type="text/css">
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+
+
+            </style>
+        </head>
+        <body>
+            
+<table class="dataframe" id="df_1325400068"></table>
+
+<p class="dataframe_description">Pivot</p>
+        </body>
+        <script>
+            
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"Woody: DataFrame\">Woody</span>", children: [], rightAlign: false, values: [{ frameId: 1325400069, value: "<b>DataFrame 1 x 5</b>" }] }, 
+{ name: "<span title=\"Bob: DataFrame\">Bob</span>", children: [], rightAlign: false, values: [{ frameId: 1325400070, value: "<b>DataFrame 2 x 5</b>" }] }, 
+{ name: "<span title=\"Charlie: DataFrame\">Charlie</span>", children: [], rightAlign: false, values: [{ frameId: 1325400071, value: "<b>DataFrame 2 x 5</b>" }] }, 
+{ name: "<span title=\"John: DataFrame\">John</span>", children: [], rightAlign: false, values: [{ frameId: 1325400072, value: "<b>DataFrame 1 x 5</b>" }] }, 
+{ name: "<span title=\"Linus: DataFrame\">Linus</span>", children: [], rightAlign: false, values: [{ frameId: 1325400073, value: "<b>DataFrame 1 x 5</b>" }] }, 
+], id: 1325400068, rootId: 1325400068, totalRows: 1 } ) });
+/*-->*/
+
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"firstName: String\">firstName</span>", children: [], rightAlign: false, values: ["Woody"] }, 
+{ name: "<span title=\"lastName: String\">lastName</span>", children: [], rightAlign: false, values: ["Allen"] }, 
+{ name: "<span title=\"name: DataRow\">name</span>", children: [0, 1], rightAlign: false, values: ["<span class=\"formatted\" title=\"firstName: Woody\nlastName: Allen\"><span class=\"structural\">{ </span><span class=\"structural\">firstName: </span>Woody<span class=\"structural\">, </span><span class=\"structural\">lastName: </span>Allen<span class=\"structural\"> }</span></span>"] }, 
+{ name: "<span title=\"age: Int\">age</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">15</span></span>"] }, 
+{ name: "<span title=\"city: String\">city</span>", children: [], rightAlign: false, values: ["Rome"] }, 
+{ name: "<span title=\"weight: Int\">weight</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">55</span></span>"] }, 
+{ name: "<span title=\"isDied: Boolean\">isDied</span>", children: [], rightAlign: false, values: ["false"] }, 
+], id: 1325400069, rootId: 1325400068, totalRows: 1 } ) });
+/*-->*/
+
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"firstName: String\">firstName</span>", children: [], rightAlign: false, values: ["Bob","Bob"] }, 
+{ name: "<span title=\"lastName: String\">lastName</span>", children: [], rightAlign: false, values: ["Dylan","Marley"] }, 
+{ name: "<span title=\"name: DataRow\">name</span>", children: [0, 1], rightAlign: false, values: ["<span class=\"formatted\" title=\"firstName: Bob\nlastName: Dylan\"><span class=\"structural\">{ </span><span class=\"structural\">firstName: </span>Bob<span class=\"structural\">, </span><span class=\"structural\">lastName: </span>Dylan<span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"firstName: Bob\nlastName: Marley\"><span class=\"structural\">{ </span><span class=\"structural\">firstName: </span>Bob<span class=\"structural\">, </span><span class=\"structural\">lastName: </span>Marley<span class=\"structural\"> }</span></span>"] }, 
+{ name: "<span title=\"age: Int\">age</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">45</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">15</span></span>"] }, 
+{ name: "<span title=\"city: String\">city</span>", children: [], rightAlign: false, values: ["Moscow","Cesena"] }, 
+{ name: "<span title=\"weight: Int?\">weight</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">70</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>"] }, 
+{ name: "<span title=\"isDied: Boolean\">isDied</span>", children: [], rightAlign: false, values: ["false","true"] }, 
+], id: 1325400070, rootId: 1325400068, totalRows: 2 } ) });
+/*-->*/
+
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"firstName: String\">firstName</span>", children: [], rightAlign: false, values: ["Charlie","Charlie"] }, 
+{ name: "<span title=\"lastName: String\">lastName</span>", children: [], rightAlign: false, values: ["Chaplin","Parker"] }, 
+{ name: "<span title=\"name: DataRow\">name</span>", children: [0, 1], rightAlign: false, values: ["<span class=\"formatted\" title=\"firstName: Charlie\nlastName: Chaplin\"><span class=\"structural\">{ </span><span class=\"structural\">firstName: </span>Charlie<span class=\"structural\">, </span><span class=\"structural\">lastName: </span>Cha<span class=\"structural\">...</span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"firstName: Charlie\nlastName: Parker\"><span class=\"structural\">{ </span><span class=\"structural\">firstName: </span>Charlie<span class=\"structural\">, </span><span class=\"structural\">lastName: </span>Parker<span class=\"structural\"> }</span></span>"] }, 
+{ name: "<span title=\"age: Int\">age</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">20</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">57</span></span>"] }, 
+{ name: "<span title=\"city: String\">city</span>", children: [], rightAlign: false, values: ["Tirana","Kyoto"] }, 
+{ name: "<span title=\"weight: Int?\">weight</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">90</span></span>"] }, 
+{ name: "<span title=\"isDied: Boolean\">isDied</span>", children: [], rightAlign: false, values: ["true","true"] }, 
+], id: 1325400071, rootId: 1325400068, totalRows: 2 } ) });
+/*-->*/
+
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"firstName: String\">firstName</span>", children: [], rightAlign: false, values: ["John"] }, 
+{ name: "<span title=\"lastName: String\">lastName</span>", children: [], rightAlign: false, values: ["Coltrane"] }, 
+{ name: "<span title=\"name: DataRow\">name</span>", children: [0, 1], rightAlign: false, values: ["<span class=\"formatted\" title=\"firstName: John\nlastName: Coltrane\"><span class=\"structural\">{ </span><span class=\"structural\">firstName: </span>John<span class=\"structural\">, </span><span class=\"structural\">lastName: </span>Coltrane<span class=\"structural\"> }</span></span>"] }, 
+{ name: "<span title=\"age: Int\">age</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">30</span></span>"] }, 
+{ name: "<span title=\"city: String\">city</span>", children: [], rightAlign: false, values: ["Sarajevo"] }, 
+{ name: "<span title=\"weight: Int\">weight</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">80</span></span>"] }, 
+{ name: "<span title=\"isDied: Boolean\">isDied</span>", children: [], rightAlign: false, values: ["true"] }, 
+], id: 1325400072, rootId: 1325400068, totalRows: 1 } ) });
+/*-->*/
+
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"firstName: String\">firstName</span>", children: [], rightAlign: false, values: ["Linus"] }, 
+{ name: "<span title=\"lastName: String\">lastName</span>", children: [], rightAlign: false, values: ["Torvalds"] }, 
+{ name: "<span title=\"name: DataRow\">name</span>", children: [0, 1], rightAlign: false, values: ["<span class=\"formatted\" title=\"firstName: Linus\nlastName: Torvalds\"><span class=\"structural\">{ </span><span class=\"structural\">firstName: </span>Linus<span class=\"structural\">, </span><span class=\"structural\">lastName: </span>Torvalds<span class=\"structural\"> }</span></span>"] }, 
+{ name: "<span title=\"age: Int\">age</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">22</span></span>"] }, 
+{ name: "<span title=\"city: String?\">city</span>", children: [], rightAlign: false, values: ["<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>"] }, 
+{ name: "<span title=\"weight: Int?\">weight</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>"] }, 
+{ name: "<span title=\"isDied: Boolean\">isDied</span>", children: [], rightAlign: false, values: ["false"] }, 
+], id: 1325400073, rootId: 1325400068, totalRows: 1 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(1325400068) });
+
+
+        </script>
+        </html></div></div>
+</div>
+<p>As the prompt below the dataframe suggests us, this is a <code class="docutils literal notranslate"><span class="pre">Pivot</span></code> object, and it should be a temporary object before applying an aggregate function or other manipulations. We will cover <code class="docutils literal notranslate"><span class="pre">pivot</span></code> and <code class="docutils literal notranslate"><span class="pre">groupBy</span></code> extensively in the next chapter.</p>
+<p>These nested structures can resemble to a <code class="docutils literal notranslate"><span class="pre">pandas.MultiIndex</span></code>: they both express the concept of organizing data in a <strong>hierarchical</strong> way.</p>
+<p>Dataframe multilevel structures differs from pandas because they do not have an explicit concept of <code class="docutils literal notranslate"><span class="pre">Index</span></code>, and operations like <code class="docutils literal notranslate"><span class="pre">pandas.dataframe.unfold()/unfold()</span></code> would make no sense. In some ways that result can be accomplished with some trickery, but Dataframe’s <code class="docutils literal notranslate"><span class="pre">ColumnGroup</span></code> or <code class="docutils literal notranslate"><span class="pre">FrameColumn</span></code> are not intended to substitute <code class="docutils literal notranslate"><span class="pre">pandas.MultiIndex</span></code>, even if they’re goal is very similar.</p>
+</section>
+<section id="working-with-multiple-dataframes">
+<h2>Working with Multiple DataFrames<a class="headerlink" href="#working-with-multiple-dataframes" title="Permalink to this heading">#</a></h2>
+<p>DataFrame provides three methods for operating with multiple <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>s:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">add</span></code>: adds new <strong>columns</strong> to the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">concat</span></code>: returns the <strong>union</strong> of the provided <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>s.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">join</span></code>: SQL-like join of two <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>s by <strong>key</strong> columns.</p></li>
+</ul>
+<p>we already have seen an application of the <code class="docutils literal notranslate"><span class="pre">add</span></code> method, but it is possible to add multiple columns all at once:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">groupedDf</span>
+<span class="w">    </span><span class="p">.</span><span class="na">convert</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">weight</span><span class="w"> </span><span class="p">}.</span><span class="na">toDouble</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">dropNA</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">weight</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">.</span><span class="na">add</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s">&quot;year of birth&quot;</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="m">2023</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">age</span>
+<span class="w">    </span><span class="n">age</span><span class="w"> </span><span class="n">gt</span><span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="n">into</span><span class="w"> </span><span class="s">&quot;is adult&quot;</span>
+<span class="w">    </span><span class="s">&quot;details&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="s">&quot;weight&quot;</span><span class="o">&lt;</span><span class="kt">Double</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">6.35</span><span class="w"> </span><span class="n">into</span><span class="w"> </span><span class="s">&quot;weight (approx. stones)&quot;</span>
+<span class="w">        </span><span class="s">&quot;full name&quot;</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">name</span><span class="p">.</span><span class="na">firstName</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">name</span><span class="p">.</span><span class="na">lastName</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <html>
+        <head>
+            <style type="text/css">
+                :root {
+    --background: #fff;
+    --background-odd: #f5f5f5;
+    --background-hover: #d9edfd;
+    --header-text-color: #474747;
+    --text-color: #848484;
+    --text-color-dark: #000;
+    --text-color-medium: #737373;
+    --text-color-pale: #b3b3b3;
+    --inner-border-color: #aaa;
+    --bold-border-color: #000;
+    --link-color: #296eaa;
+    --link-color-pale: #296eaa;
+    --link-hover: #1a466c;
+}
+
+:root[theme="dark"], :root [data-jp-theme-light="false"], .dataframe_dark{
+    --background: #303030;
+    --background-odd: #3c3c3c;
+    --background-hover: #464646;
+    --header-text-color: #dddddd;
+    --text-color: #b3b3b3;
+    --text-color-dark: #dddddd;
+    --text-color-medium: #b2b2b2;
+    --text-color-pale: #737373;
+    --inner-border-color: #707070;
+    --bold-border-color: #777777;
+    --link-color: #008dc0;
+    --link-color-pale: #97e1fb;
+    --link-hover: #00688e;
+}
+
+p.dataframe_description {
+    color: var(--text-color-dark);
+}
+
+table.dataframe {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    background-color: var(--background);
+    color: var(--text-color-dark);
+    border: none;
+    border-collapse: collapse;
+}
+
+table.dataframe th, td {
+    padding: 6px;
+    border: 1px solid transparent;
+    text-align: left;
+}
+
+table.dataframe th {
+    background-color: var(--background);
+    color: var(--header-text-color);
+}
+
+table.dataframe td {
+    vertical-align: top;
+}
+
+table.dataframe th.bottomBorder {
+    border-bottom-color: var(--bold-border-color);
+}
+
+table.dataframe tbody > tr:nth-child(odd) {
+    background: var(--background-odd);
+}
+
+table.dataframe tbody > tr:nth-child(even) {
+    background: var(--background);
+}
+
+table.dataframe tbody > tr:hover {
+    background: var(--background-hover);
+}
+
+table.dataframe a {
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+table.dataframe tr:hover > td a {
+    color: var(--link-color-pale);
+}
+
+table.dataframe a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+table.dataframe img {
+    max-width: fit-content;
+}
+
+table.dataframe th.complex {
+    background-color: var(--background);
+    border: 1px solid var(--background);
+}
+
+table.dataframe .leftBorder {
+    border-left-color: var(--inner-border-color);
+}
+
+table.dataframe .rightBorder {
+    border-right-color: var(--inner-border-color);
+}
+
+table.dataframe .rightAlign {
+    text-align: right;
+}
+
+table.dataframe .expanderSvg {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+}
+
+table.dataframe .expander {
+    display: flex;
+    align-items: center;
+}
+
+/* formatting */
+
+table.dataframe .null {
+    color: var(--text-color-pale);
+}
+
+table.dataframe .structural {
+    color: var(--text-color-medium);
+    font-weight: bold;
+}
+
+table.dataframe .dataFrameCaption {
+    font-weight: bold;
+}
+
+table.dataframe .numbers {
+    color: var(--text-color-dark);
+}
+
+table.dataframe td:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+table.dataframe tr:hover .formatted .structural, .null {
+    color: var(--text-color-dark);
+}
+
+
+
+
+            </style>
+        </head>
+        <body>
+            
+<table class="dataframe" id="df_1325400074"></table>
+
+<p class="dataframe_description">DataFrame: rowsCount = 4, columnsCount = 8</p>
+        </body>
+        <script>
+            
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"firstName: String\">firstName</span>", children: [], rightAlign: false, values: ["Woody","Bob","John","Charlie"] }, 
+{ name: "<span title=\"lastName: String\">lastName</span>", children: [], rightAlign: false, values: ["Allen","Dylan","Coltrane","Parker"] }, 
+{ name: "<span title=\"name: DataRow\">name</span>", children: [0, 1], rightAlign: false, values: ["<span class=\"formatted\" title=\"firstName: Woody\nlastName: Allen\"><span class=\"structural\">{ </span><span class=\"structural\">firstName: </span>Woody<span class=\"structural\">, </span><span class=\"structural\">lastName: </span>Allen<span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"firstName: Bob\nlastName: Dylan\"><span class=\"structural\">{ </span><span class=\"structural\">firstName: </span>Bob<span class=\"structural\">, </span><span class=\"structural\">lastName: </span>Dylan<span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"firstName: John\nlastName: Coltrane\"><span class=\"structural\">{ </span><span class=\"structural\">firstName: </span>John<span class=\"structural\">, </span><span class=\"structural\">lastName: </span>Coltrane<span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"firstName: Charlie\nlastName: Parker\"><span class=\"structural\">{ </span><span class=\"structural\">firstName: </span>Charlie<span class=\"structural\">, </span><span class=\"structural\">lastName: </span>Parker<span class=\"structural\"> }</span></span>"] }, 
+{ name: "<span title=\"age: Int\">age</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">15</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">45</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">30</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">57</span></span>"] }, 
+{ name: "<span title=\"city: String\">city</span>", children: [], rightAlign: false, values: ["Rome","Moscow","Sarajevo","Kyoto"] }, 
+{ name: "<span title=\"weight: Double\">weight</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">55.0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">70.0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">80.0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">90.0</span></span>"] }, 
+{ name: "<span title=\"isDied: Boolean\">isDied</span>", children: [], rightAlign: false, values: ["false","false","true","true"] }, 
+{ name: "<span title=\"year of birth: Int\">year of birth</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">2008</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1978</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1993</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1966</span></span>"] }, 
+{ name: "<span title=\"is adult: Boolean\">is adult</span>", children: [], rightAlign: false, values: ["false","true","true","true"] }, 
+{ name: "<span title=\"weight (approx. stones): Double\">weight (approx. stones)</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">8.661417</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">11.023622</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">12.598425</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">14.173228</span></span>"] }, 
+{ name: "<span title=\"full name: String\">full name</span>", children: [], rightAlign: false, values: ["Woody Allen","Bob Dylan","John Coltrane","Charlie Parker"] }, 
+{ name: "<span title=\"details: DataRow\">details</span>", children: [9, 10], rightAlign: false, values: ["<span class=\"formatted\" title=\"weight (approx. stones): 8.661417322834646\nfull name: Woody Allen\"><span class=\"structural\">{ </span><span class=\"structural\">weight (approx. stones): </span><span class=\"numbers\">8.7</span><span class=\"structural\">, </span><span class=\"structural\">ful...</span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"weight (approx. stones): 11.023622047244094\nfull name: Bob Dylan\"><span class=\"structural\">{ </span><span class=\"structural\">weight (approx. stones): </span><span class=\"numbers\">11.0</span><span class=\"structural\">, </span><span class=\"structural\">fu...</span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"weight (approx. stones): 12.598425196850394\nfull name: John Coltrane\"><span class=\"structural\">{ </span><span class=\"structural\">weight (approx. stones): </span><span class=\"numbers\">12.6</span><span class=\"structural\">, </span><span class=\"structural\">fu...</span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"weight (approx. stones): 14.173228346456694\nfull name: Charlie Parker\"><span class=\"structural\">{ </span><span class=\"structural\">weight (approx. stones): </span><span class=\"numbers\">14.2</span><span class=\"structural\">, </span><span class=\"structural\">fu...</span><span class=\"structural\"> }</span></span>"] }, 
+], id: 1325400074, rootId: 1325400074, totalRows: 4 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(1325400074) });
+
+
+        </script>
+        </html></div></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "kotlin"
+        },
+        kernelOptions: {
+            name: "kotlin",
+            path: "./ch5"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'kotlin'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro_wrangling.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data Wrangling</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../DA_examples/DA_Introduction.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data Analysis Examples</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#columngroup-and-framecolumn"><code class="docutils literal notranslate"><span class="pre">ColumnGroup</span></code> and <code class="docutils literal notranslate"><span class="pre">FrameColumn</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-multiple-dataframes">Working with Multiple DataFrames</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Stefano Furi
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
