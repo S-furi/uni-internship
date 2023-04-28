@@ -4,7 +4,7 @@ This repository contains a case study about the use of Kotlin for Data Science.
 The internship consists of analyzing the powerful tools that **pandas**
 provides and find their Kotlin counterparts.
 
-The main focus was on three major python libraries:
+The main focus was on four python libraries:
 - [`pandas`](https://pandas.pydata.org/docs/)
 - [`NumPy`](https://numpy.org/doc/stable/)
 - [`Matplotlib`](https://matplotlib.org/stable/users/index)
@@ -15,7 +15,7 @@ analyzed:
 - [`Dataframe`](https://github.com/Kotlin/dataframe)
 - [`Multik`](https://github.com/Kotlin/multik)
 - [`Lets-Plot`](https://github.com/JetBrains/lets-plot-kotlin)
-- No libraries were found that accomplish what Xarray does.
+- No libraries were found for what Xarray does.
 
 ## Tools
 For this project, as well as the above libraries, [Kotlin Jupyter Kernel](https://github.com/Kotlin/kotlin-jupyter)
