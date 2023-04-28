@@ -24,6 +24,8 @@ chapters:
   sections:
   - file: ch5/kt_wrangling.ipynb
 
+- file: ch7/intro_aggregation_grouping.ipynb
+
 - file: DA_examples/DA_Introduction.ipynb
   sections:
   - file: DA_examples/tips_kotlin.ipynb
