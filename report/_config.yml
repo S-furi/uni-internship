@@ -25,3 +25,7 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+
+sphinx:
+  config:
+    suppress_warnings: ["mystnb.unknown_mime_type"]
