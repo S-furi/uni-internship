@@ -23,6 +23,10 @@ chapters:
 - file: ch5/intro_wrangling.ipynb
   sections:
   - file: ch5/kt_wrangling.ipynb
+  
+- file: ch6/intro_plotting.ipynb
+  sections:
+  - file: ch6/kt_plotting.ipynb
 
 - file: ch7/intro_aggregation_grouping.ipynb
 
