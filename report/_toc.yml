@@ -29,6 +29,8 @@ chapters:
   - file: ch6/kt_plotting.ipynb
 
 - file: ch7/intro_aggregation_grouping.ipynb
+  sections:
+  - file: ch7/kt_aggregation.ipynb
 
 - file: DA_examples/DA_Introduction.ipynb
   sections:
