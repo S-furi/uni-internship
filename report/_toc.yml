@@ -37,3 +37,4 @@ chapters:
   - file: DA_examples/tips_kotlin.ipynb
   - file: DA_examples/tips_python.ipynb
 
+- file: bibliography.ipynb
