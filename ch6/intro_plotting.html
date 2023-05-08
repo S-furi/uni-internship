@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Data Wrangling &#8212; Data Science with Kotlin</title>
+    <title>Data Visualization &#8212; Data Science with Kotlin</title>
   
   
   
@@ -61,11 +61,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ch5/intro_wrangling';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch6/intro_plotting';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Data Wrangling with Kotlin" href="kt_wrangling.html" />
-    <link rel="prev" title="Data Manipulation with Kotlin" href="../ch4/kt_data_manipulation.html" />
+    <link rel="next" title="Visualizing Data in Kotlin" href="kt_plotting.html" />
+    <link rel="prev" title="Data Wrangling with Kotlin" href="../ch5/kt_wrangling.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -166,12 +166,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../ch4/kt_data_manipulation.html">Data Manipulation with Kotlin</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Data Wrangling</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="kt_wrangling.html">Data Wrangling with Kotlin</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch5/intro_wrangling.html">Data Wrangling</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch5/kt_wrangling.html">Data Wrangling with Kotlin</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ch6/intro_plotting.html">Data Visualization</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ch6/kt_plotting.html">Visualizing Data in Kotlin</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Data Visualization</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="kt_plotting.html">Visualizing Data in Kotlin</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ch7/intro_aggregation_grouping.html">Data Aggregation and Group Operations</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -255,7 +255,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/S-furi/uni-internship/tree/report/report/issues/new?title=Issue%20on%20page%20%2Fch5/intro_wrangling.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/S-furi/uni-internship/tree/report/report/issues/new?title=Issue%20on%20page%20%2Fch6/intro_plotting.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -285,7 +285,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/ch5/intro_wrangling.ipynb" target="_blank"
+      <li><a href="../_sources/ch6/intro_plotting.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -365,7 +365,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Data Wrangling</h1>
+    <h1>Data Visualization</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -379,16 +379,14 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="data-wrangling">
-<h1>Data Wrangling<a class="headerlink" href="#data-wrangling" title="Permalink to this heading">#</a></h1>
-<blockquote>
-<div><p>Data wrangling is the process of transforming and mapping data from one “raw” data form into another format that is more appropriate for analytics and visualization. The goal of data wrangling is to assure quality and usefulness of data.</p>
-</div></blockquote>
-<p>One step further of data preparation, let’s introduce data wrangling tools such as methods of Joining, Combining and Reshaping Dataframes.</p>
-<p>In a real world scenario, data may be spread across different locations and in a form that is not easy to analyze.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="data-visualization">
+<h1>Data Visualization<a class="headerlink" href="#data-visualization" title="Permalink to this heading">#</a></h1>
+<p>During the data analysis process, data visualization is one of the most important tasks. Making an effective informative visualization, may be useful in the exploratory process, but it can also be the end goal!</p>
+<p>Python’s most popular <strong>plotting</strong> library is <code class="docutils literal notranslate"><span class="pre">Matplotlib</span></code>, and it will be compared with Kotlin’s <code class="docutils literal notranslate"><span class="pre">Lets-Plot</span></code>  library, which is largely based on the API that <a class="reference external" href="https://ggplot2.tidyverse.org/"><code class="docutils literal notranslate"><span class="pre">ggplot2</span></code></a> (<em>R</em> open source plotting library) offers.</p>
+<p>The approach of ggplot and Lets-Plot is to use a series of <strong>layers</strong> for building the figure, whereas Matplotlib uses an object oriented approach, where all the customization is made on the figure itself.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="kt_wrangling.html">Data Wrangling with Kotlin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kt_plotting.html">Visualizing Data in Kotlin</a></li>
 </ul>
 </div>
 </section>
@@ -402,16 +400,16 @@ document.write(`
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "kotlin"
+            mode: ""
         },
         kernelOptions: {
-            name: "kotlin",
-            path: "./ch5"
+            name: "",
+            path: "./ch6"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'kotlin'</script>
+    <script>kernelName = ''</script>
 
                 </article>
               
@@ -425,20 +423,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../ch4/kt_data_manipulation.html"
+       href="../ch5/kt_wrangling.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Data Manipulation with Kotlin</p>
+        <p class="prev-next-title">Data Wrangling with Kotlin</p>
       </div>
     </a>
     <a class="right-next"
-       href="kt_wrangling.html"
+       href="kt_plotting.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Data Wrangling with Kotlin</p>
+        <p class="prev-next-title">Visualizing Data in Kotlin</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

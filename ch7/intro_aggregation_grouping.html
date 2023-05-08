@@ -64,8 +64,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch7/intro_aggregation_grouping';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Data Analysis Examples" href="../DA_examples/DA_Introduction.html" />
-    <link rel="prev" title="Data Wrangling with Kotlin" href="../ch5/kt_wrangling.html" />
+    <link rel="next" title="Data Grouping and Aggregation with Kotlin" href="kt_aggregation.html" />
+    <link rel="prev" title="Visualizing Data in Kotlin" href="../ch6/kt_plotting.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -170,12 +170,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../ch5/kt_wrangling.html">Data Wrangling with Kotlin</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Data Aggregation and Group Operations</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../DA_examples/DA_Introduction.html">Data Analysis Examples</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch6/intro_plotting.html">Data Visualization</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch6/kt_plotting.html">Visualizing Data in Kotlin</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Data Aggregation and Group Operations</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="kt_aggregation.html">Data Grouping and Aggregation with Kotlin</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../DA_examples/DA_Introduction.html">Data Analysis Examples</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../DA_examples/tips_kotlin.html">Kotlin: Tips Dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../DA_examples/tips_python.html">Python: Tips Dataset</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
 </ul>
 
     </div>
@@ -373,8 +381,13 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="data-aggregation-and-group-operations">
 <h1>Data Aggregation and Group Operations<a class="headerlink" href="#data-aggregation-and-group-operations" title="Permalink to this heading">#</a></h1>
-<p>Having no such thing as <code class="docutils literal notranslate"><span class="pre">pandas.Index</span></code>, in Kotlin DataFrame the structure of the tabular data is more flexible, but in the same time it lacks all the power that a  a <em>labeled</em> index or multi index could give.</p>
-<p>The tabular object represented by a Kotlin <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is slightly different from the pandas one, and so we have to think differently sometimes when it comes to replicate some pandas behaviors.</p>
+<p>Another important tool for data analysis, is the ability to group and categorize data, for computing some statistics with aggregate operations to each group, or maybe pivoting a table for statistical visualization purposes.</p>
+<p>Both pandas and Kotlin DataFrame follow the <strong>split-apply-combine</strong> strategy (<span id="id1">[<a class="reference internal" href="../bibliography.html#id2" title="Hadley Wickham. The Split-Apply-Combine Strategy for Data Analysis. Journal of Statistical Software, 40(1):1–29, April 2011. URL: http://www.jstatsoft.org/v40/i01.">Wic11</a>]</span>).</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/split-apply-combine.png"><img alt="Split-Apply-Combine demonstration" class="bg-primary mb-1 align-center" src="../_images/split-apply-combine.png" style="width: 250px;" /></a>
+<p>This strategy involves breaking down a dataset into smaller subsets, performing a specific analysis or transformation on each subset, and then combining the result into a single output.</p>
+<p>In the following section we will see in depth how Kotlin DataFrame compute grouping operations, data aggregation and table pivoting in comparison with pandas.</p>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -409,20 +422,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../ch5/kt_wrangling.html"
+       href="../ch6/kt_plotting.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Data Wrangling with Kotlin</p>
+        <p class="prev-next-title">Visualizing Data in Kotlin</p>
       </div>
     </a>
     <a class="right-next"
-       href="../DA_examples/DA_Introduction.html"
+       href="kt_aggregation.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Data Analysis Examples</p>
+        <p class="prev-next-title">Data Grouping and Aggregation with Kotlin</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
