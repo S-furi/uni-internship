@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Data Analysis and Manipulation &#8212; Data Science with Kotlin</title>
+    <title>Data Analysis and Manipulation Tools &#8212; Data Science with Kotlin</title>
   
   
   
@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Data handling with Dataframe" href="Intro_dataframe.html" />
-    <link rel="prev" title="Python NDArrays" href="../ch1/NumPy_Arrays.html" />
+    <link rel="prev" title="Kotlin NDArrays" href="../ch1/Multik_Arrays.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -153,12 +153,10 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ch1/Arrays%26Matrices.html">Working with Arrays and Matrices</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ch1/Multik_Arrays.html">Kotlin NDArrays</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ch1/NumPy_Arrays.html">Python NDArrays</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Data Analysis and Manipulation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Data Analysis and Manipulation Tools</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Intro_dataframe.html">Data handling with Dataframe</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Intro_pandas.html">Data handling with Pandas</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ch3/io.html">Data Loading and Storage</a></li>
@@ -365,7 +363,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Data Analysis and Manipulation</h1>
+    <h1>Data Analysis and Manipulation Tools</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -379,14 +377,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="data-analysis-and-manipulation">
-<h1>Data Analysis and Manipulation<a class="headerlink" href="#data-analysis-and-manipulation" title="Permalink to this heading">#</a></h1>
-<p>In the following section we will see and discuss how Kotlin and Python differs and resemble when involved in handling <strong>Data</strong>.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="data-analysis-and-manipulation-tools">
+<h1>Data Analysis and Manipulation Tools<a class="headerlink" href="#data-analysis-and-manipulation-tools" title="Permalink to this heading">#</a></h1>
+<p>When dealing with large datasets, having efficient tools and libraries can greatly improve the speed and accuracy of these tasks. In the following section, it will be presented <strong>Kotlin DataFrame</strong>, a library that is inspired largely by <strong>pandas</strong>, kotlin collections and Krangl. This library tries to integrate the dynamic nature of data, and the static typing of Kotlin, through a series of techniques that will be explored later on.
+As NumPy, <strong>pandas</strong> has been a de-facto standard when dealing with loading, manipulating and presenting data when it comes to data analysis tasks.</p>
+<p>In the following section we will see and discuss how Kotlin and Python differs and resemble when involved in handling data with the tools provided by Kotlin DataFrame in contrast to Python’s pandas.</p>
 <div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Intro_dataframe.html">Data handling with Dataframe</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Intro_pandas.html">Data handling with Pandas</a></li>
-</ul>
 </div>
 </section>
 
@@ -422,12 +418,12 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../ch1/NumPy_Arrays.html"
+       href="../ch1/Multik_Arrays.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Python NDArrays</p>
+        <p class="prev-next-title">Kotlin NDArrays</p>
       </div>
     </a>
     <a class="right-next"

@@ -153,12 +153,10 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Working with Arrays and Matrices</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Multik_Arrays.html">Kotlin NDArrays</a></li>
-<li class="toctree-l2"><a class="reference internal" href="NumPy_Arrays.html">Python NDArrays</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ch2/Data_Manipulation.html">Data Analysis and Manipulation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ch2/Intro_dataframe.html">Data handling with Dataframe</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ch2/Intro_pandas.html">Data handling with Pandas</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ch3/io.html">Data Loading and Storage</a></li>
@@ -354,9 +352,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -372,15 +368,6 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy">Numpy</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multik">Multik</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -392,24 +379,14 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="working-with-arrays-and-matrices">
 <h1>Working with Arrays and Matrices<a class="headerlink" href="#working-with-arrays-and-matrices" title="Permalink to this heading">#</a></h1>
-<p>Every Data Scientist works daily with vectors and matrices, as they are the foundation about Data Analysis, Machine Learning and a lot of computer science mathematical models (need better intro).</p>
-<section id="numpy">
-<h2>Numpy<a class="headerlink" href="#numpy" title="Permalink to this heading">#</a></h2>
-<p><a class="reference external" href="https://numpy.org/">NumPy</a> has been the standard for working with multidimensional arrays since 2006, the date of it’s release. Its core structure comes from late ’90s <em>Numerical Python</em> and <em>Numarray</em> packages, which for efficiency reasons, implemented most of their their core functions with the <em>C</em> programming language.</p>
-<p>Today a lot of Data Science libraries, like pandas, SciPy, matplotlib or Xarray are heavily dependent on NumPy.</p>
-</section>
-<section id="multik">
-<h2>Multik<a class="headerlink" href="#multik" title="Permalink to this heading">#</a></h2>
-<p>As the name suggests, <a class="reference external" href="https://github.com/Kotlin/multik">Multik</a> is a multidimensional array library for Kotlin, and it’s syntax reminds NumPy, making the transition from one to another very easy.</p>
-<p>In contrast to NumPy, Multik is a very “young” (v0.1.0 is dated to October 11th, 2021) and its stability and  performances and can be worst than NumPy’s.</p>
-<p>Let’s jump to some examples, both in Kotlin and Python</p>
+<p>Vectors and matrices are fundamental mathematical objects that play a crucial role in many data science tasks, such as linear algebra, statistics and machine learning. Manipulating and processing these objects is often a critical step, for example in data preprocessing.</p>
+<p>Python’s <strong>NumPy</strong> is a widely used for scientific computing, and Kotlin <strong>Multik</strong> provides similar set of data structures and functions as NumPy, with some limitations.</p>
+<p>In this chapter, we will explore how to create and manipulate N-Dimensional Arrays, perform basic operations and using some built-in functions for more advanced operations.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Multik_Arrays.html">Kotlin NDArrays</a></li>
-<li class="toctree-l1"><a class="reference internal" href="NumPy_Arrays.html">Python NDArrays</a></li>
 </ul>
 </div>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -470,21 +447,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy">Numpy</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multik">Multik</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

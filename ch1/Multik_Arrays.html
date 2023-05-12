@@ -64,7 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch1/Multik_Arrays';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Python NDArrays" href="NumPy_Arrays.html" />
+    <link rel="next" title="Data Analysis and Manipulation" href="../ch2/Data_Manipulation.html" />
     <link rel="prev" title="Working with Arrays and Matrices" href="Arrays%26Matrices.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -153,12 +153,10 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="Arrays%26Matrices.html">Working with Arrays and Matrices</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Kotlin NDArrays</a></li>
-<li class="toctree-l2"><a class="reference internal" href="NumPy_Arrays.html">Python NDArrays</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ch2/Data_Manipulation.html">Data Analysis and Manipulation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ch2/Intro_dataframe.html">Data handling with Dataframe</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ch2/Intro_pandas.html">Data handling with Pandas</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ch3/io.html">Data Loading and Storage</a></li>
@@ -377,6 +375,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mutlik-engines">Mutlik <em>Engines</em></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creation">Creation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-with-ndarrays">Arithmetic with NDArrays</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-and-slicing">Indexing and Slicing</a><ul class="nav section-nav flex-column">
@@ -389,6 +388,7 @@ document.write(`
 </li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
 </ul>
             </nav>
         </div>
@@ -402,6 +402,16 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="kotlin-ndarrays">
 <h1>Kotlin NDArrays<a class="headerlink" href="#kotlin-ndarrays" title="Permalink to this heading">#</a></h1>
+<section id="mutlik-engines">
+<h2>Mutlik <em>Engines</em><a class="headerlink" href="#mutlik-engines" title="Permalink to this heading">#</a></h2>
+<p>Multik engines are a key feature of this library, which provide a way to perform computation on arrays using different backends.</p>
+<p>In the context of Multik, a <strong>backend</strong> is a software component that provides the implementation of <em>specific array operations</em> (i.e. a backend might implement the algorithm for matrix multiplication).
+Multik lets the user select a backend (a default one is loaded when specifying anything), depending on his specific needs and requirements.
+Currently, there are several Multik engines available, including:</p>
+<ul class="simple">
+<li><p>JVM Engine: default engine, runs on the JVM and provides basic array operations.</p></li>
+<li><p>Apache Arrow Engine</p></li>
+</ul>
 <p>Thanks to <strong>Multik</strong> and the standard Collections library, it’s easy to create, access and manipulate N-dimensional arrays and matrices.</p>
 <p>You can import Multik using Jupyter’s magic command <code class="docutils literal notranslate"><span class="pre">%use</span></code>, for importing Multik library and dependencies.</p>
 <div class="cell docutils container">
@@ -411,7 +421,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>We can create a simple 1D array as follows (type declaration is not mandatory)</p>
+<p>We can then create a simple 1D array as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">arr</span><span class="p">:</span><span class="w"> </span><span class="n">NDArray</span><span class="o">&lt;</span><span class="kt">Int</span><span class="p">,</span><span class="w"> </span><span class="n">D1</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk</span><span class="p">.</span><span class="na">ndarray</span><span class="p">(</span><span class="n">mk</span><span class="o">[</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="o">]</span><span class="p">)</span>
@@ -459,9 +469,11 @@ document.write(`
 </div>
 </div>
 </div>
+<p>Already from these examples, it’s quite easy to spot the similarities with NumPy API, but at the same time, Kotlin’s static typing can be a bit tedious at first comparing to NumPy, but the effort will often pay off.</p>
+</section>
 <section id="creation">
 <h2>Creation<a class="headerlink" href="#creation" title="Permalink to this heading">#</a></h2>
-<p>We will go through simple <code class="docutils literal notranslate"><span class="pre">NDArrays</span></code> creation methods.</p>
+<p>We will go through simple <code class="docutils literal notranslate"><span class="pre">NDArrays</span></code> creation methods. Most of the times they’re very similar to NumPy’s methods, so the following examples should be already familiar.</p>
 <p>Creating equally spaced arrays with <code class="docutils literal notranslate"><span class="pre">arange</span></code> and <code class="docutils literal notranslate"><span class="pre">linspace</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -711,11 +723,11 @@ In section K (some ref to where i could explain how to) I explain how to archiev
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-0.5892392133872535, 0.587145481453083, 0.4610218641636163, 0.2528890497186059, 0.17766063804771973],
-[-0.3660925003555784, -0.5239593227355488, 0.33246111379464294, 0.2195407289572239, -0.6578102959404498],
-[-0.3680592070716538, 0.279332026412278, -0.7910011104359198, 0.1856185723577361, -0.3554842162392213],
-[-0.4631774813007561, -0.07085649571475122, -0.020772943654068357, -0.8831387209018219, 0.008970077299126649],
-[-0.41081926865209817, -0.5456003920115604, -0.22542000061799333, 0.2710364220932704, 0.6397443410935725]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-0.30188948369288604, 0.36948030653024977, 0.31328306935193995, 0.7220615838621778, 0.39093200213058377],
+[-0.5323036741105353, -0.46300105100495464, 0.6519382996687945, -0.13780024526207268, -0.24139256642947096],
+[-0.49094620945891393, -0.06735516917524868, -0.5707355976751803, 0.3694827313891453, -0.5405353728988229],
+[-0.33534423786516154, 0.7822196202083642, 0.10204175921863778, -0.4660595278277624, -0.21920926939398622],
+[-0.5215664863779369, -0.18085927347270922, -0.3750713649484711, -0.32543692052736733, 0.6698287881538476]]
 </pre></div>
 </div>
 </div>
@@ -727,11 +739,11 @@ In section K (some ref to where i could explain how to) I explain how to archiev
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-2.8606890096404736, -2.604053115096417, -2.078851376976389, -3.111140213477543, -3.0247173650733234],
-[0.0, -0.829663911699473, -0.09468856621457686, -0.5416634009545709, -0.9379987537608431],
-[0.0, 0.0, -0.2525733957646389, -0.10681192158088122, -0.1553278132791847],
-[0.0, 0.0, 0.0, -0.5572452918488751, 0.027627047866794784],
-[0.0, 0.0, 0.0, 0.0, 0.04676756759680995]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-2.311404757467395, -4.322301104798068, -4.570634827519278, -2.7010533254068894, -4.823370010621805],
+[0.0, -0.20160209575368554, -0.17256409514278054, 0.18895593161229185, -0.1647606736923718],
+[0.0, 0.0, -0.578684796564817, -0.11176706966541122, -0.53402698944103],
+[0.0, 0.0, 0.0, -0.10401341605389554, -0.06047350308547101],
+[0.0, 0.0, 0.0, 0.0, 0.05440743575781085]]
 </pre></div>
 </div>
 </div>
@@ -850,6 +862,7 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 </div>
+<p>Note that this approach violates the immutability provided by Kotlin’s <code class="docutils literal notranslate"><span class="pre">val</span></code>  keyword!</p>
 </section>
 </section>
 <section id="mathematical-and-statistical-methods">
@@ -867,13 +880,13 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean of the whole matrix -&gt; 0.43087134909248526
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean of the whole matrix -&gt; 0.5314246791028435
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean across columns -&gt; [0.3182657605412622, 0.5855373244822845, 0.47591670065554725, 0.3437656106908472]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean across columns -&gt; [0.48009328627502895, 0.5258239100194002, 0.5660426374106935, 0.5537388827062515]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean across rows -&gt; [0.2823732381516043, 0.6204974543700701, 0.45270930450327207, 0.43477637437532884, 0.364000374062151]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean across rows -&gt; [0.4287715029887322, 0.6709688339608653, 0.5541243133824354, 0.4116743105458772, 0.5915844346363076]
 </pre></div>
 </div>
 </div>
@@ -906,7 +919,7 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="ARmLKc"></div>
+<div class="output text_html">   <div id="DVl1PR"></div>
    <script type="text/javascript" data-lets-plot-script="library">
        if(!window.letsPlotCallQueue) {
            window.letsPlotCallQueue = [];
@@ -931,9 +944,9 @@ We can then call the default <code class="docutils literal notranslate"><span cl
                var div = document.createElement("div");
                div.style.color = 'darkred';
                div.textContent = 'Error loading Lets-Plot JS';
-               document.getElementById("ARmLKc").appendChild(div);
+               document.getElementById("DVl1PR").appendChild(div);
            };
-           var e = document.getElementById("ARmLKc");
+           var e = document.getElementById("DVl1PR");
            e.appendChild(script);
        })();
    </script></div></div>
@@ -946,7 +959,7 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="SeajQ5"></div>
+<div class="output text_html">   <div id="2STeWO"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -970,7 +983,7 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 "y":[0.0,-1.0,0.0,1.0,0.0,-1.0,-2.0,-1.0,-2.0,-3.0,-2.0,-1.0,-2.0,-3.0,-4.0,-3.0,-4.0,-3.0,-4.0,-3.0,-2.0,-3.0,-2.0,-3.0,-4.0,-5.0,-4.0,-3.0,-2.0,-3.0,-4.0,-5.0,-6.0,-7.0,-8.0,-7.0,-6.0,-5.0,-4.0,-3.0,-4.0,-3.0,-4.0,-3.0,-4.0,-3.0,-4.0,-5.0,-4.0,-5.0,-6.0,-7.0,-8.0,-9.0,-10.0,-9.0,-8.0,-9.0,-10.0,-11.0,-12.0,-13.0,-12.0,-13.0,-12.0,-13.0,-12.0,-13.0,-14.0,-15.0,-16.0,-15.0,-16.0,-15.0,-16.0,-15.0,-14.0,-13.0,-12.0,-13.0,-12.0,-13.0,-12.0,-11.0,-12.0,-13.0,-14.0,-15.0,-14.0,-13.0,-14.0,-13.0,-14.0,-13.0,-14.0,-13.0,-12.0,-13.0,-14.0,-15.0,-14.0]
 }
 };
-           var plotContainer = document.getElementById("SeajQ5");
+           var plotContainer = document.getElementById("2STeWO");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -1032,7 +1045,7 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="PcYnNr"></div>
+<div class="output text_html">   <div id="jUuz2J"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -1068,14 +1081,14 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 "y":[1.0,0.0,1.0,0.0,1.0,2.0,1.0,0.0,-1.0,-2.0,-1.0,-2.0,-1.0,-2.0,-1.0,-2.0,-3.0,-4.0,-5.0,-4.0,-3.0,-2.0,-1.0,0.0,1.0,2.0,3.0,2.0,1.0,0.0,-1.0,-2.0,-3.0,-4.0,-5.0,-4.0,-3.0,-4.0,-5.0,-6.0,-5.0,-6.0,-7.0,-8.0,-7.0,-8.0,-7.0,-6.0,-7.0,-8.0,-7.0,-6.0,-7.0,-8.0,-9.0,-10.0,-9.0,-8.0,-9.0,-8.0,-7.0,-6.0,-5.0,-4.0,-5.0,-4.0,-3.0,-2.0,-3.0,-4.0,-3.0,-4.0,-3.0,-2.0,-3.0,-4.0,-3.0,-4.0,-5.0,-4.0,-3.0,-4.0,-3.0,-2.0,-3.0,-2.0,-3.0,-2.0,-1.0,-2.0,-3.0,-2.0,-3.0,-4.0,-5.0,-6.0,-5.0,-6.0,-5.0,-6.0]
 }
 };
-           var plotContainer = document.getElementById("PcYnNr");
+           var plotContainer = document.getElementById("jUuz2J");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
        })();    
    </script></div></div>
 </div>
-<p>We can also simulate many random walks at once</p>
+<p>Multik’s <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>s become handy in case we want to simulate many random walks at once, representing them in a matrix, where each row is a walk and each column of that row is a step:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">nwalks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5000</span>
@@ -1135,6 +1148,12 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 </section>
 </section>
 </section>
+<section id="conclusions">
+<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this heading">#</a></h2>
+<p>In this chapter was presented Kotlin’s Multik library for working with N-Dimensional Arrays. The set of data structure and methods are very close to NumPy’s, which makes it very easy to learn if the developer has a basic knowledge of NumPy. However, NumPy has more that 20 years of development and fine tuning, resulting in one of the best libraries for scientific computation: the better support for linear algebra operation, array broadcasting and the possibility to use multidimensional arrays with <em>non-numeric</em> data types, makes it a very flexible and powerful library.
+On the other hand, Multik can be used with libraries like <a class="reference external" href="https://github.com/SciProgCentre/kmath">Kmath</a> and <a class="reference external" href="https://github.com/apache/commons-math">Apache Commons Math</a>, or any other library developed in Java, making it very powerful with the right set of components at the need of the developer (i.e. array broadcasting and more advanced linear algebra can be accomplished with the use of Kmath). Please note that Multik is very efficient with basic mathematical computation, and for a little bit more, Kmath connectors for Multik can really help archiving more difficult tasks (i.e. integration).</p>
+<p>Kotlin ecosystem for scientific computation is still young, but with the joint use of the right libraries, a lot can be archived.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1178,11 +1197,11 @@ We can then call the default <code class="docutils literal notranslate"><span cl
       </div>
     </a>
     <a class="right-next"
-       href="NumPy_Arrays.html"
+       href="../ch2/Data_Manipulation.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Python NDArrays</p>
+        <p class="prev-next-title">Data Analysis and Manipulation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1204,6 +1223,7 @@ We can then call the default <code class="docutils literal notranslate"><span cl
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mutlik-engines">Mutlik <em>Engines</em></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creation">Creation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-with-ndarrays">Arithmetic with NDArrays</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-and-slicing">Indexing and Slicing</a><ul class="nav section-nav flex-column">
@@ -1216,6 +1236,7 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 </li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
 </ul>
   </nav></div>
 
