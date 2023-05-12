@@ -7,12 +7,10 @@ chapters:
 - file: ch1/Arrays&Matrices.ipynb
   sections:
   - file: ch1/Multik_Arrays.ipynb
-  - file: ch1/NumPy_Arrays.ipynb
 
 - file: ch2/Data_Manipulation.ipynb
   sections:
   - file: ch2/Intro_dataframe.ipynb 
-  - file: ch2/Intro_pandas.ipynb
 
 - file: ch3/io.ipynb
   
