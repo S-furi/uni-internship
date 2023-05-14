@@ -64,7 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch1/Multik_Arrays';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Data Analysis and Manipulation" href="../ch2/Data_Manipulation.html" />
+    <link rel="next" title="Data Analysis and Manipulation Tools" href="../ch2/Data_Manipulation.html" />
     <link rel="prev" title="Working with Arrays and Matrices" href="Arrays%26Matrices.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -155,13 +155,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Kotlin NDArrays</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ch2/Data_Manipulation.html">Data Analysis and Manipulation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch2/Data_Manipulation.html">Data Analysis and Manipulation Tools</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ch2/Intro_dataframe.html">Data handling with Dataframe</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ch3/io.html">Data Loading and Storage</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ch4/Intro_DataCleaning.html">Data Cleaning and Preparation</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ch4/kt_data_manipulation.html">Data Manipulation with Kotlin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch4/kt_data_manipulation.html">Data Preparation with Kotlin</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ch5/intro_wrangling.html">Data Wrangling</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -723,11 +723,11 @@ In section K (some ref to where i could explain how to) I explain how to archiev
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-0.30188948369288604, 0.36948030653024977, 0.31328306935193995, 0.7220615838621778, 0.39093200213058377],
-[-0.5323036741105353, -0.46300105100495464, 0.6519382996687945, -0.13780024526207268, -0.24139256642947096],
-[-0.49094620945891393, -0.06735516917524868, -0.5707355976751803, 0.3694827313891453, -0.5405353728988229],
-[-0.33534423786516154, 0.7822196202083642, 0.10204175921863778, -0.4660595278277624, -0.21920926939398622],
-[-0.5215664863779369, -0.18085927347270922, -0.3750713649484711, -0.32543692052736733, 0.6698287881538476]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-0.6083512977255217, 0.7474094489573451, -0.16714866174465792, -0.10611209391202417, -0.17913504003272737],
+[-0.5062541748944486, -0.2310332037446415, 0.8162781206926362, 0.13048320797790677, -0.08363331443701297],
+[-0.4242300541096698, -0.21284842510268515, -0.36280818704492024, 0.5929216822275111, 0.5399430592933756],
+[-0.2815339512247536, -0.4849496302722392, -0.3936451198263211, 0.04564291934700874, -0.7269956904665943],
+[-0.33820541754309535, -0.32790574622426116, -0.1384380497029892, -0.7861774345651119, 0.37530636140713475]]
 </pre></div>
 </div>
 </div>
@@ -739,11 +739,11 @@ In section K (some ref to where i could explain how to) I explain how to archiev
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-2.311404757467395, -4.322301104798068, -4.570634827519278, -2.7010533254068894, -4.823370010621805],
-[0.0, -0.20160209575368554, -0.17256409514278054, 0.18895593161229185, -0.1647606736923718],
-[0.0, 0.0, -0.578684796564817, -0.11176706966541122, -0.53402698944103],
-[0.0, 0.0, 0.0, -0.10401341605389554, -0.06047350308547101],
-[0.0, 0.0, 0.0, 0.0, 0.05440743575781085]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-4.819310752369125, -4.5096358293082375, -4.1288225231608, -3.284653005377648, -3.7430079554439306],
+[0.0, -0.40626542914622615, -0.6939540324310702, -1.0045369263078479, -1.0527764300015456],
+[0.0, 0.0, -0.30744919911576013, -0.48108657645012265, -0.4958106545091753],
+[0.0, 0.0, 0.0, -0.27295751067736923, -0.5641170502941568],
+[0.0, 0.0, 0.0, 0.0, 0.016889041871360318]]
 </pre></div>
 </div>
 </div>
@@ -880,13 +880,13 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean of the whole matrix -&gt; 0.5314246791028435
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean of the whole matrix -&gt; 0.6127357057876472
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean across columns -&gt; [0.48009328627502895, 0.5258239100194002, 0.5660426374106935, 0.5537388827062515]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean across columns -&gt; [0.7889676787529054, 0.5970951633712647, 0.6252245191614083, 0.43965546186501053]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean across rows -&gt; [0.4287715029887322, 0.6709688339608653, 0.5541243133824354, 0.4116743105458772, 0.5915844346363076]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean across rows -&gt; [0.6794559268677067, 0.56572353669525, 0.6552080081617992, 0.7783467583803522, 0.3849442988331281]
 </pre></div>
 </div>
 </div>
@@ -919,7 +919,7 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="DVl1PR"></div>
+<div class="output text_html">   <div id="K2kl63"></div>
    <script type="text/javascript" data-lets-plot-script="library">
        if(!window.letsPlotCallQueue) {
            window.letsPlotCallQueue = [];
@@ -944,9 +944,9 @@ We can then call the default <code class="docutils literal notranslate"><span cl
                var div = document.createElement("div");
                div.style.color = 'darkred';
                div.textContent = 'Error loading Lets-Plot JS';
-               document.getElementById("DVl1PR").appendChild(div);
+               document.getElementById("K2kl63").appendChild(div);
            };
-           var e = document.getElementById("DVl1PR");
+           var e = document.getElementById("K2kl63");
            e.appendChild(script);
        })();
    </script></div></div>
@@ -959,7 +959,7 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="2STeWO"></div>
+<div class="output text_html">   <div id="GJpb9c"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -983,7 +983,7 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 "y":[0.0,-1.0,0.0,1.0,0.0,-1.0,-2.0,-1.0,-2.0,-3.0,-2.0,-1.0,-2.0,-3.0,-4.0,-3.0,-4.0,-3.0,-4.0,-3.0,-2.0,-3.0,-2.0,-3.0,-4.0,-5.0,-4.0,-3.0,-2.0,-3.0,-4.0,-5.0,-6.0,-7.0,-8.0,-7.0,-6.0,-5.0,-4.0,-3.0,-4.0,-3.0,-4.0,-3.0,-4.0,-3.0,-4.0,-5.0,-4.0,-5.0,-6.0,-7.0,-8.0,-9.0,-10.0,-9.0,-8.0,-9.0,-10.0,-11.0,-12.0,-13.0,-12.0,-13.0,-12.0,-13.0,-12.0,-13.0,-14.0,-15.0,-16.0,-15.0,-16.0,-15.0,-16.0,-15.0,-14.0,-13.0,-12.0,-13.0,-12.0,-13.0,-12.0,-11.0,-12.0,-13.0,-14.0,-15.0,-14.0,-13.0,-14.0,-13.0,-14.0,-13.0,-14.0,-13.0,-12.0,-13.0,-14.0,-15.0,-14.0]
 }
 };
-           var plotContainer = document.getElementById("2STeWO");
+           var plotContainer = document.getElementById("GJpb9c");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -1045,7 +1045,7 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="jUuz2J"></div>
+<div class="output text_html">   <div id="TkoEhn"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -1081,7 +1081,7 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 "y":[1.0,0.0,1.0,0.0,1.0,2.0,1.0,0.0,-1.0,-2.0,-1.0,-2.0,-1.0,-2.0,-1.0,-2.0,-3.0,-4.0,-5.0,-4.0,-3.0,-2.0,-1.0,0.0,1.0,2.0,3.0,2.0,1.0,0.0,-1.0,-2.0,-3.0,-4.0,-5.0,-4.0,-3.0,-4.0,-5.0,-6.0,-5.0,-6.0,-7.0,-8.0,-7.0,-8.0,-7.0,-6.0,-7.0,-8.0,-7.0,-6.0,-7.0,-8.0,-9.0,-10.0,-9.0,-8.0,-9.0,-8.0,-7.0,-6.0,-5.0,-4.0,-5.0,-4.0,-3.0,-2.0,-3.0,-4.0,-3.0,-4.0,-3.0,-2.0,-3.0,-4.0,-3.0,-4.0,-5.0,-4.0,-3.0,-4.0,-3.0,-2.0,-3.0,-2.0,-3.0,-2.0,-1.0,-2.0,-3.0,-2.0,-3.0,-4.0,-5.0,-6.0,-5.0,-6.0,-5.0,-6.0]
 }
 };
-           var plotContainer = document.getElementById("jUuz2J");
+           var plotContainer = document.getElementById("TkoEhn");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -1201,7 +1201,7 @@ On the other hand, Multik can be used with libraries like <a class="reference ex
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Data Analysis and Manipulation</p>
+        <p class="prev-next-title">Data Analysis and Manipulation Tools</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

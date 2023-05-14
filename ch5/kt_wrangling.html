@@ -155,13 +155,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../ch1/Multik_Arrays.html">Kotlin NDArrays</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ch2/Data_Manipulation.html">Data Analysis and Manipulation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch2/Data_Manipulation.html">Data Analysis and Manipulation Tools</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ch2/Intro_dataframe.html">Data handling with Dataframe</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ch3/io.html">Data Loading and Storage</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ch4/Intro_DataCleaning.html">Data Cleaning and Preparation</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ch4/kt_data_manipulation.html">Data Manipulation with Kotlin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch4/kt_data_manipulation.html">Data Preparation with Kotlin</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="intro_wrangling.html">Data Wrangling</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
@@ -378,6 +378,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#columngroup-and-framecolumn"><code class="docutils literal notranslate"><span class="pre">ColumnGroup</span></code> and <code class="docutils literal notranslate"><span class="pre">FrameColumn</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-multiple-dataframes">Working with Multiple DataFrames</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reshaping-and-pivoting">Reshaping and Pivoting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
 </ul>
             </nav>
         </div>
@@ -391,6 +392,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="data-wrangling-with-kotlin">
 <h1>Data Wrangling with Kotlin<a class="headerlink" href="#data-wrangling-with-kotlin" title="Permalink to this heading">#</a></h1>
+<p>In this chapter we will explore some tools and strategies that Kotlin DataFrame offers for all the tasks involved in data wrangling, alongside their python’s counterparts.</p>
+<p>As always, we will import Kotlin DataFrame with the magic command:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">use</span><span class="w"> </span><span class="n">dataframe</span>
@@ -590,7 +593,7 @@ table.dataframe tr:hover .formatted .structural, .null {
 
                 </style></div></div>
 </div>
-<p>Before digging into data wrangling techniques that DataFrame offers, there is one Column type that has not been covered yet: <code class="docutils literal notranslate"><span class="pre">ColumnGroup</span></code>.</p>
+<p>Before digging into data wrangling techniques that DataFrame offers, there is one Column type that has not been covered extensively yet: <code class="docutils literal notranslate"><span class="pre">ColumnGroup</span></code>.</p>
 <section id="columngroup-and-framecolumn">
 <h2><code class="docutils literal notranslate"><span class="pre">ColumnGroup</span></code> and <code class="docutils literal notranslate"><span class="pre">FrameColumn</span></code><a class="headerlink" href="#columngroup-and-framecolumn" title="Permalink to this heading">#</a></h2>
 <p>They are a special kind of columns that contains a series of column (in <code class="docutils literal notranslate"><span class="pre">ColumnGroup</span></code>s) or a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
@@ -788,7 +791,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_1593835520"></table>
+<table class="dataframe" id="df_-352321536"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 7, columnsCount = 5</p>
         </body>
@@ -800,10 +803,10 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"n
 { name: "<span title=\"city: String?\">city</span>", children: [], rightAlign: false, values: ["Rome","Moscow","Tirana","Sarajevo","Cesena","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","Kyoto"] }, 
 { name: "<span title=\"weight: Int?\">weight</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">55</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">70</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">80</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">90</span></span>"] }, 
 { name: "<span title=\"isDied: Boolean\">isDied</span>", children: [], rightAlign: false, values: ["false","false","true","true","true","false","true"] }, 
-], id: 1593835520, rootId: 1593835520, totalRows: 7 } ) });
+], id: -352321536, rootId: -352321536, totalRows: 7 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(1593835520) });
+call_DataFrame(function() { DataFrame.renderTable(-352321536) });
 
 
         </script>
@@ -977,7 +980,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_1593835521"></table>
+<table class="dataframe" id="df_-352321535"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 7, columnsCount = 4</p>
         </body>
@@ -990,10 +993,10 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"n
 { name: "<span title=\"group: DataRow\">group</span>", children: [1, 2], rightAlign: false, values: ["<span class=\"formatted\" title=\"age: 15\ncity: Rome\"><span class=\"structural\">{ </span><span class=\"structural\">age: </span><span class=\"numbers\">15</span><span class=\"structural\">, </span><span class=\"structural\">city: </span>Rome<span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"age: 45\ncity: Moscow\"><span class=\"structural\">{ </span><span class=\"structural\">age: </span><span class=\"numbers\">45</span><span class=\"structural\">, </span><span class=\"structural\">city: </span>Moscow<span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"age: 20\ncity: Tirana\"><span class=\"structural\">{ </span><span class=\"structural\">age: </span><span class=\"numbers\">20</span><span class=\"structural\">, </span><span class=\"structural\">city: </span>Tirana<span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"age: 30\ncity: Sarajevo\"><span class=\"structural\">{ </span><span class=\"structural\">age: </span><span class=\"numbers\">30</span><span class=\"structural\">, </span><span class=\"structural\">city: </span>Sarajevo<span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"age: 15\ncity: Cesena\"><span class=\"structural\">{ </span><span class=\"structural\">age: </span><span class=\"numbers\">15</span><span class=\"structural\">, </span><span class=\"structural\">city: </span>Cesena<span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"age: 22\"><span class=\"structural\">{ </span><span class=\"structural\">age: </span><span class=\"numbers\">22</span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"age: 57\ncity: Kyoto\"><span class=\"structural\">{ </span><span class=\"structural\">age: </span><span class=\"numbers\">57</span><span class=\"structural\">, </span><span class=\"structural\">city: </span>Kyoto<span class=\"structural\"> }</span></span>"] }, 
 { name: "<span title=\"weight: Int?\">weight</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">55</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">70</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">80</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">90</span></span>"] }, 
 { name: "<span title=\"isDied: Boolean\">isDied</span>", children: [], rightAlign: false, values: ["false","false","true","true","true","false","true"] }, 
-], id: 1593835521, rootId: 1593835521, totalRows: 7 } ) });
+], id: -352321535, rootId: -352321535, totalRows: 7 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(1593835521) });
+call_DataFrame(function() { DataFrame.renderTable(-352321535) });
 
 
         </script>
@@ -1168,7 +1171,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_1593835522"></table>
+<table class="dataframe" id="df_-352321534"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 7, columnsCount = 5</p>
         </body>
@@ -1182,10 +1185,10 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"f
 { name: "<span title=\"city: String?\">city</span>", children: [], rightAlign: false, values: ["Rome","Moscow","Tirana","Sarajevo","Cesena","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","Kyoto"] }, 
 { name: "<span title=\"weight: Int?\">weight</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">55</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">70</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">80</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">90</span></span>"] }, 
 { name: "<span title=\"isDied: Boolean\">isDied</span>", children: [], rightAlign: false, values: ["false","false","true","true","true","false","true"] }, 
-], id: 1593835522, rootId: 1593835522, totalRows: 7 } ) });
+], id: -352321534, rootId: -352321534, totalRows: 7 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(1593835522) });
+call_DataFrame(function() { DataFrame.renderTable(-352321534) });
 
 
         </script>
@@ -1372,7 +1375,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_1593835523"></table>
+<table class="dataframe" id="df_-352321533"></table>
 
 <p class="dataframe_description">DataColumn: name = "firstName", type = String, size = 7</p>
         </body>
@@ -1380,10 +1383,10 @@ table.dataframe tr:hover .formatted .structural, .null {
             
 /*<!--*/
 call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"firstName: String\">firstName</span>", children: [], rightAlign: false, values: ["Woody","Bob","Charlie","John","Bob","Linus","Charlie"] }, 
-], id: 1593835523, rootId: 1593835523, totalRows: 7 } ) });
+], id: -352321533, rootId: -352321533, totalRows: 7 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(1593835523) });
+call_DataFrame(function() { DataFrame.renderTable(-352321533) });
 
 
         </script>
@@ -1558,19 +1561,19 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_1593835524"></table>
+<table class="dataframe" id="df_-352321532"></table>
 
 <p class="dataframe_description">Pivot</p>
         </body>
         <script>
             
 /*<!--*/
-call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"Woody: DataFrame\">Woody</span>", children: [], rightAlign: false, values: [{ frameId: 1593835525, value: "<b>DataFrame 1 x 5</b>" }] }, 
-{ name: "<span title=\"Bob: DataFrame\">Bob</span>", children: [], rightAlign: false, values: [{ frameId: 1593835526, value: "<b>DataFrame 2 x 5</b>" }] }, 
-{ name: "<span title=\"Charlie: DataFrame\">Charlie</span>", children: [], rightAlign: false, values: [{ frameId: 1593835527, value: "<b>DataFrame 2 x 5</b>" }] }, 
-{ name: "<span title=\"John: DataFrame\">John</span>", children: [], rightAlign: false, values: [{ frameId: 1593835528, value: "<b>DataFrame 1 x 5</b>" }] }, 
-{ name: "<span title=\"Linus: DataFrame\">Linus</span>", children: [], rightAlign: false, values: [{ frameId: 1593835529, value: "<b>DataFrame 1 x 5</b>" }] }, 
-], id: 1593835524, rootId: 1593835524, totalRows: 1 } ) });
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"Woody: DataFrame\">Woody</span>", children: [], rightAlign: false, values: [{ frameId: -352321531, value: "<b>DataFrame 1 x 5</b>" }] }, 
+{ name: "<span title=\"Bob: DataFrame\">Bob</span>", children: [], rightAlign: false, values: [{ frameId: -352321530, value: "<b>DataFrame 2 x 5</b>" }] }, 
+{ name: "<span title=\"Charlie: DataFrame\">Charlie</span>", children: [], rightAlign: false, values: [{ frameId: -352321529, value: "<b>DataFrame 2 x 5</b>" }] }, 
+{ name: "<span title=\"John: DataFrame\">John</span>", children: [], rightAlign: false, values: [{ frameId: -352321528, value: "<b>DataFrame 1 x 5</b>" }] }, 
+{ name: "<span title=\"Linus: DataFrame\">Linus</span>", children: [], rightAlign: false, values: [{ frameId: -352321527, value: "<b>DataFrame 1 x 5</b>" }] }, 
+], id: -352321532, rootId: -352321532, totalRows: 1 } ) });
 /*-->*/
 
 /*<!--*/
@@ -1581,7 +1584,7 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"f
 { name: "<span title=\"city: String\">city</span>", children: [], rightAlign: false, values: ["Rome"] }, 
 { name: "<span title=\"weight: Int\">weight</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">55</span></span>"] }, 
 { name: "<span title=\"isDied: Boolean\">isDied</span>", children: [], rightAlign: false, values: ["false"] }, 
-], id: 1593835525, rootId: 1593835524, totalRows: 1 } ) });
+], id: -352321531, rootId: -352321532, totalRows: 1 } ) });
 /*-->*/
 
 /*<!--*/
@@ -1592,7 +1595,7 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"f
 { name: "<span title=\"city: String\">city</span>", children: [], rightAlign: false, values: ["Moscow","Cesena"] }, 
 { name: "<span title=\"weight: Int?\">weight</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">70</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>"] }, 
 { name: "<span title=\"isDied: Boolean\">isDied</span>", children: [], rightAlign: false, values: ["false","true"] }, 
-], id: 1593835526, rootId: 1593835524, totalRows: 2 } ) });
+], id: -352321530, rootId: -352321532, totalRows: 2 } ) });
 /*-->*/
 
 /*<!--*/
@@ -1603,7 +1606,7 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"f
 { name: "<span title=\"city: String\">city</span>", children: [], rightAlign: false, values: ["Tirana","Kyoto"] }, 
 { name: "<span title=\"weight: Int?\">weight</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">90</span></span>"] }, 
 { name: "<span title=\"isDied: Boolean\">isDied</span>", children: [], rightAlign: false, values: ["true","true"] }, 
-], id: 1593835527, rootId: 1593835524, totalRows: 2 } ) });
+], id: -352321529, rootId: -352321532, totalRows: 2 } ) });
 /*-->*/
 
 /*<!--*/
@@ -1614,7 +1617,7 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"f
 { name: "<span title=\"city: String\">city</span>", children: [], rightAlign: false, values: ["Sarajevo"] }, 
 { name: "<span title=\"weight: Int\">weight</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">80</span></span>"] }, 
 { name: "<span title=\"isDied: Boolean\">isDied</span>", children: [], rightAlign: false, values: ["true"] }, 
-], id: 1593835528, rootId: 1593835524, totalRows: 1 } ) });
+], id: -352321528, rootId: -352321532, totalRows: 1 } ) });
 /*-->*/
 
 /*<!--*/
@@ -1625,18 +1628,18 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"f
 { name: "<span title=\"city: String?\">city</span>", children: [], rightAlign: false, values: ["<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>"] }, 
 { name: "<span title=\"weight: Int?\">weight</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>"] }, 
 { name: "<span title=\"isDied: Boolean\">isDied</span>", children: [], rightAlign: false, values: ["false"] }, 
-], id: 1593835529, rootId: 1593835524, totalRows: 1 } ) });
+], id: -352321527, rootId: -352321532, totalRows: 1 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(1593835524) });
+call_DataFrame(function() { DataFrame.renderTable(-352321532) });
 
 
         </script>
         </html></div></div>
 </div>
-<p>As the prompt below the dataframe suggests us, this is a <code class="docutils literal notranslate"><span class="pre">Pivot</span></code> object, and it should be a temporary object before applying an aggregate function or other manipulations. We will cover <code class="docutils literal notranslate"><span class="pre">pivot</span></code> and <code class="docutils literal notranslate"><span class="pre">groupBy</span></code> extensively in the next chapter.</p>
+<p>As the prompt above, the dataframe suggests us that this is a <code class="docutils literal notranslate"><span class="pre">Pivot</span></code> object, and it should be a temporary object before applying an aggregate function or other manipulations. We will cover <code class="docutils literal notranslate"><span class="pre">pivot</span></code> and <code class="docutils literal notranslate"><span class="pre">groupBy</span></code> extensively in the <a class="reference internal" href="../ch7/kt_aggregation.html"><span class="doc std std-doc">chapter 7</span></a>.</p>
 <p>These nested structures can resemble to a <code class="docutils literal notranslate"><span class="pre">pandas.MultiIndex</span></code>: they both express the concept of organizing data in a <strong>hierarchical</strong> way.</p>
-<p>Dataframe multilevel structures differs from pandas because they do not have an explicit concept of <code class="docutils literal notranslate"><span class="pre">Index</span></code>, and operations like <code class="docutils literal notranslate"><span class="pre">pandas.dataframe.unfold()/unfold()</span></code> would make no sense. In some ways that result can be accomplished with some trickery, but Dataframe’s <code class="docutils literal notranslate"><span class="pre">ColumnGroup</span></code> or <code class="docutils literal notranslate"><span class="pre">FrameColumn</span></code> are not intended to substitute <code class="docutils literal notranslate"><span class="pre">pandas.MultiIndex</span></code>, even if they’re goal is very similar.</p>
+<p>DataFrame multilevel structures differs from pandas because they do not have an explicit concept of <code class="docutils literal notranslate"><span class="pre">Index</span></code>, and operations like <code class="docutils literal notranslate"><span class="pre">pandas.dataframe.stack()/unstack()</span></code> would make no sense. In some ways that result can be accomplished with some trickery, but DataFrame’s <code class="docutils literal notranslate"><span class="pre">ColumnGroup</span></code> or <code class="docutils literal notranslate"><span class="pre">FrameColumn</span></code> are not intended to substitute <code class="docutils literal notranslate"><span class="pre">pandas.MultiIndex</span></code>, even if they’re goal is very similar.</p>
 </section>
 <section id="working-with-multiple-dataframes">
 <h2>Working with Multiple DataFrames<a class="headerlink" href="#working-with-multiple-dataframes" title="Permalink to this heading">#</a></h2>
@@ -1824,7 +1827,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_1593835530"></table>
+<table class="dataframe" id="df_-352321526"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 4, columnsCount = 8</p>
         </body>
@@ -1843,10 +1846,10 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"f
 { name: "<span title=\"weight (approx. stones): Double\">weight (approx. stones)</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">8.661417</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">11.023622</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">12.598425</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">14.173228</span></span>"] }, 
 { name: "<span title=\"full name: String\">full name</span>", children: [], rightAlign: false, values: ["Woody Allen","Bob Dylan","John Coltrane","Charlie Parker"] }, 
 { name: "<span title=\"details: DataRow\">details</span>", children: [9, 10], rightAlign: false, values: ["<span class=\"formatted\" title=\"weight (approx. stones): 8.661417322834646\nfull name: Woody Allen\"><span class=\"structural\">{ </span><span class=\"structural\">weight (approx. stones): </span><span class=\"numbers\">8.7</span><span class=\"structural\">, </span><span class=\"structural\">ful...</span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"weight (approx. stones): 11.023622047244094\nfull name: Bob Dylan\"><span class=\"structural\">{ </span><span class=\"structural\">weight (approx. stones): </span><span class=\"numbers\">11.0</span><span class=\"structural\">, </span><span class=\"structural\">fu...</span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"weight (approx. stones): 12.598425196850394\nfull name: John Coltrane\"><span class=\"structural\">{ </span><span class=\"structural\">weight (approx. stones): </span><span class=\"numbers\">12.6</span><span class=\"structural\">, </span><span class=\"structural\">fu...</span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"weight (approx. stones): 14.173228346456694\nfull name: Charlie Parker\"><span class=\"structural\">{ </span><span class=\"structural\">weight (approx. stones): </span><span class=\"numbers\">14.2</span><span class=\"structural\">, </span><span class=\"structural\">fu...</span><span class=\"structural\"> }</span></span>"] }, 
-], id: 1593835530, rootId: 1593835530, totalRows: 4 } ) });
+], id: -352321526, rootId: -352321526, totalRows: 4 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(1593835530) });
+call_DataFrame(function() { DataFrame.renderTable(-352321526) });
 
 
         </script>
@@ -2023,7 +2026,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_1593835531"></table>
+<table class="dataframe" id="df_-352321525"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 7, columnsCount = 3</p>
         </body>
@@ -2033,10 +2036,10 @@ table.dataframe tr:hover .formatted .structural, .null {
 call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"a: Int\">a</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-10</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-9</span></span>"] }, 
 { name: "<span title=\"b: Int\">b</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-10</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-9</span></span>"] }, 
 { name: "<span title=\"c: Int\">c</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-10</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-9</span></span>"] }, 
-], id: 1593835531, rootId: 1593835531, totalRows: 7 } ) });
+], id: -352321525, rootId: -352321525, totalRows: 7 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(1593835531) });
+call_DataFrame(function() { DataFrame.renderTable(-352321525) });
 
 
         </script>
@@ -2213,7 +2216,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_1593835532"></table>
+<table class="dataframe" id="df_-352321524"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 12, columnsCount = 4</p>
         </body>
@@ -2224,10 +2227,10 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"a
 { name: "<span title=\"b: Int?\">b</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">5</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">6</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">7</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">8</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">9</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>"] }, 
 { name: "<span title=\"c: Int\">c</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">5</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">6</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">7</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">8</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">9</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-10</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-9</span></span>"] }, 
 { name: "<span title=\"d: Int?\">d</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-10</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-9</span></span>"] }, 
-], id: 1593835532, rootId: 1593835532, totalRows: 12 } ) });
+], id: -352321524, rootId: -352321524, totalRows: 12 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(1593835532) });
+call_DataFrame(function() { DataFrame.renderTable(-352321524) });
 
 
         </script>
@@ -2401,7 +2404,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_1593835533"></table>
+<table class="dataframe" id="df_-352321523"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 12, columnsCount = 4</p>
         </body>
@@ -2412,10 +2415,10 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"a
 { name: "<span title=\"b: Int?\">b</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">5</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">6</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">7</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">8</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">9</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>"] }, 
 { name: "<span title=\"c: Int\">c</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">5</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">6</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">7</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">8</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">9</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-10</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-9</span></span>"] }, 
 { name: "<span title=\"d: Int?\">d</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-10</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-9</span></span>"] }, 
-], id: 1593835533, rootId: 1593835533, totalRows: 12 } ) });
+], id: -352321523, rootId: -352321523, totalRows: 12 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(1593835533) });
+call_DataFrame(function() { DataFrame.renderTable(-352321523) });
 
 
         </script>
@@ -2603,7 +2606,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_1593835534"></table>
+<table class="dataframe" id="df_-352321522"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 2, columnsCount = 4</p>
         </body>
@@ -2614,10 +2617,10 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"a
 { name: "<span title=\"b: Int\">b</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>"] }, 
 { name: "<span title=\"c: Int\">c</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>"] }, 
 { name: "<span title=\"d: Int\">d</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>"] }, 
-], id: 1593835534, rootId: 1593835534, totalRows: 2 } ) });
+], id: -352321522, rootId: -352321522, totalRows: 2 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(1593835534) });
+call_DataFrame(function() { DataFrame.renderTable(-352321522) });
 
 
         </script>
@@ -2791,7 +2794,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_1593835535"></table>
+<table class="dataframe" id="df_-352321521"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 10, columnsCount = 5</p>
         </body>
@@ -2803,10 +2806,10 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"a
 { name: "<span title=\"c: Int\">c</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">5</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">6</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">7</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">8</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">9</span></span>"] }, 
 { name: "<span title=\"c1: Int?\">c1</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>"] }, 
 { name: "<span title=\"d: Int?\">d</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>"] }, 
-], id: 1593835535, rootId: 1593835535, totalRows: 10 } ) });
+], id: -352321521, rootId: -352321521, totalRows: 10 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(1593835535) });
+call_DataFrame(function() { DataFrame.renderTable(-352321521) });
 
 
         </script>
@@ -2982,7 +2985,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_1593835536"></table>
+<table class="dataframe" id="df_-352321520"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 7, columnsCount = 5</p>
         </body>
@@ -2994,10 +2997,10 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"n
 { name: "<span title=\"city: String?\">city</span>", children: [], rightAlign: false, values: ["Rome","Moscow","Tirana","Sarajevo","Cesena","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","Kyoto"] }, 
 { name: "<span title=\"weight: Int?\">weight</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">55</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">70</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">80</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">90</span></span>"] }, 
 { name: "<span title=\"isDied: Boolean\">isDied</span>", children: [], rightAlign: false, values: ["false","false","true","true","true","false","true"] }, 
-], id: 1593835536, rootId: 1593835536, totalRows: 7 } ) });
+], id: -352321520, rootId: -352321520, totalRows: 7 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(1593835536) });
+call_DataFrame(function() { DataFrame.renderTable(-352321520) });
 
 
         </script>
@@ -3178,7 +3181,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_1593835537"></table>
+<table class="dataframe" id="df_-352321519"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 2, columnsCount = 2</p>
         </body>
@@ -3187,10 +3190,10 @@ table.dataframe tr:hover .formatted .structural, .null {
 /*<!--*/
 call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"fullName: String\">fullName</span>", children: [], rightAlign: false, values: ["Woody Allen","Bob Dylan"] }, 
 { name: "<span title=\"stonesWeight: Double\">stonesWeight</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">8.661417</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">11.023622</span></span>"] }, 
-], id: 1593835537, rootId: 1593835537, totalRows: 2 } ) });
+], id: -352321519, rootId: -352321519, totalRows: 2 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(1593835537) });
+call_DataFrame(function() { DataFrame.renderTable(-352321519) });
 
 
         </script>
@@ -3364,7 +3367,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_1593835538"></table>
+<table class="dataframe" id="df_-352321518"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 7, columnsCount = 6</p>
         </body>
@@ -3377,10 +3380,10 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"n
 { name: "<span title=\"weight: Int?\">weight</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">55</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">70</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">80</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">90</span></span>"] }, 
 { name: "<span title=\"isDied: Boolean\">isDied</span>", children: [], rightAlign: false, values: ["false","false","true","true","true","false","true"] }, 
 { name: "<span title=\"stonesWeight: Double?\">stonesWeight</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">8.661417</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">11.023622</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>"] }, 
-], id: 1593835538, rootId: 1593835538, totalRows: 7 } ) });
+], id: -352321518, rootId: -352321518, totalRows: 7 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(1593835538) });
+call_DataFrame(function() { DataFrame.renderTable(-352321518) });
 
 
         </script>
@@ -3554,7 +3557,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_1593835539"></table>
+<table class="dataframe" id="df_-352321517"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 7, columnsCount = 6</p>
         </body>
@@ -3567,10 +3570,10 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"n
 { name: "<span title=\"weight: Int?\">weight</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">55</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">70</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">80</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">90</span></span>"] }, 
 { name: "<span title=\"isDied: Boolean\">isDied</span>", children: [], rightAlign: false, values: ["false","false","true","true","true","false","true"] }, 
 { name: "<span title=\"stonesWeight: Double?\">stonesWeight</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">8.661417</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">11.023622</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>"] }, 
-], id: 1593835539, rootId: 1593835539, totalRows: 7 } ) });
+], id: -352321517, rootId: -352321517, totalRows: 7 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(1593835539) });
+call_DataFrame(function() { DataFrame.renderTable(-352321517) });
 
 
         </script>
@@ -3751,7 +3754,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_1593835540"></table>
+<table class="dataframe" id="df_-352321516"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 3, columnsCount = 14</p>
         </body>
@@ -3772,10 +3775,10 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"y
 { name: "<span title=\"pop: Double\">pop</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">177.146</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">177.830</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">178.657</span></span>"] }, 
 { name: "<span title=\"infl: Double\">infl</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.00</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.34</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.74</span></span>"] }, 
 { name: "<span title=\"realint: Double\">realint</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.00</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.74</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.09</span></span>"] }, 
-], id: 1593835540, rootId: 1593835540, totalRows: 3 } ) });
+], id: -352321516, rootId: -352321516, totalRows: 3 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(1593835540) });
+call_DataFrame(function() { DataFrame.renderTable(-352321516) });
 
 
         </script>
@@ -3954,7 +3957,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_1593835541"></table>
+<table class="dataframe" id="df_-352321515"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 10, columnsCount = 4</p>
         </body>
@@ -3965,10 +3968,10 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"y
 { name: "<span title=\"quarter: Int\">quarter</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4</span></span>"] }, 
 { name: "<span title=\"item: String\">item</span>", children: [], rightAlign: false, values: ["realgdp","infl","unemp","realgdp","infl","unemp","realgdp","infl","unemp","realgdp"] }, 
 { name: "<span title=\"value: Double\">value</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">2710.349</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.000</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">5.800</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2778.801</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.340</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">5.100</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2775.488</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.740</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">5.300</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2785.204</span></span>"] }, 
-], id: 1593835541, rootId: 1593835541, totalRows: 10 } ) });
+], id: -352321515, rootId: -352321515, totalRows: 10 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(1593835541) });
+call_DataFrame(function() { DataFrame.renderTable(-352321515) });
 
 
         </script>
@@ -4151,7 +4154,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_1593835542"></table>
+<table class="dataframe" id="df_-352321514"></table>
 
 <p class="dataframe_description">GroupBy</p>
         </body>
@@ -4160,8 +4163,8 @@ table.dataframe tr:hover .formatted .structural, .null {
 /*<!--*/
 call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"year: Int\">year</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1959</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1959</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1959</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1959</span></span>"] }, 
 { name: "<span title=\"quarter: Int\">quarter</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4</span></span>"] }, 
-{ name: "<span title=\"group: DataFrame\">group</span>", children: [], rightAlign: false, values: [{ frameId: 1593835543, value: "<b>DataFrame 1 x 14</b>" },{ frameId: 1593835544, value: "<b>DataFrame 1 x 14</b>" },{ frameId: 1593835545, value: "<b>DataFrame 1 x 14</b>" },{ frameId: 1593835546, value: "<b>DataFrame 1 x 14</b>" }] }, 
-], id: 1593835542, rootId: 1593835542, totalRows: 4 } ) });
+{ name: "<span title=\"group: DataFrame\">group</span>", children: [], rightAlign: false, values: [{ frameId: -352321513, value: "<b>DataFrame 1 x 14</b>" },{ frameId: -352321512, value: "<b>DataFrame 1 x 14</b>" },{ frameId: -352321511, value: "<b>DataFrame 1 x 14</b>" },{ frameId: -352321510, value: "<b>DataFrame 1 x 14</b>" }] }, 
+], id: -352321514, rootId: -352321514, totalRows: 4 } ) });
 /*-->*/
 
 /*<!--*/
@@ -4179,7 +4182,7 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"y
 { name: "<span title=\"pop: Double\">pop</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">177.146</span></span>"] }, 
 { name: "<span title=\"infl: Double\">infl</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.0</span></span>"] }, 
 { name: "<span title=\"realint: Double\">realint</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.0</span></span>"] }, 
-], id: 1593835543, rootId: 1593835542, totalRows: 1 } ) });
+], id: -352321513, rootId: -352321514, totalRows: 1 } ) });
 /*-->*/
 
 /*<!--*/
@@ -4197,7 +4200,7 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"y
 { name: "<span title=\"pop: Double\">pop</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">177.83</span></span>"] }, 
 { name: "<span title=\"infl: Double\">infl</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.34</span></span>"] }, 
 { name: "<span title=\"realint: Double\">realint</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.74</span></span>"] }, 
-], id: 1593835544, rootId: 1593835542, totalRows: 1 } ) });
+], id: -352321512, rootId: -352321514, totalRows: 1 } ) });
 /*-->*/
 
 /*<!--*/
@@ -4215,7 +4218,7 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"y
 { name: "<span title=\"pop: Double\">pop</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">178.657</span></span>"] }, 
 { name: "<span title=\"infl: Double\">infl</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.74</span></span>"] }, 
 { name: "<span title=\"realint: Double\">realint</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.09</span></span>"] }, 
-], id: 1593835545, rootId: 1593835542, totalRows: 1 } ) });
+], id: -352321511, rootId: -352321514, totalRows: 1 } ) });
 /*-->*/
 
 /*<!--*/
@@ -4233,10 +4236,10 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"y
 { name: "<span title=\"pop: Double\">pop</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">179.386</span></span>"] }, 
 { name: "<span title=\"infl: Double\">infl</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.27</span></span>"] }, 
 { name: "<span title=\"realint: Double\">realint</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.06</span></span>"] }, 
-], id: 1593835546, rootId: 1593835542, totalRows: 1 } ) });
+], id: -352321510, rootId: -352321514, totalRows: 1 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(1593835542) });
+call_DataFrame(function() { DataFrame.renderTable(-352321514) });
 
 
         </script>
@@ -4411,20 +4414,20 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_1593835547"></table>
+<table class="dataframe" id="df_-352321509"></table>
 
 <p class="dataframe_description">Pivot</p>
         </body>
         <script>
             
 /*<!--*/
-call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"1995: DataFrame\">1995</span>", children: [], rightAlign: false, values: [{ frameId: 1593835548, value: "<b>DataFrame 4 x 14</b>" }] }, 
-{ name: "<span title=\"1996: DataFrame\">1996</span>", children: [], rightAlign: false, values: [{ frameId: 1593835549, value: "<b>DataFrame 4 x 14</b>" }] }, 
-{ name: "<span title=\"1997: DataFrame\">1997</span>", children: [], rightAlign: false, values: [{ frameId: 1593835550, value: "<b>DataFrame 4 x 14</b>" }] }, 
-{ name: "<span title=\"1998: DataFrame\">1998</span>", children: [], rightAlign: false, values: [{ frameId: 1593835551, value: "<b>DataFrame 4 x 14</b>" }] }, 
-{ name: "<span title=\"1999: DataFrame\">1999</span>", children: [], rightAlign: false, values: [{ frameId: 1593835552, value: "<b>DataFrame 4 x 14</b>" }] }, 
-{ name: "<span title=\"2000: DataFrame\">2000</span>", children: [], rightAlign: false, values: [{ frameId: 1593835553, value: "<b>DataFrame 4 x 14</b>" }] }, 
-], id: 1593835547, rootId: 1593835547, totalRows: 1 } ) });
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"1995: DataFrame\">1995</span>", children: [], rightAlign: false, values: [{ frameId: -352321508, value: "<b>DataFrame 4 x 14</b>" }] }, 
+{ name: "<span title=\"1996: DataFrame\">1996</span>", children: [], rightAlign: false, values: [{ frameId: -352321507, value: "<b>DataFrame 4 x 14</b>" }] }, 
+{ name: "<span title=\"1997: DataFrame\">1997</span>", children: [], rightAlign: false, values: [{ frameId: -352321506, value: "<b>DataFrame 4 x 14</b>" }] }, 
+{ name: "<span title=\"1998: DataFrame\">1998</span>", children: [], rightAlign: false, values: [{ frameId: -352321505, value: "<b>DataFrame 4 x 14</b>" }] }, 
+{ name: "<span title=\"1999: DataFrame\">1999</span>", children: [], rightAlign: false, values: [{ frameId: -352321504, value: "<b>DataFrame 4 x 14</b>" }] }, 
+{ name: "<span title=\"2000: DataFrame\">2000</span>", children: [], rightAlign: false, values: [{ frameId: -352321503, value: "<b>DataFrame 4 x 14</b>" }] }, 
+], id: -352321509, rootId: -352321509, totalRows: 1 } ) });
 /*-->*/
 
 /*<!--*/
@@ -4442,7 +4445,7 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"y
 { name: "<span title=\"pop: Double\">pop</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">265.755</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">266.557</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">267.456</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">268.151</span></span>"] }, 
 { name: "<span title=\"infl: Double\">infl</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.44</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.10</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.35</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.11</span></span>"] }, 
 { name: "<span title=\"realint: Double\">realint</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.28</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.42</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.97</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.05</span></span>"] }, 
-], id: 1593835548, rootId: 1593835547, totalRows: 4 } ) });
+], id: -352321508, rootId: -352321509, totalRows: 4 } ) });
 /*-->*/
 
 /*<!--*/
@@ -4460,7 +4463,7 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"y
 { name: "<span title=\"pop: Double\">pop</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">268.853</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">269.667</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">270.581</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">271.360</span></span>"] }, 
 { name: "<span title=\"infl: Double\">infl</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.60</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.30</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.05</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.02</span></span>"] }, 
 { name: "<span title=\"realint: Double\">realint</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.31</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.79</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.00</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.97</span></span>"] }, 
-], id: 1593835549, rootId: 1593835547, totalRows: 4 } ) });
+], id: -352321507, rootId: -352321509, totalRows: 4 } ) });
 /*-->*/
 
 /*<!--*/
@@ -4478,7 +4481,7 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"y
 { name: "<span title=\"pop: Double\">pop</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">272.083</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">272.912</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">273.852</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">274.626</span></span>"] }, 
 { name: "<span title=\"infl: Double\">infl</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.25</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.25</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.73</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.24</span></span>"] }, 
 { name: "<span title=\"realint: Double\">realint</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.85</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.76</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.29</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.88</span></span>"] }, 
-], id: 1593835550, rootId: 1593835547, totalRows: 4 } ) });
+], id: -352321506, rootId: -352321509, totalRows: 4 } ) });
 /*-->*/
 
 /*<!--*/
@@ -4496,7 +4499,7 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"y
 { name: "<span title=\"pop: Double\">pop</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">275.304</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">276.115</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">277.003</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">277.790</span></span>"] }, 
 { name: "<span title=\"infl: Double\">infl</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.49</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.46</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.71</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.95</span></span>"] }, 
 { name: "<span title=\"realint: Double\">realint</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.53</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.52</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.78</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.43</span></span>"] }, 
-], id: 1593835551, rootId: 1593835547, totalRows: 4 } ) });
+], id: -352321505, rootId: -352321509, totalRows: 4 } ) });
 /*-->*/
 
 /*<!--*/
@@ -4514,7 +4517,7 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"y
 { name: "<span title=\"pop: Double\">pop</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">278.451</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">279.295</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">280.203</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">280.976</span></span>"] }, 
 { name: "<span title=\"infl: Double\">infl</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.90</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.92</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.35</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.85</span></span>"] }, 
 { name: "<span title=\"realint: Double\">realint</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.49</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.62</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.41</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.35</span></span>"] }, 
-], id: 1593835552, rootId: 1593835547, totalRows: 4 } ) });
+], id: -352321504, rootId: -352321509, totalRows: 4 } ) });
 /*-->*/
 
 /*<!--*/
@@ -4532,10 +4535,10 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"y
 { name: "<span title=\"pop: Double\">pop</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">281.653</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">282.385</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">283.190</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">283.900</span></span>"] }, 
 { name: "<span title=\"infl: Double\">infl</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.76</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.19</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.77</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.89</span></span>"] }, 
 { name: "<span title=\"realint: Double\">realint</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.87</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.62</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.30</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.81</span></span>"] }, 
-], id: 1593835553, rootId: 1593835547, totalRows: 4 } ) });
+], id: -352321503, rootId: -352321509, totalRows: 4 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(1593835547) });
+call_DataFrame(function() { DataFrame.renderTable(-352321509) });
 
 
         </script>
@@ -4711,7 +4714,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_1593835554"></table>
+<table class="dataframe" id="df_-352321502"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 4, columnsCount = 5</p>
         </body>
@@ -4723,10 +4726,10 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"y
 { name: "<span title=\"realgdp: List<Double>\">realgdp</span>", children: [], rightAlign: false, values: ["<span class=\"formatted\" title=\"2710.349\"><span class=\"structural\">[</span><span class=\"numbers\">2710.3</span><span class=\"structural\">]</span></span>","<span class=\"formatted\" title=\"2778.801\"><span class=\"structural\">[</span><span class=\"numbers\">2778.8</span><span class=\"structural\">]</span></span>","<span class=\"formatted\" title=\"2775.488\"><span class=\"structural\">[</span><span class=\"numbers\">2775.5</span><span class=\"structural\">]</span></span>","<span class=\"formatted\" title=\"2785.204\"><span class=\"structural\">[</span><span class=\"numbers\">2785.2</span><span class=\"structural\">]</span></span>"] }, 
 { name: "<span title=\"infl: List<Double>\">infl</span>", children: [], rightAlign: false, values: ["<span class=\"formatted\" title=\"0.0\"><span class=\"structural\">[</span><span class=\"numbers\">0.0</span><span class=\"structural\">]</span></span>","<span class=\"formatted\" title=\"2.34\"><span class=\"structural\">[</span><span class=\"numbers\">2.3</span><span class=\"structural\">]</span></span>","<span class=\"formatted\" title=\"2.74\"><span class=\"structural\">[</span><span class=\"numbers\">2.7</span><span class=\"structural\">]</span></span>","<span class=\"formatted\" title=\"0.27\"><span class=\"structural\">[</span><span class=\"numbers\">0.3</span><span class=\"structural\">]</span></span>"] }, 
 { name: "<span title=\"unemp: List<Double>\">unemp</span>", children: [], rightAlign: false, values: ["<span class=\"formatted\" title=\"5.8\"><span class=\"structural\">[</span><span class=\"numbers\">5.8</span><span class=\"structural\">]</span></span>","<span class=\"formatted\" title=\"5.1\"><span class=\"structural\">[</span><span class=\"numbers\">5.1</span><span class=\"structural\">]</span></span>","<span class=\"formatted\" title=\"5.3\"><span class=\"structural\">[</span><span class=\"numbers\">5.3</span><span class=\"structural\">]</span></span>","<span class=\"formatted\" title=\"5.6\"><span class=\"structural\">[</span><span class=\"numbers\">5.6</span><span class=\"structural\">]</span></span>"] }, 
-], id: 1593835554, rootId: 1593835554, totalRows: 4 } ) });
+], id: -352321502, rootId: -352321502, totalRows: 4 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(1593835554) });
+call_DataFrame(function() { DataFrame.renderTable(-352321502) });
 
 
         </script>
@@ -4907,7 +4910,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_1593835555"></table>
+<table class="dataframe" id="df_-352321501"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 12, columnsCount = 4</p>
         </body>
@@ -4918,10 +4921,10 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"y
 { name: "<span title=\"quarter: Int\">quarter</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4</span></span>"] }, 
 { name: "<span title=\"item: String\">item</span>", children: [], rightAlign: false, values: ["realgdp","infl","unemp","realgdp","infl","unemp","realgdp","infl","unemp","realgdp","infl","unemp"] }, 
 { name: "<span title=\"value: List<Double>\">value</span>", children: [], rightAlign: false, values: ["<span class=\"formatted\" title=\"2710.349\"><span class=\"structural\">[</span><span class=\"numbers\">2710.3</span><span class=\"structural\">]</span></span>","<span class=\"formatted\" title=\"0.0\"><span class=\"structural\">[</span><span class=\"numbers\">0.0</span><span class=\"structural\">]</span></span>","<span class=\"formatted\" title=\"5.8\"><span class=\"structural\">[</span><span class=\"numbers\">5.8</span><span class=\"structural\">]</span></span>","<span class=\"formatted\" title=\"2778.801\"><span class=\"structural\">[</span><span class=\"numbers\">2778.8</span><span class=\"structural\">]</span></span>","<span class=\"formatted\" title=\"2.34\"><span class=\"structural\">[</span><span class=\"numbers\">2.3</span><span class=\"structural\">]</span></span>","<span class=\"formatted\" title=\"5.1\"><span class=\"structural\">[</span><span class=\"numbers\">5.1</span><span class=\"structural\">]</span></span>","<span class=\"formatted\" title=\"2775.488\"><span class=\"structural\">[</span><span class=\"numbers\">2775.5</span><span class=\"structural\">]</span></span>","<span class=\"formatted\" title=\"2.74\"><span class=\"structural\">[</span><span class=\"numbers\">2.7</span><span class=\"structural\">]</span></span>","<span class=\"formatted\" title=\"5.3\"><span class=\"structural\">[</span><span class=\"numbers\">5.3</span><span class=\"structural\">]</span></span>","<span class=\"formatted\" title=\"2785.204\"><span class=\"structural\">[</span><span class=\"numbers\">2785.2</span><span class=\"structural\">]</span></span>","<span class=\"formatted\" title=\"0.27\"><span class=\"structural\">[</span><span class=\"numbers\">0.3</span><span class=\"structural\">]</span></span>","<span class=\"formatted\" title=\"5.6\"><span class=\"structural\">[</span><span class=\"numbers\">5.6</span><span class=\"structural\">]</span></span>"] }, 
-], id: 1593835555, rootId: 1593835555, totalRows: 12 } ) });
+], id: -352321501, rootId: -352321501, totalRows: 12 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(1593835555) });
+call_DataFrame(function() { DataFrame.renderTable(-352321501) });
 
 
         </script>
@@ -4942,7 +4945,10 @@ In pandas, <code class="docutils literal notranslate"><span class="pre">stack</s
 Moreover, pandas <code class="docutils literal notranslate"><span class="pre">Index</span></code> object can be of multiple types, for example <code class="docutils literal notranslate"><span class="pre">CategoricalIndex</span></code>, <code class="docutils literal notranslate"><span class="pre">DatetimeIndex</span></code>, <code class="docutils literal notranslate"><span class="pre">PeriodIndex</span></code>, <code class="docutils literal notranslate"><span class="pre">MultiIndex</span></code>. In this example, a <code class="docutils literal notranslate"><span class="pre">PeriodIndex</span></code> would have fit the data perfectly, because we can create a range of dates from a year and a quarter: <code class="docutils literal notranslate"><span class="pre">pd.PeriodIndex(year=df['year'],</span> <span class="pre">quarter=df['quarter'],</span> <span class="pre">name='date')</span></code>.</p>
 <p>We now understand that the biggest difference between pandas and Kotlin DataFrame is the presence of an explicit Index Object that let us perform reshaping of the dataframe in a more precise way.</p>
 <p>Note that the operation after <code class="docutils literal notranslate"><span class="pre">stack</span></code> are used only to recreate the example, the <code class="docutils literal notranslate"><span class="pre">Series</span></code> created with <code class="docutils literal notranslate"><span class="pre">stack</span></code> is perfectly usable as is.</p>
-<p>WIP</p>
+</section>
+<section id="conclusions">
+<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this heading">#</a></h2>
+<p>In the chapter we have explored how Kotlin DataFrame has a full support for data wrangling tasks. The differences with pandas are sometimes remarkable, and our way to compute some operations can be very different between the two platforms. Anyhow, with a little bit of practicing, a lot of what can be done in pandas can be archived with the use of Kotlin DataFrame.</p>
 </section>
 </section>
 
@@ -5016,6 +5022,7 @@ Moreover, pandas <code class="docutils literal notranslate"><span class="pre">In
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#columngroup-and-framecolumn"><code class="docutils literal notranslate"><span class="pre">ColumnGroup</span></code> and <code class="docutils literal notranslate"><span class="pre">FrameColumn</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-multiple-dataframes">Working with Multiple DataFrames</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reshaping-and-pivoting">Reshaping and Pivoting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
 </ul>
   </nav></div>
 
