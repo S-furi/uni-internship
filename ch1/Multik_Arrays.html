@@ -178,7 +178,6 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../DA_examples/DA_Introduction.html">Data Analysis Examples</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../DA_examples/tips_kotlin.html">Kotlin: Tips Dataset</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DA_examples/tips_python.html">Python: Tips Dataset</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
@@ -388,6 +387,7 @@ document.write(`
 </li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting">Broadcasting</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
 </ul>
             </nav>
@@ -642,7 +642,7 @@ Vectorization is very convenient because enable the user to express batch operat
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Operations among equal shaped arrays and matrices are always allowed. As the current version of Multik (v0.2.0), there is no native support for array <strong>broadcasting</strong>.
-In section K (some ref to where i could explain how to) I explain how to archieve array broadcasting using tensor algebra provided by <a class="reference external" href="https://github.com/SciProgCentre/kmath">Kmath</a></p>
+In <span class="xref myst">Broadcasting</span> subsection there is an explanation on how to archieve array broadcasting using tensor algebra provided by <a class="reference external" href="https://github.com/SciProgCentre/kmath">Kmath</a>.</p>
 </div>
 </aside>
 <p>Multik supports two separate packages for linear algebra basic operations (package <code class="docutils literal notranslate"><span class="pre">api.linalg</span></code>) and vectorized math operations (package <code class="docutils literal notranslate"><span class="pre">api.math</span></code>)</p>
@@ -723,11 +723,11 @@ In section K (some ref to where i could explain how to) I explain how to archiev
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-0.6083512977255217, 0.7474094489573451, -0.16714866174465792, -0.10611209391202417, -0.17913504003272737],
-[-0.5062541748944486, -0.2310332037446415, 0.8162781206926362, 0.13048320797790677, -0.08363331443701297],
-[-0.4242300541096698, -0.21284842510268515, -0.36280818704492024, 0.5929216822275111, 0.5399430592933756],
-[-0.2815339512247536, -0.4849496302722392, -0.3936451198263211, 0.04564291934700874, -0.7269956904665943],
-[-0.33820541754309535, -0.32790574622426116, -0.1384380497029892, -0.7861774345651119, 0.37530636140713475]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-0.5316047956914967, 0.6514659711818105, 0.2925701551237334, 0.12181364331486255, -0.43880812460935203],
+[-0.604555856130515, -0.39374239137346356, 0.49243959159446365, 0.034026292244462325, 0.48561775721258255],
+[-0.41521522428622415, -0.41087537781388356, -0.5457125725876921, 0.50090357040375, -0.33176971336114647],
+[-0.3075556501671819, -0.22315170704089615, -0.18439094557253138, -0.8490622693830211, -0.31734221212438496],
+[-0.29140075083514205, 0.4493815274114852, -0.5831841221018822, -0.1104197609369975, 0.6007042544854408]]
 </pre></div>
 </div>
 </div>
@@ -739,11 +739,11 @@ In section K (some ref to where i could explain how to) I explain how to archiev
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-4.819310752369125, -4.5096358293082375, -4.1288225231608, -3.284653005377648, -3.7430079554439306],
-[0.0, -0.40626542914622615, -0.6939540324310702, -1.0045369263078479, -1.0527764300015456],
-[0.0, 0.0, -0.30744919911576013, -0.48108657645012265, -0.4958106545091753],
-[0.0, 0.0, 0.0, -0.27295751067736923, -0.5641170502941568],
-[0.0, 0.0, 0.0, 0.0, 0.016889041871360318]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-2.4242941643598863, -3.1329197542525464, -2.958249238947376, -2.1519074980902584, -2.0753293132829715],
+[0.0, -0.3067757038298192, -0.3966731152181202, -0.22837403835679754, 0.010735655889852758],
+[0.0, 0.0, -1.0513601454232255, -0.7040111348214237, -1.0855565016032052],
+[0.0, 0.0, 0.0, -0.3579928746239089, -0.21429850569278608],
+[0.0, 0.0, 0.0, 0.0, 0.13696618443359498]]
 </pre></div>
 </div>
 </div>
@@ -880,13 +880,13 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean of the whole matrix -&gt; 0.6127357057876472
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean of the whole matrix -&gt; 0.4622739829389456
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean across columns -&gt; [0.7889676787529054, 0.5970951633712647, 0.6252245191614083, 0.43965546186501053]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean across columns -&gt; [0.32178298153962503, 0.4224473702641395, 0.5022305512128196, 0.6026350287391984]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean across rows -&gt; [0.6794559268677067, 0.56572353669525, 0.6552080081617992, 0.7783467583803522, 0.3849442988331281]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean across rows -&gt; [0.7251677889452055, 0.2670192386197151, 0.30393204875649726, 0.49243988885749024, 0.52281094951582]
 </pre></div>
 </div>
 </div>
@@ -919,7 +919,7 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="K2kl63"></div>
+<div class="output text_html">   <div id="ySZ6N9"></div>
    <script type="text/javascript" data-lets-plot-script="library">
        if(!window.letsPlotCallQueue) {
            window.letsPlotCallQueue = [];
@@ -930,7 +930,7 @@ We can then call the default <code class="docutils literal notranslate"><span cl
        (function() {
            var script = document.createElement("script");
            script.type = "text/javascript";
-           script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v3.1.0/js-package/distr/lets-plot.min.js";
+           script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v3.2.0/js-package/distr/lets-plot.min.js";
            script.onload = function() {
                window.letsPlotCall = function(f) {f();};
                window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -944,9 +944,9 @@ We can then call the default <code class="docutils literal notranslate"><span cl
                var div = document.createElement("div");
                div.style.color = 'darkred';
                div.textContent = 'Error loading Lets-Plot JS';
-               document.getElementById("K2kl63").appendChild(div);
+               document.getElementById("ySZ6N9").appendChild(div);
            };
-           var e = document.getElementById("K2kl63");
+           var e = document.getElementById("ySZ6N9");
            e.appendChild(script);
        })();
    </script></div></div>
@@ -959,7 +959,7 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="GJpb9c"></div>
+<div class="output text_html">   <div id="QB1Qi8"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -983,7 +983,7 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 "y":[0.0,-1.0,0.0,1.0,0.0,-1.0,-2.0,-1.0,-2.0,-3.0,-2.0,-1.0,-2.0,-3.0,-4.0,-3.0,-4.0,-3.0,-4.0,-3.0,-2.0,-3.0,-2.0,-3.0,-4.0,-5.0,-4.0,-3.0,-2.0,-3.0,-4.0,-5.0,-6.0,-7.0,-8.0,-7.0,-6.0,-5.0,-4.0,-3.0,-4.0,-3.0,-4.0,-3.0,-4.0,-3.0,-4.0,-5.0,-4.0,-5.0,-6.0,-7.0,-8.0,-9.0,-10.0,-9.0,-8.0,-9.0,-10.0,-11.0,-12.0,-13.0,-12.0,-13.0,-12.0,-13.0,-12.0,-13.0,-14.0,-15.0,-16.0,-15.0,-16.0,-15.0,-16.0,-15.0,-14.0,-13.0,-12.0,-13.0,-12.0,-13.0,-12.0,-11.0,-12.0,-13.0,-14.0,-15.0,-14.0,-13.0,-14.0,-13.0,-14.0,-13.0,-14.0,-13.0,-12.0,-13.0,-14.0,-15.0,-14.0]
 }
 };
-           var plotContainer = document.getElementById("GJpb9c");
+           var plotContainer = document.getElementById("QB1Qi8");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -1045,7 +1045,7 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="TkoEhn"></div>
+<div class="output text_html">   <div id="M8wbvc"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -1081,7 +1081,7 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 "y":[1.0,0.0,1.0,0.0,1.0,2.0,1.0,0.0,-1.0,-2.0,-1.0,-2.0,-1.0,-2.0,-1.0,-2.0,-3.0,-4.0,-5.0,-4.0,-3.0,-2.0,-1.0,0.0,1.0,2.0,3.0,2.0,1.0,0.0,-1.0,-2.0,-3.0,-4.0,-5.0,-4.0,-3.0,-4.0,-5.0,-6.0,-5.0,-6.0,-7.0,-8.0,-7.0,-8.0,-7.0,-6.0,-7.0,-8.0,-7.0,-6.0,-7.0,-8.0,-9.0,-10.0,-9.0,-8.0,-9.0,-8.0,-7.0,-6.0,-5.0,-4.0,-5.0,-4.0,-3.0,-2.0,-3.0,-4.0,-3.0,-4.0,-3.0,-2.0,-3.0,-4.0,-3.0,-4.0,-5.0,-4.0,-3.0,-4.0,-3.0,-2.0,-3.0,-2.0,-3.0,-2.0,-1.0,-2.0,-3.0,-2.0,-3.0,-4.0,-5.0,-6.0,-5.0,-6.0,-5.0,-6.0]
 }
 };
-           var plotContainer = document.getElementById("TkoEhn");
+           var plotContainer = document.getElementById("M8wbvc");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -1147,6 +1147,90 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 </div>
 </section>
 </section>
+</section>
+<section id="broadcasting">
+<h2>Broadcasting<a class="headerlink" href="#broadcasting" title="Permalink to this heading">#</a></h2>
+<p>Array with different shapes can be broadcasted if this condition is satisfied (from NumPy documentation):</p>
+<blockquote>
+<div><p>In order to broadcast, the size of the trailing axes for both arrays in an operation must either be the same size or one of them must be one.</p>
+</div></blockquote>
+<p>Multik does not have a direct way to broadcast two arrays with different shapes, but <strong>KMath</strong> tensor module provides an implementation in the <code class="docutils literal notranslate"><span class="pre">DoubleTensorAlgebra</span></code> context.</p>
+<p>KMath’s modules needed for broadcasting are not available using the <code class="docutils literal notranslate"><span class="pre">%use</span></code> magic command, but we can tell Koltin’s Jupyter Kernel to import them. KMath also has a set of API for transforming a Multik <code class="docutils literal notranslate"><span class="pre">NDArray</span></code> into a tensor, a more familiar object to Kmath.</p>
+<p>We use the <code class="docutils literal notranslate"><span class="pre">&#64;file:DependsOn</span></code> command for importing <code class="docutils literal notranslate"><span class="pre">core</span></code>, <code class="docutils literal notranslate"><span class="pre">multik</span></code> and <code class="docutils literal notranslate"><span class="pre">tensors</span></code> modules of KMath inside the project:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="nd">@file</span><span class="p">:</span><span class="n">DependsOn</span><span class="p">(</span><span class="s">&quot;space.kscience:kmath-core:0.3.1&quot;</span><span class="p">)</span>
+<span class="nd">@file</span><span class="p">:</span><span class="n">DependsOn</span><span class="p">(</span><span class="s">&quot;space.kscience:kmath-tensors:0.3.1&quot;</span><span class="p">)</span>
+<span class="nd">@file</span><span class="p">:</span><span class="n">DependsOn</span><span class="p">(</span><span class="s">&quot;space.kscience:kmath-multik:0.3.1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For being able to use them, we import the needed packages.</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="nn">space.kscience.kmath.multik.MultikTensor</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">space.kscience.kmath.tensors.core.DoubleTensorAlgebra</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">space.kscience.kmath.tensors.core.tensorAlgebra</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">space.kscience.kmath.tensors.core.withBroadcast</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">space.kscience.kmath.tensors.core.DoubleTensor</span>
+</pre></div>
+</div>
+<p>Of course we could have used KMath tensors for all the computation, but KMath tensors are in some way harder to manipulate that Multik’s <code class="docutils literal notranslate"><span class="pre">NDArrays</span></code>, so in this example we will see how we can compute broadcasting starting from two <code class="docutils literal notranslate"><span class="pre">NDArray</span></code>s.</p>
+<p>Thanks to Kotlin <em>extensions functions</em> we can map the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator between two <code class="docutils literal notranslate"><span class="pre">MultikTensor</span></code>s objects to compute broadcasting if needed.</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">fun</span><span class="w"> </span><span class="nf">NDArray</span><span class="o">&lt;</span><span class="kt">Double</span><span class="p">,</span><span class="w"> </span><span class="n">DN</span><span class="o">&gt;</span><span class="p">.</span><span class="na">asMultikTensor</span><span class="p">():</span><span class="w"> </span><span class="n">MultikTensor</span><span class="o">&lt;</span><span class="kt">Double</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MultikTensor</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+
+<span class="kd">fun</span><span class="w"> </span><span class="nf">brAdd</span><span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="w"> </span><span class="n">MultikTensor</span><span class="o">&lt;</span><span class="kt">Double</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">:</span><span class="w"> </span><span class="n">MultikTensor</span><span class="o">&lt;</span><span class="kt">Double</span><span class="o">&gt;</span><span class="p">):</span><span class="w"> </span><span class="n">DoubleTensor? </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kt">Double</span><span class="p">.</span><span class="na">tensorAlgebra</span><span class="p">.</span><span class="na">withBroadcast</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">        </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">operator</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">MultikTensor</span><span class="o">&lt;</span><span class="kt">Double</span><span class="o">&gt;</span><span class="p">.</span><span class="na">plus</span><span class="p">(</span><span class="n">other</span><span class="p">:</span><span class="w"> </span><span class="n">MultikTensor</span><span class="o">&lt;</span><span class="kt">Double</span><span class="o">&gt;</span><span class="p">):</span><span class="w"> </span><span class="n">DoubleTensor? </span><span class="o">=</span><span class="w"> </span><span class="n">brAdd</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">other</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>With those functions, the following code produces the expected output.</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">a</span><span class="p">:</span><span class="w"> </span><span class="n">NDArray</span><span class="o">&lt;</span><span class="kt">Double</span><span class="p">,</span><span class="w"> </span><span class="n">DN</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk</span><span class="p">.</span><span class="na">arange</span><span class="o">&lt;</span><span class="kt">Double</span><span class="o">&gt;</span><span class="p">(</span><span class="m">40</span><span class="p">).</span><span class="na">reshape</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">).</span><span class="na">asDNArray</span><span class="p">()</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">b</span><span class="p">:</span><span class="w"> </span><span class="n">NDArray</span><span class="o">&lt;</span><span class="kt">Double</span><span class="p">,</span><span class="w"> </span><span class="n">DN</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk</span><span class="p">.</span><span class="na">arange</span><span class="o">&lt;</span><span class="kt">Double</span><span class="o">&gt;</span><span class="p">(</span><span class="m">20</span><span class="p">).</span><span class="na">reshape</span><span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">).</span><span class="na">asDNArray</span><span class="p">()</span>
+
+<span class="n">a</span><span class="p">.</span><span class="na">asMultikTensor</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="na">asMultikTensor</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DoubleTensor</span><span class="p">(</span>
+   <span class="p">[[[</span> <span class="mf">0.0</span>      <span class="p">,</span>  <span class="mf">2.0</span>      <span class="p">,</span>  <span class="mf">4.0</span>      <span class="p">,</span>  <span class="mf">6.0</span>      <span class="p">,</span>  <span class="mf">8.0</span>      <span class="p">],</span>
+     <span class="p">[</span> <span class="mf">1.0e+1</span>   <span class="p">,</span>  <span class="mf">1.2e+1</span>   <span class="p">,</span>  <span class="mf">1.4e+1</span>   <span class="p">,</span>  <span class="mf">1.6e+1</span>   <span class="p">,</span>  <span class="mf">1.8e+1</span>   <span class="p">],</span>
+     <span class="p">[</span> <span class="mf">0.2e+2</span>   <span class="p">,</span>  <span class="mf">2.2e+1</span>   <span class="p">,</span>  <span class="mf">2.4e+1</span>   <span class="p">,</span>  <span class="mf">2.6e+1</span>   <span class="p">,</span>  <span class="mf">2.8e+1</span>   <span class="p">],</span>
+     <span class="p">[</span> <span class="mf">0.3e+2</span>   <span class="p">,</span>  <span class="mf">3.2e+1</span>   <span class="p">,</span>  <span class="mf">3.4e+1</span>   <span class="p">,</span>  <span class="mf">3.6e+1</span>   <span class="p">,</span>  <span class="mf">3.8e+1</span>   <span class="p">]],</span>
+    <span class="p">[[</span> <span class="mf">0.2e+2</span>   <span class="p">,</span>  <span class="mf">2.2e+1</span>   <span class="p">,</span>  <span class="mf">2.4e+1</span>   <span class="p">,</span>  <span class="mf">2.6e+1</span>   <span class="p">,</span>  <span class="mf">2.8e+1</span>   <span class="p">]],</span>
+    <span class="p">[</span> <span class="mf">0.3e+2</span>   <span class="p">,</span>  <span class="mf">3.2e+1</span>   <span class="p">,</span>  <span class="mf">3.4e+1</span>   <span class="p">,</span>  <span class="mf">3.6e+1</span>   <span class="p">,</span>  <span class="mf">3.8e+1</span>   <span class="p">]],</span>
+   <span class="p">[</span> <span class="mf">0.4e+2</span>   <span class="p">,</span>  <span class="mf">4.2e+1</span>   <span class="p">,</span>  <span class="mf">4.4e+1</span>   <span class="p">,</span>  <span class="mf">4.6e+1</span>   <span class="p">,</span>  <span class="mf">4.8e+1</span>   <span class="p">]],</span>
+  <span class="p">[</span> <span class="mf">0.5e+2</span>   <span class="p">,</span>  <span class="mf">5.2e+1</span>   <span class="p">,</span>  <span class="mf">5.4e+1</span>   <span class="p">,</span>  <span class="mf">5.6e+1</span>   <span class="p">,</span>  <span class="mf">5.8e+1</span>   <span class="p">]]]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>There is no such thing as a <code class="docutils literal notranslate"><span class="pre">np.newaxis</span></code> for specifying the missing dimension to broadcast along. We must reshape the arrays in order to broadcast properly.</p>
+<p>Consider this example, where we compute the mean of every row, and we want to add the mean to the original matrix.
+According to broadcasting rules, if we want to perform broadcasting across axes other than axis 0, the “broadcast dimensions” must be 1 in the smaller array. Being <code class="docutils literal notranslate"><span class="pre">b</span></code> of shape <code class="docutils literal notranslate"><span class="pre">(4,</span> <span class="pre">5)</span></code> and the mean vector is <code class="docutils literal notranslate"><span class="pre">(,</span> <span class="pre">4)</span></code>, we must reshape and insert a “1” in the broadcasting dimension, the second one.</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk</span><span class="p">.</span><span class="na">stat</span><span class="p">.</span><span class="na">meanD2</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="na">asD2Array</span><span class="p">(),</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="na">reshape</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="na">shape</span><span class="o">[</span><span class="m">0</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="na">asDNArray</span><span class="p">().</span><span class="na">asMultikTensor</span><span class="p">()</span>
+
+
+<span class="n">b</span><span class="p">.</span><span class="na">asMultikTensor</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">mean</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DoubleTensor</span><span class="p">(</span>
+   <span class="p">[[</span> <span class="mf">2.0</span>      <span class="p">,</span>  <span class="mf">3.0</span>      <span class="p">,</span>  <span class="mf">4.0</span>      <span class="p">,</span>  <span class="mf">5.0</span>      <span class="p">,</span>  <span class="mf">6.0</span>      <span class="p">],</span>
+    <span class="p">[</span> <span class="mf">1.2e+1</span>   <span class="p">,</span>  <span class="mf">1.3e+1</span>   <span class="p">,</span>  <span class="mf">1.4e+1</span>   <span class="p">,</span>  <span class="mf">1.5e+1</span>   <span class="p">,</span>  <span class="mf">1.6e+1</span>   <span class="p">],</span>
+    <span class="p">[</span> <span class="mf">2.2e+1</span>   <span class="p">,</span>  <span class="mf">2.3e+1</span>   <span class="p">,</span>  <span class="mf">2.4e+1</span>   <span class="p">,</span>  <span class="mf">2.5e+1</span>   <span class="p">,</span>  <span class="mf">2.6e+1</span>   <span class="p">],</span>
+    <span class="p">[</span> <span class="mf">3.2e+1</span>   <span class="p">,</span>  <span class="mf">3.3e+1</span>   <span class="p">,</span>  <span class="mf">3.4e+1</span>   <span class="p">,</span>  <span class="mf">3.5e+1</span>   <span class="p">,</span>  <span class="mf">3.6e+1</span>   <span class="p">]]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Notes:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">withBroadcast</span></code> context is claimed to be <em>unstable</em> and could change in the future.</p></li>
+<li><p>For large arrays, the chain of conversions can be very slow in performance-critical code.</p></li>
+<li><p>No direct ways to re-convert a <code class="docutils literal notranslate"><span class="pre">DoubleTensor</span></code> to a Multik <code class="docutils literal notranslate"><span class="pre">NDArray</span></code> were found: the only way is to manually copy element by element from the <code class="docutils literal notranslate"><span class="pre">DoubleTensor</span></code> to a new <code class="docutils literal notranslate"><span class="pre">NDArray</span></code>.</p></li>
+</ul>
 </section>
 <section id="conclusions">
 <h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this heading">#</a></h2>
@@ -1236,6 +1320,7 @@ On the other hand, Multik can be used with libraries like <a class="reference ex
 </li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting">Broadcasting</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
 </ul>
   </nav></div>
