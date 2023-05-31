@@ -33,5 +33,6 @@ chapters:
 - file: DA_examples/DA_Introduction.ipynb
   sections:
   - file: DA_examples/tips_kotlin.ipynb
+  - file: DA_examples/nba_kotlin.ipynb
 
 - file: bibliography.ipynb
