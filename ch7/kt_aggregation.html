@@ -178,6 +178,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../DA_examples/DA_Introduction.html">Data Analysis Examples</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../DA_examples/tips_kotlin.html">Kotlin: Tips Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DA_examples/nba_kotlin.html">NBA Data Analysis</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
@@ -775,19 +776,19 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_469762048"></table>
+<table class="dataframe" id="df_570425344"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 10, columnsCount = 2</p>
         </body>
         <script>
             
 /*<!--*/
-call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["B","A","C","B","A","B","A","B","A","B"] }, 
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["B","B","B","C","B","C","B","C","B","B"] }, 
 { name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.624629</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-0.858192</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.676221</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.126394</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.437662</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.492079</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-1.598537</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-0.077561</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.991766</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.270969</span></span>"] }, 
-], id: 469762048, rootId: 469762048, totalRows: 10 } ) });
+], id: 570425344, rootId: 570425344, totalRows: 10 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(469762048) });
+call_DataFrame(function() { DataFrame.renderTable(570425344) });
 
 
         </script>
@@ -961,37 +962,31 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_469762049"></table>
+<table class="dataframe" id="df_570425345"></table>
 
 <p class="dataframe_description">GroupBy</p>
         </body>
         <script>
             
 /*<!--*/
-call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["B","A","C"] }, 
-{ name: "<span title=\"group: DataFrame\">group</span>", children: [], rightAlign: false, values: [{ frameId: 469762050, value: "<b>DataFrame 5 x 2</b>" },{ frameId: 469762051, value: "<b>DataFrame 4 x 2</b>" },{ frameId: 469762052, value: "<b>DataFrame 1 x 2</b>" }] }, 
-], id: 469762049, rootId: 469762049, totalRows: 3 } ) });
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["B","C"] }, 
+{ name: "<span title=\"group: DataFrame\">group</span>", children: [], rightAlign: false, values: [{ frameId: 570425346, value: "<b>DataFrame 7 x 2</b>" },{ frameId: 570425347, value: "<b>DataFrame 3 x 2</b>" }] }, 
+], id: 570425345, rootId: 570425345, totalRows: 2 } ) });
 /*-->*/
 
 /*<!--*/
 call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["B","B","B","B","B"] }, 
-{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.624629</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.126394</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.492079</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-0.077561</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.270969</span></span>"] }, 
-], id: 469762050, rootId: 469762049, totalRows: 5 } ) });
+{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.624629</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-0.858192</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.676221</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.437662</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-1.598537</span></span>"] }, 
+], id: 570425346, rootId: 570425345, totalRows: 7 } ) });
 /*-->*/
 
 /*<!--*/
-call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["A","A","A","A"] }, 
-{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">-0.858192</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.437662</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-1.598537</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.991766</span></span>"] }, 
-], id: 469762051, rootId: 469762049, totalRows: 4 } ) });
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["C","C","C"] }, 
+{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.126394</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.492079</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-0.077561</span></span>"] }, 
+], id: 570425347, rootId: 570425345, totalRows: 3 } ) });
 /*-->*/
 
-/*<!--*/
-call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["C"] }, 
-{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.676221</span></span>"] }, 
-], id: 469762052, rootId: 469762049, totalRows: 1 } ) });
-/*-->*/
-
-call_DataFrame(function() { DataFrame.renderTable(469762049) });
+call_DataFrame(function() { DataFrame.renderTable(570425345) });
 
 
         </script>
@@ -1166,31 +1161,25 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_469762053"></table>
+<table class="dataframe" id="df_570425348"></table>
 
 <p class="dataframe_description">GroupBy</p>
         </body>
         <script>
             
 /*<!--*/
-call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: Boolean\">letter</span>", children: [], rightAlign: false, values: ["false","true"] }, 
-{ name: "<span title=\"group: DataFrame\">group</span>", children: [], rightAlign: false, values: [{ frameId: 469762054, value: "<b>DataFrame 6 x 2</b>" },{ frameId: 469762055, value: "<b>DataFrame 4 x 2</b>" }] }, 
-], id: 469762053, rootId: 469762053, totalRows: 2 } ) });
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: Boolean\">letter</span>", children: [], rightAlign: false, values: ["false"] }, 
+{ name: "<span title=\"group: DataFrame\">group</span>", children: [], rightAlign: false, values: [{ frameId: 570425349, value: "<b>DataFrame 10 x 2</b>" }] }, 
+], id: 570425348, rootId: 570425348, totalRows: 1 } ) });
 /*-->*/
 
 /*<!--*/
-call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["B","C","B","B","B"] }, 
-{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.624629</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.676221</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.126394</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.492079</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-0.077561</span></span>"] }, 
-], id: 469762054, rootId: 469762053, totalRows: 6 } ) });
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["B","B","B","C","B"] }, 
+{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.624629</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-0.858192</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.676221</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.126394</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.437662</span></span>"] }, 
+], id: 570425349, rootId: 570425348, totalRows: 10 } ) });
 /*-->*/
 
-/*<!--*/
-call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["A","A","A","A"] }, 
-{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">-0.858192</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.437662</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-1.598537</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.991766</span></span>"] }, 
-], id: 469762055, rootId: 469762053, totalRows: 4 } ) });
-/*-->*/
-
-call_DataFrame(function() { DataFrame.renderTable(469762053) });
+call_DataFrame(function() { DataFrame.renderTable(570425348) });
 
 
         </script>
@@ -1384,7 +1373,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_469762056"></table>
+<table class="dataframe" id="df_570425350"></table>
 
 <p class="dataframe_description">GroupBy</p>
         </body>
@@ -1392,25 +1381,25 @@ table.dataframe tr:hover .formatted .structural, .null {
             
 /*<!--*/
 call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"date: Int\">date</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1998</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1999</span></span>"] }, 
-{ name: "<span title=\"group: DataFrame\">group</span>", children: [], rightAlign: false, values: [{ frameId: 469762057, value: "<b>DataFrame 4 x 3</b>" },{ frameId: 469762058, value: "<b>DataFrame 6 x 3</b>" }] }, 
-], id: 469762056, rootId: 469762056, totalRows: 2 } ) });
+{ name: "<span title=\"group: DataFrame\">group</span>", children: [], rightAlign: false, values: [{ frameId: 570425351, value: "<b>DataFrame 4 x 3</b>" },{ frameId: 570425352, value: "<b>DataFrame 6 x 3</b>" }] }, 
+], id: 570425350, rootId: 570425350, totalRows: 2 } ) });
 /*-->*/
 
 /*<!--*/
-call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["B","B","A","A"] }, 
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["B","C","B","B"] }, 
 { name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.624629</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.126394</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.437662</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.991766</span></span>"] }, 
 { name: "<span title=\"date: kotlinx.datetime.LocalDate\">date</span>", children: [], rightAlign: false, values: ["1998-01-02","1998-06-22","1998-12-25","1998-01-20"] }, 
-], id: 469762057, rootId: 469762056, totalRows: 4 } ) });
+], id: 570425351, rootId: 570425350, totalRows: 4 } ) });
 /*-->*/
 
 /*<!--*/
-call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["A","C","B","A","B"] }, 
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["B","B","C","B","C"] }, 
 { name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">-0.858192</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.676221</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.492079</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-1.598537</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-0.077561</span></span>"] }, 
 { name: "<span title=\"date: kotlinx.datetime.LocalDate\">date</span>", children: [], rightAlign: false, values: ["1999-11-21","1999-03-12","1999-12-24","1999-02-09","1999-06-24"] }, 
-], id: 469762058, rootId: 469762056, totalRows: 6 } ) });
+], id: 570425352, rootId: 570425350, totalRows: 6 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(469762056) });
+call_DataFrame(function() { DataFrame.renderTable(570425350) });
 
 
         </script>
@@ -1584,55 +1573,48 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_469762059"></table>
+<table class="dataframe" id="df_570425353"></table>
 
 <p class="dataframe_description">GroupBy</p>
         </body>
         <script>
             
 /*<!--*/
-call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["B","A","C","A","B"] }, 
-{ name: "<span title=\"date: Int\">date</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1998</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1999</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1999</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1998</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1999</span></span>"] }, 
-{ name: "<span title=\"group: DataFrame\">group</span>", children: [], rightAlign: false, values: [{ frameId: 469762060, value: "<b>DataFrame 2 x 3</b>" },{ frameId: 469762061, value: "<b>DataFrame 2 x 3</b>" },{ frameId: 469762062, value: "<b>DataFrame 1 x 3</b>" },{ frameId: 469762063, value: "<b>DataFrame 2 x 3</b>" },{ frameId: 469762064, value: "<b>DataFrame 3 x 3</b>" }] }, 
-], id: 469762059, rootId: 469762059, totalRows: 5 } ) });
-/*-->*/
-
-/*<!--*/
-call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["B","B"] }, 
-{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.624629</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.126394</span></span>"] }, 
-{ name: "<span title=\"date: kotlinx.datetime.LocalDate\">date</span>", children: [], rightAlign: false, values: ["1998-01-02","1998-06-22"] }, 
-], id: 469762060, rootId: 469762059, totalRows: 2 } ) });
-/*-->*/
-
-/*<!--*/
-call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["A","A"] }, 
-{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">-0.858192</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-1.598537</span></span>"] }, 
-{ name: "<span title=\"date: kotlinx.datetime.LocalDate\">date</span>", children: [], rightAlign: false, values: ["1999-11-21","1999-02-09"] }, 
-], id: 469762061, rootId: 469762059, totalRows: 2 } ) });
-/*-->*/
-
-/*<!--*/
-call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["C"] }, 
-{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.676221</span></span>"] }, 
-{ name: "<span title=\"date: kotlinx.datetime.LocalDate\">date</span>", children: [], rightAlign: false, values: ["1999-03-12"] }, 
-], id: 469762062, rootId: 469762059, totalRows: 1 } ) });
-/*-->*/
-
-/*<!--*/
-call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["A","A"] }, 
-{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.437662</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.991766</span></span>"] }, 
-{ name: "<span title=\"date: kotlinx.datetime.LocalDate\">date</span>", children: [], rightAlign: false, values: ["1998-12-25","1998-01-20"] }, 
-], id: 469762063, rootId: 469762059, totalRows: 2 } ) });
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["B","B","C","C"] }, 
+{ name: "<span title=\"date: Int\">date</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1998</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1999</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1998</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1999</span></span>"] }, 
+{ name: "<span title=\"group: DataFrame\">group</span>", children: [], rightAlign: false, values: [{ frameId: 570425354, value: "<b>DataFrame 3 x 3</b>" },{ frameId: 570425355, value: "<b>DataFrame 4 x 3</b>" },{ frameId: 570425356, value: "<b>DataFrame 1 x 3</b>" },{ frameId: 570425357, value: "<b>DataFrame 2 x 3</b>" }] }, 
+], id: 570425353, rootId: 570425353, totalRows: 4 } ) });
 /*-->*/
 
 /*<!--*/
 call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["B","B","B"] }, 
-{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.492079</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-0.077561</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.270969</span></span>"] }, 
-{ name: "<span title=\"date: kotlinx.datetime.LocalDate\">date</span>", children: [], rightAlign: false, values: ["1999-12-24","1999-06-24","1999-12-20"] }, 
-], id: 469762064, rootId: 469762059, totalRows: 3 } ) });
+{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.624629</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.437662</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.991766</span></span>"] }, 
+{ name: "<span title=\"date: kotlinx.datetime.LocalDate\">date</span>", children: [], rightAlign: false, values: ["1998-01-02","1998-12-25","1998-01-20"] }, 
+], id: 570425354, rootId: 570425353, totalRows: 3 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(469762059) });
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["B","B","B","B"] }, 
+{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">-0.858192</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.676221</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-1.598537</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.270969</span></span>"] }, 
+{ name: "<span title=\"date: kotlinx.datetime.LocalDate\">date</span>", children: [], rightAlign: false, values: ["1999-11-21","1999-03-12","1999-02-09","1999-12-20"] }, 
+], id: 570425355, rootId: 570425353, totalRows: 4 } ) });
+/*-->*/
+
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["C"] }, 
+{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.126394</span></span>"] }, 
+{ name: "<span title=\"date: kotlinx.datetime.LocalDate\">date</span>", children: [], rightAlign: false, values: ["1998-06-22"] }, 
+], id: 570425356, rootId: 570425353, totalRows: 1 } ) });
+/*-->*/
+
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["C","C"] }, 
+{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.492079</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-0.077561</span></span>"] }, 
+{ name: "<span title=\"date: kotlinx.datetime.LocalDate\">date</span>", children: [], rightAlign: false, values: ["1999-12-24","1999-06-24"] }, 
+], id: 570425357, rootId: 570425353, totalRows: 2 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(570425353) });
 
 
         </script>
@@ -1808,7 +1790,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_469762065"></table>
+<table class="dataframe" id="df_570425358"></table>
 
 <p class="dataframe_description">PivotGroupBy</p>
         </body>
@@ -1816,49 +1798,41 @@ table.dataframe tr:hover .formatted .structural, .null {
             
 /*<!--*/
 call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"year: Int\">year</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1998</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1999</span></span>"] }, 
-{ name: "<span title=\"B: DataFrame\">B</span>", children: [], rightAlign: false, values: [{ frameId: 469762066, value: "<b>DataFrame 2 x 3</b>" },{ frameId: 469762067, value: "<b>DataFrame 3 x 3</b>" }] }, 
-{ name: "<span title=\"A: DataFrame\">A</span>", children: [], rightAlign: false, values: [{ frameId: 469762068, value: "<b>DataFrame 2 x 3</b>" },{ frameId: 469762069, value: "<b>DataFrame 2 x 3</b>" }] }, 
-{ name: "<span title=\"C: DataFrame\">C</span>", children: [], rightAlign: false, values: ["",{ frameId: 469762070, value: "<b>DataFrame 1 x 3</b>" }] }, 
-{ name: "<span title=\"letter: DataRow\">letter</span>", children: [1, 2, 3], rightAlign: false, values: ["<span class=\"formatted\" title=\"B:    letter      num       date\n 0      B 0.624629 1998-01-02\n 1      B 1.126394 1998-06-22\n\nA:    letter      num       date\n 0      A 1.437662 1998-12-25\n 1      A 1.991766 1998-01-20\n\nC:  \n\"><span class=\"structural\">{ </span><span class=\"structural\">B: </span><span class=\"dataFrameCaption\">DataFrame [2 x 3]</span><span class=\"structural\">, </span><span class=\"structural\">A: </span><span class=\"dataFrameCaption\">Da<span class=\"structural\">...</span></span><span class=\"structural\">, </span><span class=\"structural\">C...</span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"B:    letter       num       date\n 0      B  1.492079 1999-12-24\n 1      B -0.077561 1999-06-24\n 2      B  0.270969 1999-12-20\n\nA:    letter       num       date\n 0      A -0.858192 1999-11-21\n 1      A -1.598537 1999-02-09\n\nC:    letter      num       date\n 0      C 0.676221 1999-03-12\n\"><span class=\"structural\">{ </span><span class=\"structural\">B: </span><span class=\"dataFrameCaption\">DataFrame [3 x 3]</span><span class=\"structural\">, </span><span class=\"structural\">A: </span><span class=\"dataFrameCaption\">Da<span class=\"structural\">...</span></span><span class=\"structural\">, </span><span class=\"structural\">C...</span><span class=\"structural\"> }</span></span>"] }, 
-], id: 469762065, rootId: 469762065, totalRows: 2 } ) });
-/*-->*/
-
-/*<!--*/
-call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["B","B"] }, 
-{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.624629</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.126394</span></span>"] }, 
-{ name: "<span title=\"date: kotlinx.datetime.LocalDate\">date</span>", children: [], rightAlign: false, values: ["1998-01-02","1998-06-22"] }, 
-], id: 469762066, rootId: 469762065, totalRows: 2 } ) });
+{ name: "<span title=\"B: DataFrame\">B</span>", children: [], rightAlign: false, values: [{ frameId: 570425359, value: "<b>DataFrame 3 x 3</b>" },{ frameId: 570425360, value: "<b>DataFrame 4 x 3</b>" }] }, 
+{ name: "<span title=\"C: DataFrame\">C</span>", children: [], rightAlign: false, values: [{ frameId: 570425361, value: "<b>DataFrame 1 x 3</b>" },{ frameId: 570425362, value: "<b>DataFrame 2 x 3</b>" }] }, 
+{ name: "<span title=\"letter: DataRow\">letter</span>", children: [1, 2], rightAlign: false, values: ["<span class=\"formatted\" title=\"B:    letter      num       date\n 0      B 0.624629 1998-01-02\n 1      B 1.437662 1998-12-25\n 2      B 1.991766 1998-01-20\n\nC:    letter      num       date\n 0      C 1.126394 1998-06-22\n\"><span class=\"structural\">{ </span><span class=\"structural\">B: </span><span class=\"dataFrameCaption\">DataFrame [3 x 3]</span><span class=\"structural\">, </span><span class=\"structural\">C: </span><span class=\"dataFrameCaption\">DataFram<span class=\"structural\">...</span></span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"B:    letter       num       date\n 0      B -0.858192 1999-11-21\n 1      B  0.676221 1999-03-12\n 2      B -1.598537 1999-02-09\n 3      B  0.270969 1999-12-20\n\nC:    letter       num       date\n 0      C  1.492079 1999-12-24\n 1      C -0.077561 1999-06-24\n\"><span class=\"structural\">{ </span><span class=\"structural\">B: </span><span class=\"dataFrameCaption\">DataFrame [4 x 3]</span><span class=\"structural\">, </span><span class=\"structural\">C: </span><span class=\"dataFrameCaption\">DataFram<span class=\"structural\">...</span></span><span class=\"structural\"> }</span></span>"] }, 
+], id: 570425358, rootId: 570425358, totalRows: 2 } ) });
 /*-->*/
 
 /*<!--*/
 call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["B","B","B"] }, 
-{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.492079</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-0.077561</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.270969</span></span>"] }, 
-{ name: "<span title=\"date: kotlinx.datetime.LocalDate\">date</span>", children: [], rightAlign: false, values: ["1999-12-24","1999-06-24","1999-12-20"] }, 
-], id: 469762067, rootId: 469762065, totalRows: 3 } ) });
+{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.624629</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.437662</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.991766</span></span>"] }, 
+{ name: "<span title=\"date: kotlinx.datetime.LocalDate\">date</span>", children: [], rightAlign: false, values: ["1998-01-02","1998-12-25","1998-01-20"] }, 
+], id: 570425359, rootId: 570425358, totalRows: 3 } ) });
 /*-->*/
 
 /*<!--*/
-call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["A","A"] }, 
-{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.437662</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.991766</span></span>"] }, 
-{ name: "<span title=\"date: kotlinx.datetime.LocalDate\">date</span>", children: [], rightAlign: false, values: ["1998-12-25","1998-01-20"] }, 
-], id: 469762068, rootId: 469762065, totalRows: 2 } ) });
-/*-->*/
-
-/*<!--*/
-call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["A","A"] }, 
-{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">-0.858192</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-1.598537</span></span>"] }, 
-{ name: "<span title=\"date: kotlinx.datetime.LocalDate\">date</span>", children: [], rightAlign: false, values: ["1999-11-21","1999-02-09"] }, 
-], id: 469762069, rootId: 469762065, totalRows: 2 } ) });
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["B","B","B","B"] }, 
+{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">-0.858192</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.676221</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-1.598537</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.270969</span></span>"] }, 
+{ name: "<span title=\"date: kotlinx.datetime.LocalDate\">date</span>", children: [], rightAlign: false, values: ["1999-11-21","1999-03-12","1999-02-09","1999-12-20"] }, 
+], id: 570425360, rootId: 570425358, totalRows: 4 } ) });
 /*-->*/
 
 /*<!--*/
 call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["C"] }, 
-{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.676221</span></span>"] }, 
-{ name: "<span title=\"date: kotlinx.datetime.LocalDate\">date</span>", children: [], rightAlign: false, values: ["1999-03-12"] }, 
-], id: 469762070, rootId: 469762065, totalRows: 1 } ) });
+{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.126394</span></span>"] }, 
+{ name: "<span title=\"date: kotlinx.datetime.LocalDate\">date</span>", children: [], rightAlign: false, values: ["1998-06-22"] }, 
+], id: 570425361, rootId: 570425358, totalRows: 1 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(469762065) });
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["C","C"] }, 
+{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.492079</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-0.077561</span></span>"] }, 
+{ name: "<span title=\"date: kotlinx.datetime.LocalDate\">date</span>", children: [], rightAlign: false, values: ["1999-12-24","1999-06-24"] }, 
+], id: 570425362, rootId: 570425358, totalRows: 2 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(570425358) });
 
 
         </script>
@@ -2040,7 +2014,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_469762071"></table>
+<table class="dataframe" id="df_570425363"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 2, columnsCount = 2</p>
         </body>
@@ -2048,14 +2022,13 @@ table.dataframe tr:hover .formatted .structural, .null {
             
 /*<!--*/
 call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"year: Int\">year</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1998</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1999</span></span>"] }, 
-{ name: "<span title=\"B: Double\">B</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.875512</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.561829</span></span>"] }, 
-{ name: "<span title=\"A: Double\">A</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.714714</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-1.228365</span></span>"] }, 
-{ name: "<span title=\"C: Double?\">C</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.676221</span></span>"] }, 
-{ name: "<span title=\"letter: DataRow\">letter</span>", children: [1, 2, 3], rightAlign: false, values: ["<span class=\"formatted\" title=\"B: 0.8755115227315645\nA: 1.7147142958357764\"><span class=\"structural\">{ </span><span class=\"structural\">B: </span><span class=\"numbers\">0.9</span><span class=\"structural\">, </span><span class=\"structural\">A: </span><span class=\"numbers\">1.7</span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"B: 0.5618288498522336\nA: -1.2283646350577737\nC: 0.6762208162903859\"><span class=\"structural\">{ </span><span class=\"structural\">B: </span><span class=\"numbers\">0.6</span><span class=\"structural\">, </span><span class=\"structural\">A: </span><span class=\"numbers\">-1.2</span><span class=\"structural\">, </span><span class=\"structural\">C: </span><span class=\"numbers\">0.7</span><span class=\"structural\"> }</span></span>"] }, 
-], id: 469762071, rootId: 469762071, totalRows: 2 } ) });
+{ name: "<span title=\"B: Double\">B</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.351353</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-0.377385</span></span>"] }, 
+{ name: "<span title=\"C: Double\">C</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.126394</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.707259</span></span>"] }, 
+{ name: "<span title=\"letter: DataRow\">letter</span>", children: [1, 2], rightAlign: false, values: ["<span class=\"formatted\" title=\"B: 1.3513526036029095\nC: 1.126393826325953\"><span class=\"structural\">{ </span><span class=\"structural\">B: </span><span class=\"numbers\">1.4</span><span class=\"structural\">, </span><span class=\"structural\">C: </span><span class=\"numbers\">1.1</span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"B: -0.37738486291412954\nC: 0.7072587736940286\"><span class=\"structural\">{ </span><span class=\"structural\">B: </span><span class=\"numbers\">-0.4</span><span class=\"structural\">, </span><span class=\"structural\">C: </span><span class=\"numbers\">0.7</span><span class=\"structural\"> }</span></span>"] }, 
+], id: 570425363, rootId: 570425363, totalRows: 2 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(469762071) });
+call_DataFrame(function() { DataFrame.renderTable(570425363) });
 
 
         </script>
@@ -2236,21 +2209,20 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_469762072"></table>
+<table class="dataframe" id="df_570425364"></table>
 
-<p class="dataframe_description">DataFrame: rowsCount = 2, columnsCount = 4</p>
+<p class="dataframe_description">DataFrame: rowsCount = 2, columnsCount = 3</p>
         </body>
         <script>
             
 /*<!--*/
 call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"year: Int\">year</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1998</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1999</span></span>"] }, 
-{ name: "<span title=\"B: Double\">B</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.875512</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.561829</span></span>"] }, 
-{ name: "<span title=\"A: Double\">A</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.714714</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-1.228365</span></span>"] }, 
-{ name: "<span title=\"C: Double?\">C</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.676221</span></span>"] }, 
-], id: 469762072, rootId: 469762072, totalRows: 2 } ) });
+{ name: "<span title=\"B: Double\">B</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.351353</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-0.377385</span></span>"] }, 
+{ name: "<span title=\"C: Double\">C</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.126394</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.707259</span></span>"] }, 
+], id: 570425364, rootId: 570425364, totalRows: 2 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(469762072) });
+call_DataFrame(function() { DataFrame.renderTable(570425364) });
 
 
         </script>
@@ -2429,30 +2401,26 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_469762073"></table>
+<table class="dataframe" id="df_570425365"></table>
 
-<p class="dataframe_description">DataFrame: rowsCount = 2, columnsCount = 4</p>
+<p class="dataframe_description">DataFrame: rowsCount = 2, columnsCount = 3</p>
         </body>
         <script>
             
 /*<!--*/
 call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"year: Int\">year</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1998</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1999</span></span>"] }, 
-{ name: "<span title=\"sum: Double\">sum</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.751023</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.685487</span></span>"] }, 
-{ name: "<span title=\"mean: Double\">mean</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.875512</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.561829</span></span>"] }, 
-{ name: "<span title=\"count: Int\">count</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">2</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>"] }, 
-{ name: "<span title=\"B: DataRow\">B</span>", children: [1, 2, 3], rightAlign: false, values: ["<span class=\"formatted\" title=\"sum: 1.751023045463129\nmean: 0.8755115227315645\ncount: 2\"><span class=\"structural\">{ </span><span class=\"structural\">sum: </span><span class=\"numbers\">1.8</span><span class=\"structural\">, </span><span class=\"structural\">mean: </span><span class=\"numbers\">0.9</span><span class=\"structural\">, </span><span class=\"structural\">count: </span><span class=\"numbers\">2</span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"sum: 1.6854865495567006\nmean: 0.5618288498522336\ncount: 3\"><span class=\"structural\">{ </span><span class=\"structural\">sum: </span><span class=\"numbers\">1.7</span><span class=\"structural\">, </span><span class=\"structural\">mean: </span><span class=\"numbers\">0.6</span><span class=\"structural\">, </span><span class=\"structural\">count: </span><span class=\"numbers\">3</span><span class=\"structural\"> }</span></span>"] }, 
-{ name: "<span title=\"sum: Double\">sum</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.429429</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-2.456729</span></span>"] }, 
-{ name: "<span title=\"mean: Double\">mean</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.714714</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-1.228365</span></span>"] }, 
-{ name: "<span title=\"count: Int\">count</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">2</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2</span></span>"] }, 
-{ name: "<span title=\"A: DataRow\">A</span>", children: [5, 6, 7], rightAlign: false, values: ["<span class=\"formatted\" title=\"sum: 3.429428591671553\nmean: 1.7147142958357764\ncount: 2\"><span class=\"structural\">{ </span><span class=\"structural\">sum: </span><span class=\"numbers\">3.4</span><span class=\"structural\">, </span><span class=\"structural\">mean: </span><span class=\"numbers\">1.7</span><span class=\"structural\">, </span><span class=\"structural\">count: </span><span class=\"numbers\">2</span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"sum: -2.4567292701155474\nmean: -1.2283646350577737\ncount: 2\"><span class=\"structural\">{ </span><span class=\"structural\">sum: </span><span class=\"numbers\">-2.5</span><span class=\"structural\">, </span><span class=\"structural\">mean: </span><span class=\"numbers\">-1.2</span><span class=\"structural\">, </span><span class=\"structural\">count: </span><span class=\"numbers\">2</span><span class=\"structural\"> }</span></span>"] }, 
-{ name: "<span title=\"sum: Double?\">sum</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.676221</span></span>"] }, 
-{ name: "<span title=\"mean: Double?\">mean</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.676221</span></span>"] }, 
-{ name: "<span title=\"count: Int?\">count</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>"] }, 
-{ name: "<span title=\"C: DataRow\">C</span>", children: [9, 10, 11], rightAlign: false, values: ["<span class=\"formatted\" title=\"\"><span class=\"null\">{ }</span></span>","<span class=\"formatted\" title=\"sum: 0.6762208162903859\nmean: 0.6762208162903859\ncount: 1\"><span class=\"structural\">{ </span><span class=\"structural\">sum: </span><span class=\"numbers\">0.7</span><span class=\"structural\">, </span><span class=\"structural\">mean: </span><span class=\"numbers\">0.7</span><span class=\"structural\">, </span><span class=\"structural\">count: </span><span class=\"numbers\">1</span><span class=\"structural\"> }</span></span>"] }, 
-], id: 469762073, rootId: 469762073, totalRows: 2 } ) });
+{ name: "<span title=\"sum: Double\">sum</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">4.054058</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-1.509539</span></span>"] }, 
+{ name: "<span title=\"mean: Double\">mean</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.351353</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-0.377385</span></span>"] }, 
+{ name: "<span title=\"count: Int\">count</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4</span></span>"] }, 
+{ name: "<span title=\"B: DataRow\">B</span>", children: [1, 2, 3], rightAlign: false, values: ["<span class=\"formatted\" title=\"sum: 4.054057810808729\nmean: 1.3513526036029095\ncount: 3\"><span class=\"structural\">{ </span><span class=\"structural\">sum: </span><span class=\"numbers\">4.1</span><span class=\"structural\">, </span><span class=\"structural\">mean: </span><span class=\"numbers\">1.4</span><span class=\"structural\">, </span><span class=\"structural\">count: </span><span class=\"numbers\">3</span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"sum: -1.5095394516565181\nmean: -0.37738486291412954\ncount: 4\"><span class=\"structural\">{ </span><span class=\"structural\">sum: </span><span class=\"numbers\">-1.5</span><span class=\"structural\">, </span><span class=\"structural\">mean: </span><span class=\"numbers\">-0.4</span><span class=\"structural\">, </span><span class=\"structural\">count: </span><span class=\"numbers\">4</span><span class=\"structural\"> }</span></span>"] }, 
+{ name: "<span title=\"sum: Double\">sum</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.126394</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.414518</span></span>"] }, 
+{ name: "<span title=\"mean: Double\">mean</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.126394</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.707259</span></span>"] }, 
+{ name: "<span title=\"count: Int\">count</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2</span></span>"] }, 
+{ name: "<span title=\"C: DataRow\">C</span>", children: [5, 6, 7], rightAlign: false, values: ["<span class=\"formatted\" title=\"sum: 1.126393826325953\nmean: 1.126393826325953\ncount: 1\"><span class=\"structural\">{ </span><span class=\"structural\">sum: </span><span class=\"numbers\">1.1</span><span class=\"structural\">, </span><span class=\"structural\">mean: </span><span class=\"numbers\">1.1</span><span class=\"structural\">, </span><span class=\"structural\">count: </span><span class=\"numbers\">1</span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"sum: 1.4145175473880571\nmean: 0.7072587736940286\ncount: 2\"><span class=\"structural\">{ </span><span class=\"structural\">sum: </span><span class=\"numbers\">1.4</span><span class=\"structural\">, </span><span class=\"structural\">mean: </span><span class=\"numbers\">0.7</span><span class=\"structural\">, </span><span class=\"structural\">count: </span><span class=\"numbers\">2</span><span class=\"structural\"> }</span></span>"] }, 
+], id: 570425365, rootId: 570425365, totalRows: 2 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(469762073) });
+call_DataFrame(function() { DataFrame.renderTable(570425365) });
 
 
         </script>
@@ -2641,7 +2609,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_469762074"></table>
+<table class="dataframe" id="df_570425366"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 2, columnsCount = 2</p>
         </body>
@@ -2649,14 +2617,13 @@ table.dataframe tr:hover .formatted .structural, .null {
             
 /*<!--*/
 call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"year: Int\">year</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1998</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1999</span></span>"] }, 
-{ name: "<span title=\"B: Double\">B</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.501765</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.569640</span></span>"] }, 
-{ name: "<span title=\"A: Double\">A</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.554104</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.740346</span></span>"] }, 
-{ name: "<span title=\"C: Double?\">C</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"null\">null</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.0</span></span>"] }, 
-{ name: "<span title=\"letter: DataRow\">letter</span>", children: [1, 2, 3], rightAlign: false, values: ["<span class=\"formatted\" title=\"B: 0.5017646071887769\nA: 0.5541041929100174\"><span class=\"structural\">{ </span><span class=\"structural\">B: </span><span class=\"numbers\">0.5</span><span class=\"structural\">, </span><span class=\"structural\">A: </span><span class=\"numbers\">0.6</span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"B: 1.5696399986487743\nA: 0.7403456539390477\nC: 0.0\"><span class=\"structural\">{ </span><span class=\"structural\">B: </span><span class=\"numbers\">1.6</span><span class=\"structural\">, </span><span class=\"structural\">A: </span><span class=\"numbers\">0.7</span><span class=\"structural\">, </span><span class=\"structural\">C: </span><span class=\"numbers\">0.0</span><span class=\"structural\"> }</span></span>"] }, 
-], id: 469762074, rootId: 469762074, totalRows: 2 } ) });
+{ name: "<span title=\"B: Double\">B</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.367137</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.274758</span></span>"] }, 
+{ name: "<span title=\"C: Double\">C</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.000000</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.569640</span></span>"] }, 
+{ name: "<span title=\"letter: DataRow\">letter</span>", children: [1, 2], rightAlign: false, values: ["<span class=\"formatted\" title=\"B: 1.367137173153609\nC: 0.0\"><span class=\"structural\">{ </span><span class=\"structural\">B: </span><span class=\"numbers\">1.4</span><span class=\"structural\">, </span><span class=\"structural\">C: </span><span class=\"numbers\">0.0</span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"B: 2.2747582783176834\nC: 1.5696399986487743\"><span class=\"structural\">{ </span><span class=\"structural\">B: </span><span class=\"numbers\">2.3</span><span class=\"structural\">, </span><span class=\"structural\">C: </span><span class=\"numbers\">1.6</span><span class=\"structural\"> }</span></span>"] }, 
+], id: 570425366, rootId: 570425366, totalRows: 2 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(469762074) });
+call_DataFrame(function() { DataFrame.renderTable(570425366) });
 
 
         </script>
@@ -2859,7 +2826,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_469762075"></table>
+<table class="dataframe" id="df_570425367"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 2, columnsCount = 2</p>
         </body>
@@ -2867,49 +2834,41 @@ table.dataframe tr:hover .formatted .structural, .null {
             
 /*<!--*/
 call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"year: Int\">year</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1998</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1999</span></span>"] }, 
-{ name: "<span title=\"B: DataFrame\">B</span>", children: [], rightAlign: false, values: [{ frameId: 469762076, value: "<b>DataFrame 2 x 3</b>" },{ frameId: 469762077, value: "<b>DataFrame 3 x 3</b>" }] }, 
-{ name: "<span title=\"A: DataFrame\">A</span>", children: [], rightAlign: false, values: [{ frameId: 469762078, value: "<b>DataFrame 2 x 3</b>" },{ frameId: 469762079, value: "<b>DataFrame 2 x 3</b>" }] }, 
-{ name: "<span title=\"C: DataFrame\">C</span>", children: [], rightAlign: false, values: ["",{ frameId: 469762080, value: "<b>DataFrame 1 x 3</b>" }] }, 
-{ name: "<span title=\"letter: DataRow\">letter</span>", children: [1, 2, 3], rightAlign: false, values: ["<span class=\"formatted\" title=\"B:    letter      num       date\n 0      B 1.126394 1998-06-22\n 1      B 0.624629 1998-01-02\n\nA:    letter      num       date\n 0      A 1.991766 1998-01-20\n 1      A 1.437662 1998-12-25\n\nC:  \n\"><span class=\"structural\">{ </span><span class=\"structural\">B: </span><span class=\"dataFrameCaption\">DataFrame [2 x 3]</span><span class=\"structural\">, </span><span class=\"structural\">A: </span><span class=\"dataFrameCaption\">Da<span class=\"structural\">...</span></span><span class=\"structural\">, </span><span class=\"structural\">C...</span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"B:    letter       num       date\n 0      B  1.492079 1999-12-24\n 1      B  0.270969 1999-12-20\n 2      B -0.077561 1999-06-24\n\nA:    letter       num       date\n 0      A -0.858192 1999-11-21\n 1      A -1.598537 1999-02-09\n\nC:    letter      num       date\n 0      C 0.676221 1999-03-12\n\"><span class=\"structural\">{ </span><span class=\"structural\">B: </span><span class=\"dataFrameCaption\">DataFrame [3 x 3]</span><span class=\"structural\">, </span><span class=\"structural\">A: </span><span class=\"dataFrameCaption\">Da<span class=\"structural\">...</span></span><span class=\"structural\">, </span><span class=\"structural\">C...</span><span class=\"structural\"> }</span></span>"] }, 
-], id: 469762075, rootId: 469762075, totalRows: 2 } ) });
-/*-->*/
-
-/*<!--*/
-call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["B","B"] }, 
-{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.126394</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.624629</span></span>"] }, 
-{ name: "<span title=\"date: kotlinx.datetime.LocalDate\">date</span>", children: [], rightAlign: false, values: ["1998-06-22","1998-01-02"] }, 
-], id: 469762076, rootId: 469762075, totalRows: 2 } ) });
+{ name: "<span title=\"B: DataFrame\">B</span>", children: [], rightAlign: false, values: [{ frameId: 570425368, value: "<b>DataFrame 3 x 3</b>" },{ frameId: 570425369, value: "<b>DataFrame 4 x 3</b>" }] }, 
+{ name: "<span title=\"C: DataFrame\">C</span>", children: [], rightAlign: false, values: [{ frameId: 570425370, value: "<b>DataFrame 1 x 3</b>" },{ frameId: 570425371, value: "<b>DataFrame 2 x 3</b>" }] }, 
+{ name: "<span title=\"letter: DataRow\">letter</span>", children: [1, 2], rightAlign: false, values: ["<span class=\"formatted\" title=\"B:    letter      num       date\n 0      B 1.991766 1998-01-20\n 1      B 1.437662 1998-12-25\n 2      B 0.624629 1998-01-02\n\nC:    letter      num       date\n 0      C 1.126394 1998-06-22\n\"><span class=\"structural\">{ </span><span class=\"structural\">B: </span><span class=\"dataFrameCaption\">DataFrame [3 x 3]</span><span class=\"structural\">, </span><span class=\"structural\">C: </span><span class=\"dataFrameCaption\">DataFram<span class=\"structural\">...</span></span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"B:    letter       num       date\n 0      B  0.676221 1999-03-12\n 1      B  0.270969 1999-12-20\n 2      B -0.858192 1999-11-21\n 3      B -1.598537 1999-02-09\n\nC:    letter       num       date\n 0      C  1.492079 1999-12-24\n 1      C -0.077561 1999-06-24\n\"><span class=\"structural\">{ </span><span class=\"structural\">B: </span><span class=\"dataFrameCaption\">DataFrame [4 x 3]</span><span class=\"structural\">, </span><span class=\"structural\">C: </span><span class=\"dataFrameCaption\">DataFram<span class=\"structural\">...</span></span><span class=\"structural\"> }</span></span>"] }, 
+], id: 570425367, rootId: 570425367, totalRows: 2 } ) });
 /*-->*/
 
 /*<!--*/
 call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["B","B","B"] }, 
-{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.492079</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.270969</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-0.077561</span></span>"] }, 
-{ name: "<span title=\"date: kotlinx.datetime.LocalDate\">date</span>", children: [], rightAlign: false, values: ["1999-12-24","1999-12-20","1999-06-24"] }, 
-], id: 469762077, rootId: 469762075, totalRows: 3 } ) });
+{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.991766</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.437662</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.624629</span></span>"] }, 
+{ name: "<span title=\"date: kotlinx.datetime.LocalDate\">date</span>", children: [], rightAlign: false, values: ["1998-01-20","1998-12-25","1998-01-02"] }, 
+], id: 570425368, rootId: 570425367, totalRows: 3 } ) });
 /*-->*/
 
 /*<!--*/
-call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["A","A"] }, 
-{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.991766</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.437662</span></span>"] }, 
-{ name: "<span title=\"date: kotlinx.datetime.LocalDate\">date</span>", children: [], rightAlign: false, values: ["1998-01-20","1998-12-25"] }, 
-], id: 469762078, rootId: 469762075, totalRows: 2 } ) });
-/*-->*/
-
-/*<!--*/
-call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["A","A"] }, 
-{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">-0.858192</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-1.598537</span></span>"] }, 
-{ name: "<span title=\"date: kotlinx.datetime.LocalDate\">date</span>", children: [], rightAlign: false, values: ["1999-11-21","1999-02-09"] }, 
-], id: 469762079, rootId: 469762075, totalRows: 2 } ) });
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["B","B","B","B"] }, 
+{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.676221</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.270969</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-0.858192</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-1.598537</span></span>"] }, 
+{ name: "<span title=\"date: kotlinx.datetime.LocalDate\">date</span>", children: [], rightAlign: false, values: ["1999-03-12","1999-12-20","1999-11-21","1999-02-09"] }, 
+], id: 570425369, rootId: 570425367, totalRows: 4 } ) });
 /*-->*/
 
 /*<!--*/
 call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["C"] }, 
-{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">0.676221</span></span>"] }, 
-{ name: "<span title=\"date: kotlinx.datetime.LocalDate\">date</span>", children: [], rightAlign: false, values: ["1999-03-12"] }, 
-], id: 469762080, rootId: 469762075, totalRows: 1 } ) });
+{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.126394</span></span>"] }, 
+{ name: "<span title=\"date: kotlinx.datetime.LocalDate\">date</span>", children: [], rightAlign: false, values: ["1998-06-22"] }, 
+], id: 570425370, rootId: 570425367, totalRows: 1 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(469762075) });
+/*<!--*/
+call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"letter: String\">letter</span>", children: [], rightAlign: false, values: ["C","C"] }, 
+{ name: "<span title=\"num: Double\">num</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">1.492079</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">-0.077561</span></span>"] }, 
+{ name: "<span title=\"date: kotlinx.datetime.LocalDate\">date</span>", children: [], rightAlign: false, values: ["1999-12-24","1999-06-24"] }, 
+], id: 570425371, rootId: 570425367, totalRows: 2 } ) });
+/*-->*/
+
+call_DataFrame(function() { DataFrame.renderTable(570425367) });
 
 
         </script>
@@ -3097,7 +3056,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_469762081"></table>
+<table class="dataframe" id="df_570425372"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 5, columnsCount = 7</p>
         </body>
@@ -3111,10 +3070,10 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"t
 { name: "<span title=\"day: String\">day</span>", children: [], rightAlign: false, values: ["Sun","Sun","Sun","Sun","Sun"] }, 
 { name: "<span title=\"time: String\">time</span>", children: [], rightAlign: false, values: ["Dinner","Dinner","Dinner","Dinner","Dinner"] }, 
 { name: "<span title=\"size: Int\">size</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">2</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">4</span></span>"] }, 
-], id: 469762081, rootId: 469762081, totalRows: 5 } ) });
+], id: 570425372, rootId: 570425372, totalRows: 5 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(469762081) });
+call_DataFrame(function() { DataFrame.renderTable(570425372) });
 
 
         </script>
@@ -3287,7 +3246,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_469762082"></table>
+<table class="dataframe" id="df_570425373"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 8, columnsCount = 5</p>
         </body>
@@ -3299,10 +3258,10 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"d
 { name: "<span title=\"total_bill: Double\">total_bill</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">18.420000</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">16.813333</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">19.661778</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">21.276667</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">20.506667</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">24.120000</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">17.113111</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">19.190588</span></span>"] }, 
 { name: "<span title=\"tip: Double\">tip</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.812500</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.714000</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.102889</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.875476</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.167895</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.516842</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.673778</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.030000</span></span>"] }, 
 { name: "<span title=\"size: Double\">size</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.250000</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.066667</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.555556</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.476190</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.929825</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.578947</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.488889</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.352941</span></span>"] }, 
-], id: 469762082, rootId: 469762082, totalRows: 8 } ) });
+], id: 570425373, rootId: 570425373, totalRows: 8 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(469762082) });
+call_DataFrame(function() { DataFrame.renderTable(570425373) });
 
 
         </script>
@@ -3494,7 +3453,7 @@ table.dataframe tr:hover .formatted .structural, .null {
         </head>
         <body>
             
-<table class="dataframe" id="df_469762083"></table>
+<table class="dataframe" id="df_570425374"></table>
 
 <p class="dataframe_description">DataFrame: rowsCount = 6, columnsCount = 3</p>
         </body>
@@ -3510,10 +3469,10 @@ call_DataFrame(function() { DataFrame.addTable({ cols: [{ name: "<span title=\"t
 { name: "<span title=\"size: Double\">size</span>", children: [], rightAlign: true, values: ["<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.000000</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.555556</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.929825</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.000000</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">3.000000</span></span>","<span class=\"formatted\" title=\"\"><span class=\"numbers\">2.500000</span></span>"] }, 
 { name: "<span title=\"false: DataRow\">false</span>", children: [5, 6], rightAlign: false, values: ["<span class=\"formatted\" title=\"tips_pct: 0.13962236590021224\nsize: 2.0\"><span class=\"structural\">{ </span><span class=\"structural\">tips_pct: </span><span class=\"numbers\">0.1</span><span class=\"structural\">, </span><span class=\"structural\">size: </span><span class=\"numbers\">2.0</span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"tips_pct: 0.15804765754377617\nsize: 2.5555555555555554\"><span class=\"structural\">{ </span><span class=\"structural\">tips_pct: </span><span class=\"numbers\">0.2</span><span class=\"structural\">, </span><span class=\"structural\">size: </span><span class=\"numbers\">2.6</span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"tips_pct: 0.16011294305072807\nsize: 2.9298245614035086\"><span class=\"structural\">{ </span><span class=\"structural\">tips_pct: </span><span class=\"numbers\">0.2</span><span class=\"structural\">, </span><span class=\"structural\">size: </span><span class=\"numbers\">2.9</span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"tips_pct: 0.1597444089456869\nsize: 2.0\"><span class=\"structural\">{ </span><span class=\"structural\">tips_pct: </span><span class=\"numbers\">0.2</span><span class=\"structural\">, </span><span class=\"structural\">size: </span><span class=\"numbers\">2.0</span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"tips_pct: 0.18773466833541927\nsize: 3.0\"><span class=\"structural\">{ </span><span class=\"structural\">tips_pct: </span><span class=\"numbers\">0.2</span><span class=\"structural\">, </span><span class=\"structural\">size: </span><span class=\"numbers\">3.0</span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"tips_pct: 0.16031066524359844\nsize: 2.5\"><span class=\"structural\">{ </span><span class=\"structural\">tips_pct: </span><span class=\"numbers\">0.2</span><span class=\"structural\">, </span><span class=\"structural\">size: </span><span class=\"numbers\">2.5</span><span class=\"structural\"> }</span></span>"] }, 
 { name: "<span title=\"smoker: DataRow\">smoker</span>", children: [4, 7], rightAlign: false, values: ["<span class=\"formatted\" title=\"true: { tips_pct:0.165347, size:2.222222 }\nfalse: { tips_pct:0.139622, size:2.000000 }\"><span class=\"structural\">{ </span><span class=\"structural\">true: </span><span class=\"structural\">{ </span><span class=\"structural\">tips_pct: </span><span class=\"numbers\">0.2</span><span class=\"structural\">, </span><span class=\"structural\">si...</span><span class=\"structural\"> }</span><span class=\"structural\">, </span><span class=\"structural\">f...</span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"true: { tips_pct:0.147906, size:2.476190 }\nfalse: { tips_pct:0.158048, size:2.555556 }\"><span class=\"structural\">{ </span><span class=\"structural\">true: </span><span class=\"structural\">{ </span><span class=\"structural\">tips_pct: </span><span class=\"numbers\">0.1</span><span class=\"structural\">, </span><span class=\"structural\">si...</span><span class=\"structural\"> }</span><span class=\"structural\">, </span><span class=\"structural\">f...</span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"true: { tips_pct:0.187250, size:2.578947 }\nfalse: { tips_pct:0.160113, size:2.929825 }\"><span class=\"structural\">{ </span><span class=\"structural\">true: </span><span class=\"structural\">{ </span><span class=\"structural\">tips_pct: </span><span class=\"numbers\">0.2</span><span class=\"structural\">, </span><span class=\"structural\">si...</span><span class=\"structural\"> }</span><span class=\"structural\">, </span><span class=\"structural\">f...</span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"false: { tips_pct:0.159744, size:2.000000 }\"><span class=\"structural\">{ </span><span class=\"structural\">false: </span><span class=\"structural\">{ </span><span class=\"structural\">tips_pct: </span><span class=\"numbers\">0.2</span><span class=\"structural\">, </span><span class=\"structural\">size: </span><span class=\"numbers\">2.0</span><span class=\"structural\"> }</span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"true: { tips_pct:0.188937, size:1.833333 }\nfalse: { tips_pct:0.187735, size:3.000000 }\"><span class=\"structural\">{ </span><span class=\"structural\">true: </span><span class=\"structural\">{ </span><span class=\"structural\">tips_pct: </span><span class=\"numbers\">0.2</span><span class=\"structural\">, </span><span class=\"structural\">si...</span><span class=\"structural\"> }</span><span class=\"structural\">, </span><span class=\"structural\">f...</span><span class=\"structural\"> }</span></span>","<span class=\"formatted\" title=\"true: { tips_pct:0.163863, size:2.352941 }\nfalse: { tips_pct:0.160311, size:2.500000 }\"><span class=\"structural\">{ </span><span class=\"structural\">true: </span><span class=\"structural\">{ </span><span class=\"structural\">tips_pct: </span><span class=\"numbers\">0.2</span><span class=\"structural\">, </span><span class=\"structural\">si...</span><span class=\"structural\"> }</span><span class=\"structural\">, </span><span class=\"structural\">f...</span><span class=\"structural\"> }</span></span>"] }, 
-], id: 469762083, rootId: 469762083, totalRows: 6 } ) });
+], id: 570425374, rootId: 570425374, totalRows: 6 } ) });
 /*-->*/
 
-call_DataFrame(function() { DataFrame.renderTable(469762083) });
+call_DataFrame(function() { DataFrame.renderTable(570425374) });
 
 
         </script>

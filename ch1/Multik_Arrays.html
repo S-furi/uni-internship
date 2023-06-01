@@ -178,6 +178,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../DA_examples/DA_Introduction.html">Data Analysis Examples</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../DA_examples/tips_kotlin.html">Kotlin: Tips Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DA_examples/nba_kotlin.html">NBA Data Analysis</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
@@ -642,7 +643,7 @@ Vectorization is very convenient because enable the user to express batch operat
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Operations among equal shaped arrays and matrices are always allowed. As the current version of Multik (v0.2.0), there is no native support for array <strong>broadcasting</strong>.
-In <span class="xref myst">Broadcasting</span> subsection there is an explanation on how to archieve array broadcasting using tensor algebra provided by <a class="reference external" href="https://github.com/SciProgCentre/kmath">Kmath</a>.</p>
+In <a class="reference internal" href="#broadcasting"><span class="std std-ref">Broadcasting</span></a> subsection there is an explanation on how to archieve array broadcasting using tensor algebra provided by <a class="reference external" href="https://github.com/SciProgCentre/kmath">Kmath</a>.</p>
 </div>
 </aside>
 <p>Multik supports two separate packages for linear algebra basic operations (package <code class="docutils literal notranslate"><span class="pre">api.linalg</span></code>) and vectorized math operations (package <code class="docutils literal notranslate"><span class="pre">api.math</span></code>)</p>
@@ -723,11 +724,11 @@ In <span class="xref myst">Broadcasting</span> subsection there is an explanatio
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-0.5316047956914967, 0.6514659711818105, 0.2925701551237334, 0.12181364331486255, -0.43880812460935203],
-[-0.604555856130515, -0.39374239137346356, 0.49243959159446365, 0.034026292244462325, 0.48561775721258255],
-[-0.41521522428622415, -0.41087537781388356, -0.5457125725876921, 0.50090357040375, -0.33176971336114647],
-[-0.3075556501671819, -0.22315170704089615, -0.18439094557253138, -0.8490622693830211, -0.31734221212438496],
-[-0.29140075083514205, 0.4493815274114852, -0.5831841221018822, -0.1104197609369975, 0.6007042544854408]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-0.6434522522184294, 0.38641698097305016, 0.20534345094725628, 0.4802349982187798, -0.40479566397082917],
+[-0.45474352025096354, -0.47859182494124414, 0.4129962773533749, -0.5871315544067359, -0.2210629064346973],
+[-0.3292296576854662, -0.6546065678319505, -0.1733503466261196, 0.510129349187332, 0.41571117169724725],
+[-0.4300144650309776, 0.1468132807302342, -0.8164473380454641, -0.35606292314874416, -0.012898039486490235],
+[-0.29304082014153776, 0.414207537193111, 0.30105073254919396, -0.19400547972214482, 0.7837662432974303]]
 </pre></div>
 </div>
 </div>
@@ -739,11 +740,11 @@ In <span class="xref myst">Broadcasting</span> subsection there is an explanatio
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-2.4242941643598863, -3.1329197542525464, -2.958249238947376, -2.1519074980902584, -2.0753293132829715],
-[0.0, -0.3067757038298192, -0.3966731152181202, -0.22837403835679754, 0.010735655889852758],
-[0.0, 0.0, -1.0513601454232255, -0.7040111348214237, -1.0855565016032052],
-[0.0, 0.0, 0.0, -0.3579928746239089, -0.21429850569278608],
-[0.0, 0.0, 0.0, 0.0, 0.13696618443359498]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-3.008139142773184, -2.475365375022795, -1.9932339679809647, -2.437935083612442, -1.253512427444805],
+[0.0, -0.5818782649415262, -0.6984592874394522, -0.05435701240587266, 0.23201919273065758],
+[0.0, 0.0, -0.10852908316489254, -0.7022880594833871, 0.0653178642796647],
+[0.0, 0.0, 0.0, -0.2289228194117369, -0.016211823468891426],
+[0.0, 0.0, 0.0, 0.0, 0.050274994433414676]]
 </pre></div>
 </div>
 </div>
@@ -880,13 +881,13 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean of the whole matrix -&gt; 0.4622739829389456
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean of the whole matrix -&gt; 0.5788003662292656
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean across columns -&gt; [0.32178298153962503, 0.4224473702641395, 0.5022305512128196, 0.6026350287391984]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean across columns -&gt; [0.6074798009411675, 0.49930172509369386, 0.5479675749694699, 0.6604523639127308]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean across rows -&gt; [0.7251677889452055, 0.2670192386197151, 0.30393204875649726, 0.49243988885749024, 0.52281094951582]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean across rows -&gt; [0.4931613167485237, 0.36150513066399875, 0.7832244650967224, 0.698053726239088, 0.5580571923979946]
 </pre></div>
 </div>
 </div>
@@ -919,7 +920,7 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="ySZ6N9"></div>
+<div class="output text_html">   <div id="3vvNHj"></div>
    <script type="text/javascript" data-lets-plot-script="library">
        if(!window.letsPlotCallQueue) {
            window.letsPlotCallQueue = [];
@@ -944,9 +945,9 @@ We can then call the default <code class="docutils literal notranslate"><span cl
                var div = document.createElement("div");
                div.style.color = 'darkred';
                div.textContent = 'Error loading Lets-Plot JS';
-               document.getElementById("ySZ6N9").appendChild(div);
+               document.getElementById("3vvNHj").appendChild(div);
            };
-           var e = document.getElementById("ySZ6N9");
+           var e = document.getElementById("3vvNHj");
            e.appendChild(script);
        })();
    </script></div></div>
@@ -959,7 +960,7 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="QB1Qi8"></div>
+<div class="output text_html">   <div id="JK8MNp"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -983,7 +984,7 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 "y":[0.0,-1.0,0.0,1.0,0.0,-1.0,-2.0,-1.0,-2.0,-3.0,-2.0,-1.0,-2.0,-3.0,-4.0,-3.0,-4.0,-3.0,-4.0,-3.0,-2.0,-3.0,-2.0,-3.0,-4.0,-5.0,-4.0,-3.0,-2.0,-3.0,-4.0,-5.0,-6.0,-7.0,-8.0,-7.0,-6.0,-5.0,-4.0,-3.0,-4.0,-3.0,-4.0,-3.0,-4.0,-3.0,-4.0,-5.0,-4.0,-5.0,-6.0,-7.0,-8.0,-9.0,-10.0,-9.0,-8.0,-9.0,-10.0,-11.0,-12.0,-13.0,-12.0,-13.0,-12.0,-13.0,-12.0,-13.0,-14.0,-15.0,-16.0,-15.0,-16.0,-15.0,-16.0,-15.0,-14.0,-13.0,-12.0,-13.0,-12.0,-13.0,-12.0,-11.0,-12.0,-13.0,-14.0,-15.0,-14.0,-13.0,-14.0,-13.0,-14.0,-13.0,-14.0,-13.0,-12.0,-13.0,-14.0,-15.0,-14.0]
 }
 };
-           var plotContainer = document.getElementById("QB1Qi8");
+           var plotContainer = document.getElementById("JK8MNp");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -1045,7 +1046,7 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="M8wbvc"></div>
+<div class="output text_html">   <div id="ANPi45"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -1081,7 +1082,7 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 "y":[1.0,0.0,1.0,0.0,1.0,2.0,1.0,0.0,-1.0,-2.0,-1.0,-2.0,-1.0,-2.0,-1.0,-2.0,-3.0,-4.0,-5.0,-4.0,-3.0,-2.0,-1.0,0.0,1.0,2.0,3.0,2.0,1.0,0.0,-1.0,-2.0,-3.0,-4.0,-5.0,-4.0,-3.0,-4.0,-5.0,-6.0,-5.0,-6.0,-7.0,-8.0,-7.0,-8.0,-7.0,-6.0,-7.0,-8.0,-7.0,-6.0,-7.0,-8.0,-9.0,-10.0,-9.0,-8.0,-9.0,-8.0,-7.0,-6.0,-5.0,-4.0,-5.0,-4.0,-3.0,-2.0,-3.0,-4.0,-3.0,-4.0,-3.0,-2.0,-3.0,-4.0,-3.0,-4.0,-5.0,-4.0,-3.0,-4.0,-3.0,-2.0,-3.0,-2.0,-3.0,-2.0,-1.0,-2.0,-3.0,-2.0,-3.0,-4.0,-5.0,-6.0,-5.0,-6.0,-5.0,-6.0]
 }
 };
-           var plotContainer = document.getElementById("M8wbvc");
+           var plotContainer = document.getElementById("ANPi45");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -1149,7 +1150,7 @@ We can then call the default <code class="docutils literal notranslate"><span cl
 </section>
 </section>
 <section id="broadcasting">
-<h2>Broadcasting<a class="headerlink" href="#broadcasting" title="Permalink to this heading">#</a></h2>
+<span id="id1"></span><h2>Broadcasting<a class="headerlink" href="#broadcasting" title="Permalink to this heading">#</a></h2>
 <p>Array with different shapes can be broadcasted if this condition is satisfied (from NumPy documentation):</p>
 <blockquote>
 <div><p>In order to broadcast, the size of the trailing axes for both arrays in an operation must either be the same size or one of them must be one.</p>
